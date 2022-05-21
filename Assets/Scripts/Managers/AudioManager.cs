@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,7 +8,7 @@ namespace GameJam
         static readonly string MIXER_MASTER_VOLUME = "MasterVolume";
         static readonly string MIXER_BACKGROUND_VOLUME = "BackgroundVolume";
 
-        static readonly string VOLUME_MASTER_PREF = "MasterVolume";
+        static readonly string PREF_MASTER_VOLUME = "MasterVolume";
 
         [Header("Mixers")]
         [SerializeField] private AudioMixer mainMixer;
@@ -59,6 +57,18 @@ namespace GameJam
         }
 
         /// <summary>
+        /// Play a random 3D sound effect from the specified audioSource
+        /// </summary>
+        public AudioClip PlayRandomSfxFromSource(AudioClip[] clips, AudioSource audioSource)
+        {
+            int randomClipIndex = Random.Range(0, clips.Length);
+            AudioClip randomClip = clips[randomClipIndex];
+
+            audioSource.PlayOneShot(randomClip);
+            return randomClip;
+        }
+
+        /// <summary>
         /// Play a 2D sound effect
         /// </summary>
         public void PlaySfx(AudioClip clip) => sfxSource.PlayOneShot(clip);
@@ -90,7 +100,7 @@ namespace GameJam
         {
             ambientSource.Stop();
             ambientSource.clip = ambientClip;
-            musicSource.loop = true;
+            ambientSource.loop = true;
             ambientSource.Play();
         }
 
@@ -108,12 +118,12 @@ namespace GameJam
         }
 
         #region saving / loading audio settings
-        public void SaveMasterVolume(float volume) => PlayerPrefs.SetFloat(VOLUME_MASTER_PREF, volume);
+        public void SaveMasterVolume(float volume) => PlayerPrefs.SetFloat(PREF_MASTER_VOLUME, volume);
 
         public void LoadSavedVolumeSettings()
         {
-            float masterVolume = PlayerPrefs.HasKey(VOLUME_MASTER_PREF)
-                ? PlayerPrefs.GetFloat(VOLUME_MASTER_PREF)
+            float masterVolume = PlayerPrefs.HasKey(PREF_MASTER_VOLUME)
+                ? PlayerPrefs.GetFloat(PREF_MASTER_VOLUME)
                 : defaultMasterVolume;
 
             this.masterVolumeSetting = masterVolume;
