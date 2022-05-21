@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 807105407925538566}
   - component: {fileID: 2348977895395799146}
   m_Layer: 0
-  m_Name: PaleGreenPoint
+  m_Name: PaleGreenPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
