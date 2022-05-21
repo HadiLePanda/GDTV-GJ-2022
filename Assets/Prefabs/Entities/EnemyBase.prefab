@@ -77,6 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 8243353969754293949, guid: 672a959adbca63845bc4994ab9bcf9ff, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+--- !u!82 &478394963110098862 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 772536929695137076, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 872294877232761498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2447962232464386509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3306745209404433239, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -87,6 +92,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 872294877232761498}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2378291863127274425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447962232508661707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba75ea23e47c552409b846bba9cf9de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 6659227801298000577}
+  Collider: {fileID: 9205668442031598100}
+  VoiceAudio: {fileID: 7571361546321746577}
+  SkillAudio: {fileID: 478394963110098862}
+  Level: {fileID: 6672986860334180534}
+  Combat: {fileID: 3796601455426106846}
+  Health: {fileID: 8658331378291192879}
+  Mana: {fileID: 3027163130994478108}
+  modelRoot: {fileID: 2447962232464386509}
+  Faction: {fileID: 11400000, guid: 73aa55fc2e2d7814f9523ae37412bd34, type: 2}
+  deathEffect: {fileID: 0}
+  deathSounds: []
+  corpseDecayTime: 5
+  stunTimeEnd: 0
+  lastCombatTime: 0
 --- !u!114 &7829797563796742505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,32 +135,6 @@ MonoBehaviour:
   minionPrefab: {fileID: 0}
   resurrectEffect: {fileID: 0}
   resurrectSound: {fileID: 0}
---- !u!114 &2378291863127274425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2447962232508661707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba75ea23e47c552409b846bba9cf9de8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Collider: {fileID: 9205668442031598100}
-  VoiceAudio: {fileID: 7571361546321746577}
-  SkillAudio: {fileID: 0}
-  Level: {fileID: 6672986860334180534}
-  Combat: {fileID: 3796601455426106846}
-  Health: {fileID: 8658331378291192879}
-  Mana: {fileID: 3027163130994478108}
-  modelRoot: {fileID: 2447962232464386509}
-  Faction: {fileID: 11400000, guid: 73aa55fc2e2d7814f9523ae37412bd34, type: 2}
-  deathEffect: {fileID: 0}
-  deathSounds: []
-  corpseDecayTime: 5
-  stunTimeEnd: 0
-  lastCombatTime: 0
 --- !u!114 &3027163130994478108 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2745409364881819270, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -151,6 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b985a419e62740aded61fa9bfd2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6659227801298000577 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5796510911860559963, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 872294877232761498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6672986860334180534 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5800695283273392684, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
