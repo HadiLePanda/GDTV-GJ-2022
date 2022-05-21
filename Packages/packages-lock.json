@@ -46,7 +46,11 @@
     },
     "com.unity.ide.rider": {
       "version": "3.0.14",
+<<<<<<< HEAD
       "depth": 1,
+=======
+      "depth": 0,
+>>>>>>> main
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6"
