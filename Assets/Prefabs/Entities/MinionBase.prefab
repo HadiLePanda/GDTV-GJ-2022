@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2978373103dd3654bbe49761b3815995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 5522774697462624464}
   Collider: {fileID: 8002782842424819717}
   VoiceAudio: {fileID: 8781002236064755840}
   SkillAudio: {fileID: 1615978196119903679}
@@ -126,6 +127,7 @@ MonoBehaviour:
   lastCombatTime: 0
   ambientSounds: []
   ambientSoundProbability: 0.01
+  lifetime: 10
 --- !u!4 &3546138968936350684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3306745209404433239, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -153,6 +155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06960bc337580d49bca057f3669d3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5522774697462624464 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5796510911860559963, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 2077709349288517771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7558747404374744638 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8373195640828608181, guid: 68cd74a682180b24987f762c087d95dc, type: 3}

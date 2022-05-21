@@ -14,6 +14,7 @@ namespace GameJam
     public abstract class Entity : MonoBehaviour, IDamageable
     {
         [Header("Entity Components")]
+        public Animator Animator;
         public Collider Collider;
         public AudioSource VoiceAudio;
         public AudioSource SkillAudio;
