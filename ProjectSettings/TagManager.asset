@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Environment
+  - Projectile
+  - Player
+  - Enemy
+  - Minion
   - 
   - 
   - 
