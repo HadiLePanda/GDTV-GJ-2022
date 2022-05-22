@@ -247,7 +247,7 @@ MonoBehaviour:
     m_Bits: 2769
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 4294967035
 --- !u!114 &4103099476298569182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   walkDeceleration: 20
   runStepLength: 0.7
   runStepInterval: 3
-  crouchSpeed: 1.5
+  crouchSpeed: 3
   crouchAcceleration: 5
   crouchDeceleration: 10
   crouchKey: 99
@@ -355,7 +355,7 @@ MonoBehaviour:
     m_Bits: 759
   isLocalHuman: 1
   slideAlongCeiling: 1
-  slowAgainstWalls: 0
+  slowAgainstWalls: 1
   minSlowAgainstWallsAngle: 10
   triggerQuery: 1
   slideDownSlopes: 1

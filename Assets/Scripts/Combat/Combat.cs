@@ -298,7 +298,7 @@ namespace GameJam
             if (entity.GetHurtSounds().Length > 0)
             {
                 AudioClip randomClip = Utils.GetRandomClip(entity.GetHurtSounds());
-                Game.Sfx.PlayWorldSfx(randomClip, transform.position);
+                entity.VoiceAudio.PlayOneShot(randomClip);
             }
 
             // crit particle
@@ -312,7 +312,7 @@ namespace GameJam
             if (entity.GetDeathSounds().Length > 0)
             {
                 AudioClip randomClip = Utils.GetRandomClip(entity.GetDeathSounds());
-                Game.Sfx.PlayWorldSfx(randomClip, transform.position);
+                entity.VoiceAudio.PlayOneShot(randomClip);
             }
             if (entity.GetDeathEffect() != null)
             {
