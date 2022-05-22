@@ -125,27 +125,25 @@ namespace GameJam
             }
         }
 
-        private void OnEnable()
-        {
-            entity.Health.OnChanged += HandleHealthChanged;
-        }
-        private void OnDisable()
-        {
-            entity.Health.OnChanged -= HandleHealthChanged;
-        }
+        private NumberPopupManager numberPopupManager;
 
-        private void HandleHealthChanged(int valueBefore, int currentValue)
+        //private void OnEnable()
+        //{
+        //    Entity.EntityHealthChanged += HandleEntityHealthChanged;
+        //}
+        //private void OnDisable()
+        //{
+        //    Entity.EntityHealthChanged -= HandleEntityHealthChanged;
+        //}
+        //
+        //private void HandleEntityHealthChanged(Entity entity, int oldValue, int newValue)
+        //{
+        //    ShowDamagePopup(entity.transform.position);
+        //}
+
+        private void Start()
         {
-            // received heal
-            if (currentValue > valueBefore)
-            {
-                ShowHealPopup(currentValue - valueBefore, HealType.Normal);
-            }
-            // received damage
-            else if (currentValue < valueBefore)
-            {
-                ShowDamagePopup(valueBefore - currentValue, DamageType.Normal);
-            }
+            numberPopupManager = FindObjectOfType<NumberPopupManager>();
         }
 
         // combat ======================================================================================================
@@ -153,6 +151,8 @@ namespace GameJam
         // (can be overwritten for players etc. that need custom functionality)
         public virtual void DealDamage(Entity target, int amount, Vector3 hitPoint, Vector3 hitNormal, float stunChance = 0, float stunTime = 0)
         {
+            if (!target.IsAlive) { return; }
+
             Combat targetCombat = target.Combat;
             int damageDealt = 0;
             DamageType damageType = DamageType.Normal;
@@ -170,7 +170,7 @@ namespace GameJam
                 else
                 {
                     // subtract defense (but leave at least 1 damage, otherwise
-                    // it may be frustrating for weaker players)
+                    // it may be frustrating for weaker players
                     damageDealt = Mathf.Max(amount - targetCombat.defense, 1);
 
                     // deal additional damage equal to a target's health percentage?
@@ -201,14 +201,14 @@ namespace GameJam
                         //TODO Stun
                         //Stun(target, stunTime);
                     }
-                }
 
-                // call OnDealtDamage / OnKilledEntity events
-                OnDealtDamage?.Invoke(damage, target);
+                    // call OnDealtDamage / OnKilledEntity events
+                    OnDealtDamage?.Invoke(damage, target);
 
-                if (!target.IsAlive)
-                {
-                    OnKilledEntity?.Invoke(target);
+                    if (!target.IsAlive)
+                    {
+                        OnKilledEntity?.Invoke(target);
+                    }
                 }
             }
             else
@@ -230,6 +230,8 @@ namespace GameJam
 
         public virtual void Heal(Entity target, int amount)
         {
+            if (!target.IsAlive) { return; }
+
             int healingDone = 0;
             HealType healType = HealType.Normal;
             Combat targetCombat = target.Combat;
@@ -306,7 +308,9 @@ namespace GameJam
 
         public void ShowDamagePopup(int amount, DamageType damageType)
         {
-            if (damagePopupPrefab == null) { return; }
+            //if (damagePopupPrefab == null) { return; }
+
+            if (amount <= 0) { return; }
 
             // showing it above their head looks best, and we don't have to use
             // a custom shader to draw world space UI in front of the entity
@@ -318,36 +322,36 @@ namespace GameJam
                 bounds.max.y + randomOffsetY,
                 bounds.center.z);
 
-            GameObject popup = Instantiate(damagePopupPrefab, position, Quaternion.identity);
+            NumberPopup popup = numberPopupManager.SpawnDamagePopup(position);
             string damagedAmountText = $"-{amount}";
 
             if (damageType == DamageType.Normal)
             {
-                popup.GetComponentInChildren<TextMeshPro>().text = damagedAmountText;
+                popup.numberText.text = damagedAmountText;
             }
             else if (damageType == DamageType.Crit)
             {
-                TextMeshPro popupText = popup.GetComponentInChildren<TextMeshPro>();
+                TextMeshPro popupText = popup.numberText;
                 popupText.fontSize = popupText.fontSize + popupCritFontSizeIncrease;
                 popupText.text = damagedAmountText + " Crit!";
             }
             else if (damageType == DamageType.Block)
             {
-                popup.GetComponentInChildren<TextMeshPro>().text = "<i>Block!</i>";
+                popup.numberText.text = "<i>Block!</i>";
             }
             else if (damageType == DamageType.Invincible)
             {
-                TextMeshPro popupText = popup.GetComponentInChildren<TextMeshPro>();
-                // grey transparent text
+                TextMeshPro popupText = popup.numberText;
                 popupText.text = "<i>Invincible</i>";
-                popupText.color = new Color(0.5f, 0.5f, 0.5f, 0.2f);
+                popupText.color = new Color(0.5f, 0.5f, 0.5f, 0.2f); // grey transparent text
             }
         }
 
         public void ShowHealPopup(int amount, HealType healType)
         {
-            if (healPopupPrefab == null) { return; }
-            
+            //if (healPopupPrefab == null) { return; }
+            if (amount <= 0) { return; }
+
             // showing it above their head looks best, and we don't have to use
             // a custom shader to draw world space UI in front of the entity
             Bounds bounds = entity.Collider.bounds;
@@ -358,16 +362,16 @@ namespace GameJam
                 bounds.max.y + randomY,
                 bounds.center.z);
 
-            GameObject popup = Instantiate(healPopupPrefab, position, Quaternion.identity);
+            NumberPopup popup = numberPopupManager.SpawnHealPopup(position);
             string healedAmountText = $"+{amount}";
 
             if (healType == HealType.Normal)
             {
-                popup.GetComponentInChildren<TextMeshPro>().text = healedAmountText;
+                popup.numberText.text = healedAmountText;
             }
             else if (healType == HealType.Crit)
             {
-                TextMeshPro popupText = popup.GetComponentInChildren<TextMeshPro>();
+                TextMeshPro popupText = popup.numberText;
                 popupText.fontSize = popupText.fontSize + popupCritFontSizeIncrease;
                 popupText.text = healedAmountText + " Crit!";
             }
@@ -380,16 +384,6 @@ namespace GameJam
 
             // show the effect at the hit point position
             Instantiate(criticalDamageEffectPrefab, hitPoint, Quaternion.LookRotation(-hitNormal));
-        }
-
-        // validation ===============
-        private void OnValidate()
-        {
-            // auto-reference entity
-            if (entity == null && TryGetComponent(out Entity entityComponent))
-            {
-                entity = entityComponent;
-            }
         }
     }
 }

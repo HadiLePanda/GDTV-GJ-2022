@@ -14,19 +14,53 @@ namespace GameJam
 
         public AudioClip[] GetAmbientSounds() => ambientSounds;
 
-        private Entity owner;
+        private float remainingLifetime;
+        public float RemainingLifetime
+        {
+            get => remainingLifetime;
+            set
+            {
+                remainingLifetime = Mathf.Clamp(value, 0f, GetLifetime());
+            }
+        }
 
+        private Entity owner;
         public Entity Owner => owner;
 
-        public void Setup(Entity owner, int level)
+        public float GetLifetime() => lifetime;
+        public void AddLifetime(float time) => RemainingLifetime += time;
+
+        private void Awake()
+        {
+            RemainingLifetime = GetLifetime();
+        }
+
+        private void Update()
+        {
+            ProcessLifetime();
+        }
+
+        private void ProcessLifetime()
+        {
+            RemainingLifetime -= Time.deltaTime;
+
+            // lifetime ran out, minion dies
+            if (RemainingLifetime <= 0)
+            {
+                Health.Deplete();
+            }
+        }
+
+        public void Setup(Entity owner, int level, float lifetime)
         {
             this.owner = owner;
 
             // change faction to owner's
             Faction = owner.Faction;
 
-            // setup stats
+            // setup runtime stats
             Level.SetLevel(level);
+            RemainingLifetime = lifetime;
         }
 
         // combat =====================================

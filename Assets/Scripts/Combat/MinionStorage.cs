@@ -11,6 +11,7 @@ namespace GameJam
 
         // runtime data
         public int level;
+        public float remainingLifetime;
     }
 
     public class MinionStorage : MonoBehaviour
@@ -46,20 +47,25 @@ namespace GameJam
 
         public bool IsFull() => GetTotalStoredAmount() >= maxCapacity;
 
+        public MinionSlot GetFirstEmptySlotIndex()
+        {
+            return minionSlots.Where(x => x.amountStored < 1).FirstOrDefault();
+        }
+
         public void Absorb(Minion minion)
         {
             // can't absorb if full
             if (IsFull()) { return; }
 
             // new minion data
-            MinionSlot storedMinionData = new MinionSlot()
+            MinionSlot newMinionData = new MinionSlot()
             {
                 minion = minion,
                 level = minion.Level.Current,
             };
 
             // already an existing one in the list, increase quantity
-            MinionSlot existingMinion = minionSlots.Where(x => x == storedMinionData).FirstOrDefault();
+            MinionSlot existingMinion = minionSlots.Where(x => x == newMinionData).FirstOrDefault();
             if (existingMinion != null)
             {
                 existingMinion.amountStored += 1;
@@ -68,7 +74,8 @@ namespace GameJam
             else
             {
                 //TODO add to first empty slot
-                minionSlots.Add(storedMinionData);
+                var firstEmptySlot = GetFirstEmptySlotIndex();
+                firstEmptySlot = newMinionData;
             }
         }
         public void Release(int index)
@@ -96,7 +103,7 @@ namespace GameJam
             randomSpawnPos.y = 0f;
 
             Minion minionInstance = Instantiate(storedMinionAtIndex.minion, randomSpawnPos, transform.rotation);
-            minionInstance.Setup(entity, storedMinionAtIndex.level);
+            minionInstance.Setup(entity, storedMinionAtIndex.level, storedMinionAtIndex.remainingLifetime);
         }
 
         public void Empty()
