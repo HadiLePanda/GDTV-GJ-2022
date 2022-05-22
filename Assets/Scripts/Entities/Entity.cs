@@ -39,6 +39,9 @@ namespace GameJam
         [ReadOnlyInspector] public double stunTimeEnd;
         [ReadOnlyInspector] public double lastCombatTime;
 
+        public delegate void EntityHealthChangedCallback(Entity entity, int oldValue, int newValue);
+        public static EntityHealthChangedCallback EntityHealthChanged;
+
         private Coroutine decayRoutine;
 
         public GameObject GetDeathEffect() => deathEffect;
@@ -50,10 +53,17 @@ namespace GameJam
         protected virtual void OnEnable()
         {
             Health.OnEmpty += OnDeath;
+            Health.OnChanged += OnHealthChanged;
         }
         protected virtual void OnDisable()
         {
             Health.OnEmpty -= OnDeath;
+            Health.OnChanged -= OnHealthChanged;
+        }
+
+        private void OnHealthChanged(int oldValue, int newValue)
+        {
+            EntityHealthChanged?.Invoke(this, oldValue, newValue);
         }
 
         // combat =====================================

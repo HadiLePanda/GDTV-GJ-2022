@@ -2,12 +2,15 @@
 
 namespace GameJam
 {
-    public class TestingResurrectByClick : MonoBehaviour
+    public class TestCombatByClick : MonoBehaviour
     {
         public LayerMask layerCheck;
+        public int damage = 10;
 
         private void Update()
         {
+            Player player =  Player.localPlayer;
+
             // deal damage as raycast with left click
             if (Input.GetMouseButtonDown(0))
             {
@@ -18,9 +21,7 @@ namespace GameJam
                 {
                     if (hit.collider.TryGetComponent(out Corpse corpse))
                     {
-                        corpse.Entity.Health.Deplete();
-
-                        Debug.Log("Killed " + hit.transform.name);
+                        player.Combat.DealDamage(corpse.Entity, damage, Vector3.zero, Vector3.forward);
                     }
                 }
             }

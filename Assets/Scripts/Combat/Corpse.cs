@@ -27,11 +27,11 @@ namespace GameJam
 
         public void ResurrectAsMinion(Entity owner)
         {
-            if (entity.IsAlive) { return; }
-            if (minionPrefab == null) { return; }
+            if (!CanBeResurrected()) { return; }
 
             Minion minionInstance = SpawnMinion(owner);
             PlayResurrectionEffects(minionInstance.transform.position);
+
             entity.RemoveCorpse();
         }
 
@@ -39,7 +39,7 @@ namespace GameJam
         {
             Minion minionInstance = Instantiate(minionPrefab, transform.position, transform.rotation);
 
-            minionInstance.Setup(owner, entity.Level.Current);
+            minionInstance.Setup(owner, entity.Level.Current, minionInstance.GetLifetime());
 
             return minionInstance;
         }
