@@ -156,7 +156,10 @@ namespace GameJam
                 Game.Vfx.SpawnParticle(GetDecayEffect(), transform.position);
 
             if (GetDecaySounds().Length > 0)
-                Game.Sfx.PlayRandomSfxFromSource(GetDecaySounds(), VoiceAudio);
+            {
+                AudioClip randomClip = Utils.GetRandomClip(GetDecaySounds());
+                VoiceAudio.PlayOneShot(randomClip);
+            }
         }
 
         public virtual void RemoveCorpse()
