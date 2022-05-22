@@ -617,11 +617,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58b7aa068e695448b82e53bf495fa90, type: 3}
---- !u!4 &590287913 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2930467953632619019, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-  m_PrefabInstance: {fileID: 4178328157431559037}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &603268629
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,11 +868,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &807939879 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4178328156971361556, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-  m_PrefabInstance: {fileID: 4178328157431559037}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1584957469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,51 +1001,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4178328156971361559, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
   m_PrefabInstance: {fileID: 4178328157431559037}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1710364267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4851245712951273114, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-  m_PrefabInstance: {fileID: 4178328157431559037}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807939879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d837c55317e4442b1eb10db1b486e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1710364276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807939879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d02e23dd78c434baee064aae1caed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRootTransform: {fileID: 590287913}
-  rootTransformOffset: {x: 0, y: -1, z: 0}
-  slopeLimit: 45
-  stepOffset: 0.3
-  skinWidth: 0.08
-  groundedTestDistance: 0.002
-  center: {x: 0, y: 0, z: 0}
-  radius: 0.5
-  height: 2
-  collisionLayerMask:
-    serializedVersion: 2
-    m_Bits: 759
-  isLocalHuman: 1
-  slideAlongCeiling: 1
-  slowAgainstWalls: 0
-  minSlowAgainstWallsAngle: 10
-  triggerQuery: 1
-  slideDownSlopes: 1
-  slideMaxSpeed: 10
-  slideGravityMultiplier: 1
-  slideStartDelay: 0.1
-  slideStopDelay: 0.1
 --- !u!1 &1721971095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1139,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1951594698990085787, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
+      propertyPath: lookTarget
+      value: 
+      objectReference: {fileID: 55319859}
     - target: {fileID: 2930467953632619019, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1
@@ -1246,130 +1195,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4931120101418041374, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-      propertyPath: m_ApplyRootMotion
+    - target: {fileID: 6757480052050590274, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7477546929503301835, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812393873658654, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812393873658654, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188812393873658654, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
---- !u!82 &4178328157431559038 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1610474304337790974, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-  m_PrefabInstance: {fileID: 4178328157431559037}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &4178328157431559039 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 7477546929503301835, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-  m_PrefabInstance: {fileID: 4178328157431559037}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &4178328157431559040 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4931120101418041374, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
-  m_PrefabInstance: {fileID: 4178328157431559037}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4178328157431559041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807939879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3fac6a08c5dcee4b9c48219c7b4f6c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4178328157431559040}
-  controller: {fileID: 1710364276}
-  feetAudio: {fileID: 4178328157431559038}
-  look: {fileID: 0}
-  controllerCollider: {fileID: 4178328157431559039}
-  state: 0
-  moveDir: {x: 0, y: 0, z: 0}
-  rotationSpeed: 150
-  walkSpeed: 5
-  walkAcceleration: 15
-  walkDeceleration: 20
-  runStepLength: 0.7
-  runStepInterval: 3
-  crouchSpeed: 1.5
-  crouchAcceleration: 5
-  crouchDeceleration: 10
-  crouchKey: 99
-  swimSpeed: 4
-  swimAcceleration: 15
-  swimDeceleration: 20
-  swimSurfaceOffset: 0.25
-  underwaterThreshold: 0.9
-  canStandInWaterCheckLayers:
-    serializedVersion: 2
-    m_Bits: 4294967291
-  jumpSpeed: 7
-  airborneAcceleration: 15
-  airborneDeceleration: 20
-  fallMinimumMagnitude: 9
-  fallDamageMinimumMagnitude: 13
-  fallDamageMultiplier: 2
-  lastFall: {x: 0, y: 0, z: 0}
-  climbSpeed: 3
-  gravityMultiplier: 2
-  footstepSounds: []
-  jumpSound: {fileID: 0}
-  landSound: {fileID: 0}
---- !u!114 &4178328157431559049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807939879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 203afa0f42a82b14f8ebe810e7203044, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1710364276}
-  movement: {fileID: 4178328157431559041}
-  animationDirectionDampening: 0.05
-  animationTurnDampening: 0.1
-  className: 
---- !u!114 &4178328157431559050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807939879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136e837e9685bdf4f9f5992c87492b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 4178328157431559041}
-  player: {fileID: 1710364267}
-  lookTarget: {fileID: 55319859}
-  viewBlockingLayers:
-    serializedVersion: 2
-    m_Bits: 2769
-  raycastLayers:
-    serializedVersion: 2
-    m_Bits: 4294967291
 --- !u!1001 &5067239198277932003
 PrefabInstance:
   m_ObjectHideFlags: 0
