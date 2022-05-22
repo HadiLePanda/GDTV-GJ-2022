@@ -24,28 +24,38 @@ namespace GameJam
         public Mana Mana;
 
         [Header("Entity References")]
-        [SerializeField] protected Transform modelRoot;
+        public Transform modelRoot;
 
         [Header("Faction")]
         public Faction Faction;
 
         [Header("Death")]
-        [SerializeField] protected GameObject deathEffect;
-        [SerializeField] protected AudioClip[] deathSounds;
         [SerializeField] private float corpseDecayTime = 5f;
+
+        [Header("Entity Sounds")]
+        [SerializeField] protected AudioClip[] hurtSounds;
+        [SerializeField] protected AudioClip[] deathSounds;
+        [SerializeField] protected AudioClip[] decaySounds;
+
+        [Header("Entity Effects")]
+        [SerializeField] protected GameObject deathEffect;
+        [SerializeField] protected GameObject decayEffect;
 
         public event Action<Entity> onAggro;
 
         [ReadOnlyInspector] public double stunTimeEnd;
         [ReadOnlyInspector] public double lastCombatTime;
 
-        public delegate void EntityHealthChangedCallback(Entity entity, int oldValue, int newValue);
-        public static EntityHealthChangedCallback EntityHealthChanged;
+        //public delegate void EntityHealthChangedCallback(Entity entity, int oldValue, int newValue);
+        //public static EntityHealthChangedCallback EntityHealthChanged;
 
         private Coroutine decayRoutine;
 
-        public GameObject GetDeathEffect() => deathEffect;
+        public AudioClip[] GetHurtSounds() => hurtSounds;
         public AudioClip[] GetDeathSounds() => deathSounds;
+        public AudioClip[] GetDecaySounds() => decaySounds;
+        public GameObject GetDeathEffect() => deathEffect;
+        public GameObject GetDecayEffect() => decayEffect;
 
         public bool IsAlive => Health.Current > 0;
         public bool IsStunned => stunTimeEnd > 0;
@@ -53,17 +63,10 @@ namespace GameJam
         protected virtual void OnEnable()
         {
             Health.OnEmpty += OnDeath;
-            Health.OnChanged += OnHealthChanged;
         }
         protected virtual void OnDisable()
         {
             Health.OnEmpty -= OnDeath;
-            Health.OnChanged -= OnHealthChanged;
-        }
-
-        private void OnHealthChanged(int oldValue, int newValue)
-        {
-            EntityHealthChanged?.Invoke(this, oldValue, newValue);
         }
 
         // combat =====================================
@@ -114,6 +117,8 @@ namespace GameJam
         // damageable =================================
         public void TakeDamage(int damage)
         {
+            if (!IsAlive) { return; }
+
             Health.Remove(damage);
         }
 
@@ -125,15 +130,6 @@ namespace GameJam
 
             //TODO reset movement and navigation
             //Movement.Reset();
-        }
-
-        protected virtual void PlayDeathEffects()
-        {
-            if (deathEffect != null)
-                Game.Vfx.SpawnParticle(deathEffect, transform.position);
-
-            if (deathSounds.Length > 0)
-                Game.Sfx.PlayRandomSfxFromSource(deathSounds, VoiceAudio);
         }
 
         // decay ===============================================
@@ -149,8 +145,18 @@ namespace GameJam
         {
             yield return new WaitForSeconds(corpseDecayTime);
 
-            PlayDeathEffects();
+            PlayDecayEffects();
+
             RemoveCorpse();
+        }
+
+        protected virtual void PlayDecayEffects()
+        {
+            if (GetDecayEffect() != null)
+                Game.Vfx.SpawnParticle(GetDecayEffect(), transform.position);
+
+            if (GetDecaySounds().Length > 0)
+                Game.Sfx.PlayRandomSfxFromSource(GetDecaySounds(), VoiceAudio);
         }
 
         public virtual void RemoveCorpse()
