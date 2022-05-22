@@ -61,8 +61,7 @@ namespace GameJam
         /// </summary>
         public AudioClip PlayRandomSfxFromSource(AudioClip[] clips, AudioSource audioSource)
         {
-            int randomClipIndex = Random.Range(0, clips.Length);
-            AudioClip randomClip = clips[randomClipIndex];
+            AudioClip randomClip = Utils.GetRandomClip(clips);
 
             audioSource.PlayOneShot(randomClip);
             return randomClip;

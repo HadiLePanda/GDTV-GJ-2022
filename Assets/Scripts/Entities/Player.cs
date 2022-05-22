@@ -6,6 +6,7 @@ namespace GameJam
     public class Player : Entity
     {
         [Header("Player Components")]
+        public PlayerMovement Movement;
         [SerializeField] private MinionStorage minionStorage;
 
         public static Player localPlayer;

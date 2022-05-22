@@ -144,7 +144,7 @@ MonoBehaviour:
   sfxSource: {fileID: 8470799865616346193}
   musicSource: {fileID: 8470799864940137803}
   ambientSource: {fileID: 8470799865604427366}
-  worldSfxPrefab: {fileID: 0}
+  worldSfxPrefab: {fileID: 5644676582695571163, guid: aae74050f1b092d43ac8f97dda711bd8, type: 3}
   defaultMasterVolume: 1
   musicFadeTime: 2
   audioParent: {fileID: 8470799863870193181}

@@ -4,7 +4,7 @@ namespace GameJam
 {
     public class TestCombatByClick : MonoBehaviour
     {
-        public LayerMask layerCheck;
+        public LayerMask damageableLayers;
         public int damage = 10;
 
         private void Update()
@@ -17,11 +17,11 @@ namespace GameJam
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, 1000, layerCheck))
+                if (Physics.Raycast(ray, out hit, 1000, damageableLayers))
                 {
                     if (hit.collider.TryGetComponent(out Corpse corpse))
                     {
-                        player.Combat.DealDamage(corpse.Entity, damage, Vector3.zero, Vector3.forward);
+                        player.Combat.DealDamage(corpse.Entity, damage, hit.point, hit.normal);
                     }
                 }
             }
@@ -31,7 +31,7 @@ namespace GameJam
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, 1000, layerCheck))
+                if (Physics.Raycast(ray, out hit, 1000, damageableLayers))
                 {
                     if (hit.collider.TryGetComponent(out Corpse corpse) &&
                         corpse.CanBeResurrected())
