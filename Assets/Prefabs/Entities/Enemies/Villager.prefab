@@ -90,6 +90,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: hurtSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: deathSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: decaySounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: hurtSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1430e1932866714499b28fee9c936427, type: 3}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: deathSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 78f8357fdf179614f9fab064b8304f26, type: 3}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: decaySounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 04be86c43545cf64ca921a797169bc15, type: 3}
     - target: {fileID: 2447962232508661704, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_RootOrder
       value: 0

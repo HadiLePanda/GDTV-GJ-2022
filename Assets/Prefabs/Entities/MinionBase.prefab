@@ -72,6 +72,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7994175787738324274}
     - target: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4328915812663342459, guid: 672a959adbca63845bc4994ab9bcf9ff, type: 2}
+    - target: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
@@ -120,8 +124,9 @@ MonoBehaviour:
   Mana: {fileID: 4236804095548483085}
   modelRoot: {fileID: 3546138968936350684}
   Faction: {fileID: 0}
-  deathEffect: {fileID: 0}
+  hurtSounds: []
   deathSounds: []
+  deathEffect: {fileID: 0}
   corpseDecayTime: 5
   stunTimeEnd: 0
   lastCombatTime: 0

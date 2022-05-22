@@ -37,10 +37,6 @@ namespace GameJam
         public bool invincible = false; // GMs, Npcs, ...
         public bool canBeStunned = true;
 
-        [Header("Popups")]
-        [SerializeField] protected GameObject damagePopupPrefab;
-        [SerializeField] protected GameObject healPopupPrefab;
-
         [Header("Effects")]
         [SerializeField] protected GameObject criticalDamageEffectPrefab;
 
@@ -186,14 +182,6 @@ namespace GameJam
                         damageType = DamageType.Crit;
                     }
 
-                    // deal the damage
-                    target.Health.Current -= damageDealt;
-
-                    // call OnReceivedDamage event on the target
-                    // -> can be used for monsters to pull aggro
-                    // -> can be used by equipment to decrease durability etc.
-                    targetCombat.OnReceivedDamage?.Invoke(damageDealt, damageType, entity);
-
                     // stun?
                     if (targetCombat.canBeStunned &&
                         Random.value < stunChance)
@@ -202,12 +190,29 @@ namespace GameJam
                         //Stun(target, stunTime);
                     }
 
+                    // deal the damage
+                    target.Health.Current -= damageDealt;
+                    //TODO target.TakeDamage() using IDamageable
+
+                    // call OnReceivedDamage event on the target
+                    // -> can be used for monsters to pull aggro
+                    // -> can be used by equipment to decrease durability etc.
+                    targetCombat.OnReceivedDamage?.Invoke(damageDealt, damageType, entity);
+
                     // call OnDealtDamage / OnKilledEntity events
                     OnDealtDamage?.Invoke(damage, target);
 
                     if (!target.IsAlive)
                     {
                         OnKilledEntity?.Invoke(target);
+
+                        targetCombat.PlayDeathEffects();
+                        Debug.Log($"{name} Killed {target.name}");
+                    }
+                    else
+                    {
+                        targetCombat.PlayHurtEffects(damageType, hitPoint, hitNormal);
+                        Debug.Log($"{name} Damaged {target.name} for {damageDealt}");
                     }
                 }
             }
@@ -220,8 +225,7 @@ namespace GameJam
             // are still attacked if they are outside of the aggro range
             target.OnAggroBy(entity);
 
-            // show damage effects
-            targetCombat.PlayDamageReceivedEffects(damageDealt, damageType, hitPoint, hitNormal);
+            targetCombat.ShowDamagePopup(damage, damageType);
 
             // reset last combat time for both
             entity.lastCombatTime = Time.time;
@@ -230,39 +234,36 @@ namespace GameJam
 
         public virtual void Heal(Entity target, int amount)
         {
+            // can't heal a dead target
             if (!target.IsAlive) { return; }
 
             int healingDone = 0;
             HealType healType = HealType.Normal;
             Combat targetCombat = target.Combat;
-            bool isCrit = UnityEngine.Random.value < criticalChance;
+            bool isCrit = Random.value < criticalChance;
 
-            // don't heal target if dead
-            if (target.IsAlive)
+            // (leave at least 1 heal, otherwise it may be frustrating for weaker players)
+            healingDone = Mathf.Max(amount, 1);
+
+            // critical hit?
+            if (isCrit)
             {
-                // (leave at least 1 heal, otherwise it may be frustrating for weaker players)
-                healingDone = Mathf.Max(amount, 1);
-
-                // critical hit?
-                if (isCrit)
-                {
-                    healingDone *= 2;
-                    healType = HealType.Crit;
-                }
-
-                // do the healing
-                target.Health.Current += healingDone;
-
-                // call OnReceivedHealing event on the target
-                // -> can be used for monsters to pull aggro
-                // -> can be used by equipment to decrease durability etc.
-                targetCombat.OnReceivedHealing?.Invoke(healingDone, healType, entity);
-
-                OnDoneHealing?.Invoke(healingDone, target);
+                healingDone *= 2;
+                healType = HealType.Crit;
             }
 
+            // do the healing
+            target.Health.Current += healingDone;
+
+            // call OnReceivedHealing event on the target
+            // -> can be used for monsters to pull aggro
+            // -> can be used by equipment to decrease durability etc.
+            targetCombat.OnReceivedHealing?.Invoke(healingDone, healType, entity);
+
+            OnDoneHealing?.Invoke(healingDone, target);
+
             // show effects on clients
-            targetCombat.PlayHealReceivedEffects(healingDone, healType);
+            targetCombat.ShowHealPopup(healingDone, healType);
 
             // reset last combat time for both
             entity.lastCombatTime = Time.time;
@@ -291,25 +292,38 @@ namespace GameJam
         */
 
         // effects =====================================================================================================
-        public void PlayDamageReceivedEffects(int amount, DamageType damageType, Vector3 hitPoint, Vector3 hitNormal)
+        private void PlayHurtEffects(DamageType damageType, Vector3 hitPoint, Vector3 hitNormal)
         {
-            ShowDamagePopup(amount, damageType);
+            // hurt sound
+            if (entity.GetHurtSounds().Length > 0)
+            {
+                AudioClip randomClip = Utils.GetRandomClip(entity.GetHurtSounds());
+                Game.Sfx.PlayWorldSfx(randomClip, transform.position);
+            }
 
+            // crit particle
             if (damageType == DamageType.Crit)
             {
-                ShowCriticalDamageEffect(hitPoint, hitNormal);
+                SpawnCriticalDamageEffect(hitPoint, hitNormal);
+            }
+        }
+        private void PlayDeathEffects()
+        {
+            if (entity.GetDeathSounds().Length > 0)
+            {
+                AudioClip randomClip = Utils.GetRandomClip(entity.GetDeathSounds());
+                Game.Sfx.PlayWorldSfx(randomClip, transform.position);
+            }
+            if (entity.GetDeathEffect() != null)
+            {
+                Game.Vfx.SpawnParticle(entity.GetDeathEffect(), transform.position);
             }
         }
 
-        public void PlayHealReceivedEffects(int amount, HealType healType)
-        {
-            ShowHealPopup(amount, healType);
-        }
+        //PlayHealEffects()
 
         public void ShowDamagePopup(int amount, DamageType damageType)
         {
-            //if (damagePopupPrefab == null) { return; }
-
             if (amount <= 0) { return; }
 
             // showing it above their head looks best, and we don't have to use
@@ -349,7 +363,6 @@ namespace GameJam
 
         public void ShowHealPopup(int amount, HealType healType)
         {
-            //if (healPopupPrefab == null) { return; }
             if (amount <= 0) { return; }
 
             // showing it above their head looks best, and we don't have to use
@@ -377,13 +390,13 @@ namespace GameJam
             }
         }
 
-        public void ShowCriticalDamageEffect(Vector3 hitPoint, Vector3 hitNormal)
+        public void SpawnCriticalDamageEffect(Vector3 hitPoint, Vector3 hitNormal)
         {
             // spawn the damage popup (if any) and set the text
             if (criticalDamageEffectPrefab == null) { return; }
 
             // show the effect at the hit point position
-            Instantiate(criticalDamageEffectPrefab, hitPoint, Quaternion.LookRotation(-hitNormal));
+            Game.Vfx.SpawnParticle(criticalDamageEffectPrefab, hitPoint, Quaternion.LookRotation(-hitNormal));
         }
     }
 }
