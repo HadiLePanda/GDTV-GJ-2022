@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &296434710
 Transform:
   m_ObjectHideFlags: 0
@@ -83,6 +83,63 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &139553059108978748
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7059340721432768457}
+    m_Modifications:
+    - target: {fileID: 3772830763770469516, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_Name
+      value: Zombie Peasant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544159768339809846, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aec7785ea0d877144b639b40072f5abd, type: 3}
 --- !u!1001 &5819137121174957077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,6 +194,18 @@ PrefabInstance:
     - target: {fileID: 3546138968846472666, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 4df0760853108414691fd993ea7ae118, type: 3}
+    - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fec449723619b8d4ea5aac976d5509c3, type: 2}
+    - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: hurtSounds.Array.size
