@@ -5,7 +5,7 @@ namespace GameJam
     public class PlayerLook : MonoBehaviour
     {
         [Header("References")]
-        public PlayerMovement movement;
+        public PlayerControllerMovement movement;
         public Player player;
         public GameObject lookTarget;
 

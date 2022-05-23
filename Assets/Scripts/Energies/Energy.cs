@@ -29,7 +29,7 @@ namespace GameJam
         public event EnergyChangedDelegate OnChanged;
         public event Action OnEmpty;
 
-        private void Start()
+        private void Awake()
         {
             Current = Max;
         }

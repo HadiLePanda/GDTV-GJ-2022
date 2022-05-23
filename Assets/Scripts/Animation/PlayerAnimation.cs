@@ -1,5 +1,4 @@
 ﻿// keep track of some meta info like class, account etc.
-using Controller2k;
 using UnityEngine;
 
 namespace GameJam
@@ -8,8 +7,7 @@ namespace GameJam
     {
         // fields for all player components to avoid costly GetComponent calls
         [Header("Components")]
-        public CharacterController2k controller;
-        public PlayerMovement movement;
+        public PlayerControllerMovement movement;
 
         [Header("Animation")]
         public float animationDirectionDampening = 0.05f;
@@ -47,7 +45,7 @@ namespace GameJam
         void LateUpdate()
         {
             // local velocity (based on rotation) for animations
-            Vector3 localVelocity = transform.InverseTransformDirection(controller.velocity);
+            Vector3 localVelocity = transform.InverseTransformDirection(movement.GetVelocity());
 
             // Turn value so that mouse-rotating the character plays some animation
             // instead of only raw rotating the model.
@@ -64,9 +62,9 @@ namespace GameJam
                 animator.SetFloat("DirZ", localVelocity.z, animationDirectionDampening, Time.deltaTime); // smooth idle<->run transitions
                 animator.SetFloat("LastFallY", movement.lastFall.y);
                 animator.SetFloat("Turn", turnAngle, animationTurnDampening, Time.deltaTime); // smooth turn
-                animator.SetBool("CROUCHING", movement.state == MoveState.CROUCHING);
-                animator.SetBool("CLIMBING", movement.state == MoveState.CLIMBING);
-                animator.SetBool("SWIMMING", movement.state == MoveState.SWIMMING);
+                animator.SetBool("CROUCHING", movement.State == MoveState.CROUCHING);
+                animator.SetBool("CLIMBING", movement.State == MoveState.CLIMBING);
+                animator.SetBool("SWIMMING", movement.State == MoveState.SWIMMING);
 
                 // smoothest way to do climbing-idle is to stop right where we were
                 //if (movement.state == MoveState.CLIMBING)
@@ -78,7 +76,7 @@ namespace GameJam
                 // -> check AIRBORNE state instead of controller.isGrounded to have some
                 //    minimum fall tolerance so we don't play the AIRBORNE animation
                 //    while walking down steps etc.
-                animator.SetBool("OnGround", movement.state != MoveState.AIRBORNE);
+                animator.SetBool("OnGround", movement.State != MoveState.AIRBORNE);
 
                 // upper body layer
                 //animator.SetBool("UPPERBODY_HANDS", true);
