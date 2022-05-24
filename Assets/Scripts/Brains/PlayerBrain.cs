@@ -346,11 +346,11 @@ namespace GameJam
             Player player = (Player)entity;
 
             string stateResult = string.Empty;
-            if (player.State == EntityState.IDLE.ToString()) stateResult = UpdateServer_IDLE(player);
-            else if (player.State == EntityState.MOVING.ToString()) stateResult = UpdateServer_MOVING(player);
-            else if (player.State == EntityState.CASTING.ToString()) stateResult = UpdateServer_CASTING(player);
-            else if (player.State == EntityState.STUNNED.ToString()) stateResult = UpdateServer_STUNNED(player);
-            else if (player.State == EntityState.DEAD.ToString()) stateResult = UpdateServer_DEAD(player);
+            if (player.State == "IDLE") stateResult = UpdateServer_IDLE(player);
+            else if (player.State == "MOVING") stateResult = UpdateServer_MOVING(player);
+            else if (player.State == "CASTING") stateResult = UpdateServer_CASTING(player);
+            else if (player.State == "STUNNED") stateResult = UpdateServer_STUNNED(player);
+            else if (player.State == "DEAD") stateResult = UpdateServer_DEAD(player);
             else Debug.LogError("invalid state:" + player.State);
 
             UpdateClient(entity);
@@ -362,7 +362,7 @@ namespace GameJam
         {
             Player player = (Player)entity;
 
-            if (player.State == EntityState.IDLE.ToString() || player.State == EntityState.MOVING.ToString())
+            if (player.State == "IDLE" || player.State == "MOVING")
             {
                 // cancel action if escape key was pressed
                 if (Input.GetKeyDown(player.cancelActionKey))
@@ -371,7 +371,7 @@ namespace GameJam
                     player.CmdCancelAction();
                 }
             }
-            else if (player.State == EntityState.CASTING.ToString())
+            else if (player.State == "CASTING")
             {
                 // keep looking at the target for server & clients (only Y rotation)
                 if (player.Target && player.Movement.DoCombatLookAt())
@@ -385,7 +385,7 @@ namespace GameJam
                 // cancel action if escape key was pressed
                 if (Input.GetKeyDown(player.cancelActionKey)) player.CmdCancelAction();
             }
-            else if (player.State == EntityState.STUNNED.ToString())
+            else if (player.State == "STUNNED")
             {
                 // reset any movement
                 player.Movement.Reset();
@@ -393,7 +393,7 @@ namespace GameJam
                 // cancel action if escape key was pressed
                 if (Input.GetKeyDown(player.cancelActionKey)) player.CmdCancelAction();
             }
-            else if (player.State == EntityState.DEAD.ToString()) { }
+            else if (player.State == "DEAD") { }
             else Debug.LogError("invalid state:" + player.State);
         }
     }

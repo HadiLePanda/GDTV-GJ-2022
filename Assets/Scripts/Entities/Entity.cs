@@ -34,7 +34,7 @@ namespace GameJam
         [Header("Brain")]
         public ScriptableBrain brain;
         [ReadOnlyInspector] [SerializeField] protected Entity target = null;
-        [ReadOnlyInspector][SerializeField] protected string state = EntityState.IDLE.ToString();
+        [ReadOnlyInspector][SerializeField] protected string state = "IDLE";
         [ReadOnlyInspector] public double stunTimeEnd;
         [ReadOnlyInspector] public double lastCombatTime;
 
@@ -86,11 +86,11 @@ namespace GameJam
 
         protected void Start()
         {
-            state = EntityState.IDLE.ToString();
+            state = "IDLE";
 
             if (!IsAlive)
             {
-                state = EntityState.DEAD.ToString();
+                state = "DEAD";
             }
         }
 

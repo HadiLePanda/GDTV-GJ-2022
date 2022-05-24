@@ -183,7 +183,7 @@ namespace GameJam
                     }
 
                     // deal the damage
-                    target.Health.Current -= damageDealt;
+                    target.Health.Remove(damageDealt);
                     //TODO target.TakeDamage() using IDamageable
 
                     // call OnReceivedDamage event on the target
@@ -217,13 +217,13 @@ namespace GameJam
             // are still attacked if they are outside of the aggro range
             target.OnAggroBy(entity);
 
-            targetCombat.ShowDamagePopup(damage, damageType);
+            targetCombat.ShowDamagePopup(damageDealt, damageType);
 
             // reset last combat time for both
             entity.lastCombatTime = Time.time;
             target.lastCombatTime = Time.time;
 
-            return damage;
+            return damageDealt;
         }
 
         public virtual int Heal(Entity target, int amount)
@@ -231,13 +231,12 @@ namespace GameJam
             // can't heal a dead target
             if (!target.IsAlive) { return 0; }
 
-            int healingDone = 0;
             HealType healType = HealType.Normal;
             Combat targetCombat = target.Combat;
             bool isCrit = Random.value < criticalChance;
 
             // (leave at least 1 heal, otherwise it may be frustrating for weaker players)
-            healingDone = Mathf.Max(1, amount);
+            int healingDone = Mathf.Max(1, amount);
 
             // critical hit?
             if (isCrit)
@@ -247,7 +246,7 @@ namespace GameJam
             }
 
             // do the healing
-            target.Health.Current += healingDone;
+            target.Health.Add(healingDone);
 
             // call OnReceivedHealing event on the target
             // -> can be used for monsters to pull aggro
@@ -305,7 +304,7 @@ namespace GameJam
 
             // if victim was casting a skill, put that skill on cd 
             // for a short amount of time
-            if (victim.State == EntityState.CASTING.ToString() &&
+            if (victim.State == "CASTING" &&
                 victim.Skills.currentSkill != -1 &&
                 !((CommonBrain)victim.brain).EventSkillFinished(victim))
             {

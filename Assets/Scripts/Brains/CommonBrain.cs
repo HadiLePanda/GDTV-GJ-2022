@@ -15,11 +15,11 @@ namespace GameJam
 
         // only fire when stopped moving
         public bool EventMoveEnd(Entity entity) =>
-            entity.State == EntityState.MOVING.ToString() && !entity.Movement.IsMoving();
+            entity.State == "MOVING" && !entity.Movement.IsMoving();
 
         // only fire when started moving
         public bool EventMoveStart(Entity entity) =>
-            entity.State != EntityState.MOVING.ToString() && entity.Movement.IsMoving();
+            entity.State != "MOVING" && entity.Movement.IsMoving();
 
         public bool EventSkillFinished(Entity entity) =>
             0 <= entity.Skills.currentSkill && entity.Skills.currentSkill < entity.Skills.skills.Count &&

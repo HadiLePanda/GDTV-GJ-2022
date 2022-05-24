@@ -62,7 +62,7 @@ namespace GameJam
             // only if not casting already
             // (might need to ignore that when coming from pending skill where
             //  CASTING is still true)
-            if (entity.State != EntityState.CASTING.ToString() || ignoreState)
+            if (entity.State != "CASTING" || ignoreState)
             {
                 Skill skill = skills[skillIndex];
                 if (CastCheckSelf(skill) && CastCheckTarget(skill))
@@ -129,11 +129,11 @@ namespace GameJam
 
         private bool IsValidStateToUseSkill()
         {
-            return entity.State == EntityState.IDLE.ToString() || entity.State == EntityState.MOVING.ToString() || entity.State == EntityState.CASTING.ToString();
+            return entity.State == "IDLE" || entity.State == "MOVING" || entity.State == "CASTING";
         }
         private bool IsValidStateToUpgrade()
         {
-            return entity.State == EntityState.IDLE.ToString() || entity.State == EntityState.MOVING.ToString().ToString() || entity.State == EntityState.CASTING.ToString();
+            return entity.State == "IDLE" || entity.State == "MOVING" || entity.State == "CASTING";
         }
 
         // events =======================================================================

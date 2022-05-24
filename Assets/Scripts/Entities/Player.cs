@@ -47,7 +47,7 @@ namespace GameJam
         public bool IsMovementAllowed()
         {
             // some skills allow movement while casting
-            bool castingAndAllowed = State == EntityState.CASTING.ToString() &&
+            bool castingAndAllowed = State == "CASTING" &&
                                      Skills.currentSkill != -1 &&
                                      Skills.skills[Skills.currentSkill].allowMovement;
 
@@ -55,7 +55,7 @@ namespace GameJam
             // and if local player: not typing in an input?
             // (fix: only check for local player. checking in all cases means that
             //       no player could move if host types anything in an input)
-            return (State == EntityState.IDLE.ToString() || State == EntityState.MOVING.ToString() || castingAndAllowed);
+            return (State == "IDLE" || State == "MOVING" || castingAndAllowed);
         }
 
         // death ===============================================
