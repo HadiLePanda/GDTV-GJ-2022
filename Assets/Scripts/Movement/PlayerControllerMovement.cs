@@ -1,40 +1,30 @@
 ﻿// based on Unity's FirstPersonController & ThirdPersonController scripts
 using Controller2k;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace GameJam
 {
-
     // MoveState as byte for minimal bandwidth (otherwise it's int by default)
-    // note: distinction between WALKING and RUNNING in case we need to know the
-    //       difference somewhere (e.g. for endurance recovery)
     public enum MoveState : byte { IDLE, WALKING, CROUCHING, CRAWLING, AIRBORNE, CLIMBING, SWIMMING }
 
     [RequireComponent(typeof(CharacterController2k))]
-    [RequireComponent(typeof(AudioSource))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerControllerMovement : MovementBase
     {
         // components to be assigned in inspector
         [Header("Components")]
         public Animator animator;
         public CharacterController2k controller;
-        public AudioSource feetAudio;
         public PlayerLook look;
         // the collider for the character controller. NOT the hips collider. this
         // one is NOT affected by animations and generally a better choice for state
         // machine logic.
         public CapsuleCollider controllerCollider;
-#pragma warning disable CS0109 // member does not hide accessible member
-        new Camera camera;
-#pragma warning restore CS0109 // member does not hide accessible member
+        private Camera cam;
 
         [Header("State")]
         public MoveState state = MoveState.IDLE;
         [HideInInspector] public Vector3 moveDir;
 
-        // it's useful to have both strafe movement (WASD) and rotations (QE)
-        // => like in WoW, it more fun to play this way.
         [Header("Rotation")]
         public float rotationSpeed = 150;
 
@@ -43,14 +33,8 @@ namespace GameJam
         public float walkAcceleration = 15; // set to maxint for instant speed
         public float walkDeceleration = 20; // feels best if higher than acceleration
 
-        [Header("Running")]
-        [Range(0f, 1f)] public float runStepLength = 0.7f;
-        public float runStepInterval = 3;
-        float stepCycle;
-        float nextStep;
-
         [Header("Crouching")]
-        public float crouchSpeed = 1.5f;
+        public float crouchSpeed = 3f;
         public float crouchAcceleration = 5; // set to maxint for instant speed
         public float crouchDeceleration = 10; // feels best if higher than acceleration
         public KeyCode crouchKey = KeyCode.C;
@@ -87,6 +71,9 @@ namespace GameJam
         [Header("Physics")]
         public float gravityMultiplier = 2;
 
+        public Vector3 Velocity { get; private set; }
+        public MoveState State => state;
+
         // we need to remember the last accelerated xz speed without gravity etc.
         // (using moveDir.xz.magnitude doesn't work well with mounted movement)
         float horizontalSpeed;
@@ -98,14 +85,9 @@ namespace GameJam
         public bool isGroundedWithinTolerance =>
             controller.isGrounded || controller.velocity.y > -fallMinimumMagnitude;
 
-        [Header("Sounds")]
-        public AudioClip[] footstepSounds;    // an array of footstep sounds that will be randomly selected from.
-        public AudioClip jumpSound;           // the sound played when character leaves the ground.
-        public AudioClip landSound;           // the sound played when character touches back on ground.
-
         void Awake()
         {
-            camera = Camera.main;
+            cam = Camera.main;
         }
 
         // input directions ////////////////////////////////////////////////////////
@@ -121,8 +103,8 @@ namespace GameJam
         Vector3 GetDesiredDirection(Vector2 inputDir)
         {
             // always move along the camera forward as it is the direction that is being aimed at
-            Vector3 relativeForward = camera.transform.forward;
-            Vector3 relativeRight = camera.transform.right;
+            Vector3 relativeForward = cam.transform.forward;
+            Vector3 relativeRight = cam.transform.right;
             return relativeForward * inputDir.y + relativeRight * inputDir.x;
         }
 
@@ -258,7 +240,7 @@ namespace GameJam
             //       this could be avoided by overwriting transform.forward once
             //       more in LateUpdate.
             //look.InitializeFreeLook();
-            //transform.forward = ladderCollider.transform.forward;
+            transform.forward = ladderCollider.transform.forward;
         }
 
         MoveState UpdateIDLE(Vector2 inputDir, Vector3 desiredDir)
@@ -543,6 +525,7 @@ namespace GameJam
             return MoveState.SWIMMING;
         }
 
+        //TODO move to player input
         // use Update to check Input
         void Update()
         {
@@ -562,13 +545,13 @@ namespace GameJam
             Debug.DrawLine(transform.position, transform.position + desiredDir, Color.cyan);
 
             // update state machine
-            if (state == MoveState.IDLE) state = UpdateIDLE(inputDir, desiredDir);
-            else if (state == MoveState.WALKING) state = UpdateWALKINGandRUNNING(inputDir, desiredDir);
-            else if (state == MoveState.CROUCHING) state = UpdateCROUCHING(inputDir, desiredDir);
-            else if (state == MoveState.AIRBORNE) state = UpdateAIRBORNE(inputDir, desiredDir);
-            else if (state == MoveState.CLIMBING) state = UpdateCLIMBING(inputDir, desiredDir);
-            else if (state == MoveState.SWIMMING) state = UpdateSWIMMING(inputDir, desiredDir);
-            else Debug.LogError("Unhandled Movement State: " + state);
+            if (State == MoveState.IDLE) state = UpdateIDLE(inputDir, desiredDir);
+            else if (State == MoveState.WALKING) state = UpdateWALKINGandRUNNING(inputDir, desiredDir);
+            else if (State == MoveState.CROUCHING) state = UpdateCROUCHING(inputDir, desiredDir);
+            else if (State == MoveState.AIRBORNE) state = UpdateAIRBORNE(inputDir, desiredDir);
+            else if (State == MoveState.CLIMBING) state = UpdateCLIMBING(inputDir, desiredDir);
+            else if (State == MoveState.SWIMMING) state = UpdateSWIMMING(inputDir, desiredDir);
+            else Debug.LogError("Unhandled Movement State: " + State);
 
             // cache this move's state to detect landing etc. next time
             if (!controller.isGrounded) lastFall = controller.velocity;
@@ -576,6 +559,7 @@ namespace GameJam
             // move depending on latest moveDir changes
             Debug.DrawLine(transform.position, transform.position + moveDir * Time.fixedDeltaTime, Color.magenta);
             controller.Move(moveDir * Time.fixedDeltaTime); // note: returns CollisionFlags if needed
+            Velocity = controller.velocity; // for animations and fall damage
 
             // reset keys no matter what
             jumpKeyPressed = false;
@@ -589,7 +573,7 @@ namespace GameJam
             {
                 // project player position to screen
                 Vector3 center = controllerCollider.bounds.center;
-                Vector3 point = camera.WorldToScreenPoint(center);
+                Vector3 point = cam.WorldToScreenPoint(center);
 
                 // in front of camera and in screen?
                 if (point.z >= 0 && Utils.IsPointInScreen(point))
@@ -602,7 +586,7 @@ namespace GameJam
                     GUILayout.Label("groundedTol=" + isGroundedWithinTolerance);
                     GUILayout.Label("lastFall=" + lastFall);
                     GUILayout.Label("sliding=" + controller.slidingState);
-                    GUILayout.Label("state=" + state);
+                    GUILayout.Label("state=" + State);
 
                     GUILayout.EndArea();
                     GUI.color = Color.white;
@@ -610,28 +594,11 @@ namespace GameJam
             }
         }
 
-        void PlayLandingSound()
-        {
-            if (landSound == null) return;
-
-            feetAudio.clip = landSound;
-            feetAudio.Play();
-            nextStep = stepCycle + .5f;
-        }
-
-        void PlayJumpSound()
-        {
-            if (jumpSound == null) return;
-
-            feetAudio.clip = jumpSound;
-            feetAudio.Play();
-        }
-
         void ProgressStepCycle(Vector3 inputDir, float speed)
         {
-            if (controller.velocity.sqrMagnitude > 0 && (inputDir.x != 0 || inputDir.y != 0))
+            if (Velocity.sqrMagnitude > 0 && (inputDir.x != 0 || inputDir.y != 0))
             {
-                stepCycle += (controller.velocity.magnitude + (speed * (state == MoveState.WALKING ? 1 : runStepLength))) *
+                stepCycle += (Velocity.magnitude + (speed * (State == MoveState.WALKING ? 1 : runStepLength))) *
                              Time.fixedDeltaTime;
             }
 
@@ -642,20 +609,68 @@ namespace GameJam
             }
         }
 
-        void PlayFootStepAudio()
+        public override Vector3 GetVelocity()
         {
-            if (!controller.isGrounded) return;
-            if (footstepSounds.Length < 1) return;
+            return Velocity;
+        }
 
-            // pick & play a random footstep sound from the array,
-            // excluding sound at index 0
-            int n = Random.Range(1, footstepSounds.Length);
-            feetAudio.clip = footstepSounds[n];
-            feetAudio.PlayOneShot(feetAudio.clip);
+        public override bool IsMoving()
+        {
+            return Velocity != Vector3.zero;
+        }
 
-            // move picked sound to index 0 so it's not picked next time
-            footstepSounds[n] = footstepSounds[0];
-            footstepSounds[0] = feetAudio.clip;
+        public override bool IsGrounded()
+        {
+            return controller.isGrounded;
+        }
+
+        public override void SetSpeed(float speed)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void LookAtY(Vector3 position)
+        {
+            transform.LookAt(new Vector3(position.x, transform.position.y, position.z));
+        }
+
+        public override void Reset()
+        {
+            // we have no navigation, so we don't need to reset any paths
+        }
+
+        public override void Warp(Vector3 destination)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override bool CanNavigate()
+        {
+            return false;
+        }
+
+        public override void Navigate(Vector3 destination, float stoppingDistance)
+        {
+            // character controller movement doesn't allow navigation
+        }
+
+        public override bool IsValidSpawnPoint(Vector3 position)
+        {
+            // all positions allowed for now.
+            // we should probably raycast later.
+            return true;
+        }
+
+        public override Vector3 NearestValidDestination(Vector3 destination)
+        {
+            // character controller movement doesn't allow navigation
+            return destination;
+        }
+
+        public override bool DoCombatLookAt()
+        {
+            // player should use keys/mouse to look at. don't overwrite it.
+            return false;
         }
 
         void OnTriggerEnter(Collider co)

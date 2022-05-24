@@ -42,6 +42,28 @@ namespace GameJam
                     }
                 }
             }
+
+            // skills testing
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                player.Skills.CmdUse(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                player.Skills.CmdUse(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                player.Skills.CmdUse(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                player.Skills.TryUse(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                player.Skills.TryUse(4);
+            }
         }
     }
 }

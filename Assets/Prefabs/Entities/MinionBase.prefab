@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5249673554551930894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3337064748919068862}
+  - component: {fileID: 8878893780932301120}
+  - component: {fileID: 2408405054997805656}
+  m_Layer: 2
+  m_Name: AggroArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3337064748919068862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249673554551930894}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3546138968846472665}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8878893780932301120
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249673554551930894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2408405054997805656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249673554551930894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3809957f7c8e54b4c9853fba42c248f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 7994175787738324274}
+  Collider: {fileID: 0}
 --- !u!1001 &2077709349288517771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15,6 +75,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_Name
       value: MinionBase
@@ -67,6 +131,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.b
+      value: 0.20630117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.g
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.r
+      value: 0.24272582
+      objectReference: {fileID: 0}
     - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: entity
       value: 
@@ -81,9 +157,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+--- !u!4 &1597959155161324028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 790547519236012407, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 2077709349288517771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1615978196119903679 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 772536929695137076, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 2077709349288517771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2203245450683430704 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 163820315328288699, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 2077709349288517771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2236352354555878750 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 278272353735081429, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 2077709349288517771}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2629749085445611471 stripped
@@ -97,11 +188,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b985a419e62740aded61fa9bfd2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &3546138968846472665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3306745209460241746, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 2077709349288517771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3546138968846472666 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 2077709349288517771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2214504275303547417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546138968846472666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe50c1f26d9757d498b48ae4a4a1d931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feetAudio: {fileID: 2203245450683430704}
+  footstepSounds: []
+  jumpSound: {fileID: 0}
+  landSound: {fileID: 0}
+  walkStepLength: 1
+  runStepLength: 0.7
+  runStepInterval: 3
+  agent: {fileID: 6801651192187323228}
+--- !u!195 &6801651192187323228
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546138968846472666}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &7994175787738324274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,20 +257,47 @@ MonoBehaviour:
   VoiceAudio: {fileID: 8781002236064755840}
   SkillAudio: {fileID: 1615978196119903679}
   Level: {fileID: 5500500455334265511}
-  Combat: {fileID: 2629749085445611471}
   Health: {fileID: 7558747404374744638}
   Mana: {fileID: 4236804095548483085}
+  Combat: {fileID: 2629749085445611471}
+  Skills: {fileID: 8417513864922494315}
+  Movement: {fileID: 2214504275303547417}
+  entityRoot: {fileID: 1597959155161324028}
   modelRoot: {fileID: 3546138968936350684}
-  Faction: {fileID: 0}
-  hurtSounds: []
-  deathSounds: []
-  deathEffect: {fileID: 0}
-  corpseDecayTime: 5
+  brain: {fileID: 0}
+  target: {fileID: 0}
+  state: 0
   stunTimeEnd: 0
   lastCombatTime: 0
+  pendingSkill: 0
+  Faction: {fileID: 0}
+  corpseDecayTime: 5
+  hurtSounds: []
+  deathSounds: []
+  decaySounds: []
+  deathEffect: {fileID: 0}
+  decayEffect: {fileID: 0}
   ambientSounds: []
   ambientSoundProbability: 0.01
   lifetime: 10
+--- !u!114 &8417513864922494315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546138968846472666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34140dbd79cf483469dd2ce4d05441c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 7994175787738324274}
+  skillTemplates: []
+  _effectMount: {fileID: 2236352354555878750}
+  _auraMount: {fileID: 1597959155161324028}
+  currentSkill: -1
+  lastSkill: -1
 --- !u!4 &3546138968936350684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3306745209404433239, guid: 68cd74a682180b24987f762c087d95dc, type: 3}

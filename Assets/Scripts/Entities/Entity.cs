@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 namespace GameJam
 {
+    public enum EntityState : byte { IDLE, MOVING, CASTING, STUNNED, DEAD }
+
     [SelectionBase]
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(Level))]
@@ -19,12 +21,25 @@ namespace GameJam
         public AudioSource VoiceAudio;
         public AudioSource SkillAudio;
         public Level Level;
-        public Combat Combat;
         public Health Health;
         public Mana Mana;
+        public Combat Combat;
+        public Skills Skills;
+        public MovementBase Movement;
 
         [Header("Entity References")]
+        public Transform entityRoot;
         public Transform modelRoot;
+
+        [Header("Brain")]
+        public ScriptableBrain brain;
+        [ReadOnlyInspector] [SerializeField] protected Entity target = null;
+        [ReadOnlyInspector][SerializeField] protected string state = "IDLE";
+        [ReadOnlyInspector] public double stunTimeEnd;
+        [ReadOnlyInspector] public double lastCombatTime;
+
+        [Header("Skills")]
+        [ReadOnlyInspector] public int pendingSkill;
 
         [Header("Faction")]
         public Faction Faction;
@@ -41,13 +56,12 @@ namespace GameJam
         [SerializeField] protected GameObject deathEffect;
         [SerializeField] protected GameObject decayEffect;
 
-        public event Action<Entity> onAggro;
+        public event Action<Entity> OnAggroByEntity;
+        public event Action OnDied;
 
-        [ReadOnlyInspector] public double stunTimeEnd;
-        [ReadOnlyInspector] public double lastCombatTime;
-
-        //public delegate void EntityHealthChangedCallback(Entity entity, int oldValue, int newValue);
-        //public static EntityHealthChangedCallback EntityHealthChanged;
+        public delegate void RecoveredEnergyCallback(Entity entity, int amount);
+        public static RecoveredEnergyCallback OnEntityRecoveredMana;
+        public static RecoveredEnergyCallback OnEntityRecoveredHealth;
 
         private Coroutine decayRoutine;
 
@@ -60,14 +74,83 @@ namespace GameJam
         public bool IsAlive => Health.Current > 0;
         public bool IsStunned => stunTimeEnd > 0;
 
+        public Entity Target => target;
+        public void SetTarget(Entity entity) => target = entity;
+
+        public string State => state;
+
         protected virtual void OnEnable()
         {
             Health.OnEmpty += OnDeath;
+            Health.OnRecovered += OnRecoveredHealth;
+            Mana.OnRecovered += OnRecoveredMana;
         }
+
+        private void OnRecoveredMana(int amount)
+        {
+            Combat.SpawnManaPopup(amount);
+        }
+
+        private void OnRecoveredHealth(int amount)
+        {
+            Combat.SpawnHealPopup(amount, HealType.Recovery);
+        }
+
         protected virtual void OnDisable()
         {
             Health.OnEmpty -= OnDeath;
         }
+
+        protected void Start()
+        {
+            state = "IDLE";
+
+            if (!IsAlive)
+            {
+                state = "DEAD";
+            }
+        }
+
+        protected virtual void Update()
+        {
+            if (IsWorthUpdating())
+            {
+                if (brain != null)
+                {
+                    state = brain.UpdateBrain(this);
+                }
+
+                if (target != null && (target.IsHidden() || target.IsWorthUpdating()))
+                {
+                    target = null;
+                }
+            }
+        }
+
+        // function to check which entities need to be updated.
+        // monsters, npcs etc. don't have to be updated if no player is around
+        // -> can be overwritten if necessary (e.g. pets might be too far but should still be updated to run to owner)
+        // -> update only if:
+        //    - inside player's visibility range
+        //    - if the entity is hidden, otherwise it would never be updated again because it would never get new observers
+        public virtual bool IsWorthUpdating()
+        {
+            // distance to player inside visibility range
+            Player player = Player.localPlayer;
+            if (player == null) { return false; }
+
+            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            return distanceToPlayer <= player.VisRange(); // || IsHidden()
+        }
+
+        // visibility //////////////////////////////////////////////////////////////
+        // hide an entity
+        public void Hide() => entityRoot.gameObject.SetActive(false);
+
+        public void Show() => entityRoot.gameObject.SetActive(true);
+
+        // is the entity currently hidden?
+        public bool IsHidden() => entityRoot.gameObject.activeSelf;
 
         // combat =====================================
         // we need a function to check if an entity can attack another.
@@ -98,7 +181,7 @@ namespace GameJam
         public virtual void OnAggroBy(Entity entity)
         {
             // addon system hooks
-            onAggro?.Invoke(entity);
+            OnAggroByEntity?.Invoke(entity);
         }
 
         public bool IsFactionAlly(Entity entity)
@@ -130,6 +213,8 @@ namespace GameJam
 
             //TODO reset movement and navigation
             //Movement.Reset();
+
+            OnDied?.Invoke();
         }
 
         // decay ===============================================

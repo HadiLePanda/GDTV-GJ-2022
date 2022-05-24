@@ -6,72 +6,84 @@ namespace GameJam
     public class NumberPopupManager : SingletonMonoBehaviour<NumberPopupManager>
     {
         [Header("References")]
-        [SerializeField] private Transform damagePopupRoot;
-        [SerializeField] private Transform healPopupRoot;
-
-        [Header("Settings")]
-        [SerializeField] private float popupOffsetRadius = 1f;
-        [SerializeField] private float critFontSizeIncrease = 0.2f;
+        [SerializeField] private Transform popupRoot;
 
         [Header("Pooling")]
         [SerializeField] private NumberPopup damagePopup;
         [SerializeField] private NumberPopup healPopup;
+        [SerializeField] private NumberPopup manaPopup;
         [SerializeField] private int defaultPoolSize = 20;
         [SerializeField] private int maxPoolSize = 30;
 
         private IObjectPool<NumberPopup> damagePopupPool;
         private IObjectPool<NumberPopup> healPopupPool;
+        private IObjectPool<NumberPopup> manaPopupPool;
 
         protected override void Awake()
         {
             base.Awake();
 
-            //damagePopupPool = new ObjectPool<NumberPopup>(
-            //    createFunc: () => CreateDamagePopup(),
-            //    actionOnGet: (poolObject) => GetDamagePopupFromPool(poolObject),
-            //    actionOnRelease: (poolObject) => ReturnDamagePopupToPool(poolObject),
-            //    actionOnDestroy: (poolObject) => Destroy(poolObject.gameObject),
-            //    collectionCheck: false,
-            //    defaultCapacity: defaultPoolSize,
-            //    maxSize: maxPoolSize);
-            //
-            //damagePopupPool = new ObjectPool<NumberPopup>(
-            //    createFunc: () => CreateDamagePopup(),
-            //    actionOnGet: (poolObject) => GetDamagePopupFromPool(poolObject),
-            //    actionOnRelease: (poolObject) => ReturnDamagePopupToPool(poolObject),
-            //    actionOnDestroy: (poolObject) => Destroy(poolObject.gameObject),
-            //    collectionCheck: false,
-            //    defaultCapacity: defaultPoolSize,
-            //    maxSize: maxPoolSize);
+            damagePopupPool = new ObjectPool<NumberPopup>(
+                createFunc: () => CreateDamagePopup(),
+                actionOnGet: (poolObject) => GetPopupFromPool(poolObject),
+                actionOnRelease: (poolObject) => ReturnPopupToPool(poolObject),
+                actionOnDestroy: (poolObject) => Destroy(poolObject.gameObject),
+                collectionCheck: false,
+                defaultCapacity: defaultPoolSize,
+                maxSize: maxPoolSize);
+            
+            healPopupPool = new ObjectPool<NumberPopup>(
+                createFunc: () => CreateHealPopup(),
+                actionOnGet: (poolObject) => GetPopupFromPool(poolObject),
+                actionOnRelease: (poolObject) => ReturnPopupToPool(poolObject),
+                actionOnDestroy: (poolObject) => Destroy(poolObject.gameObject),
+                collectionCheck: false,
+                defaultCapacity: defaultPoolSize,
+                maxSize: maxPoolSize);
 
-            damagePopupPool = new ObjectPool<NumberPopup>(CreateDamagePopup, GetDamagePopupFromPool, ReturnDamagePopupToPool);
-            healPopupPool = new ObjectPool<NumberPopup>(CreateHealPopup, GetHealPopupFromPool, ReturnHealPopupToPool);
+            manaPopupPool = new ObjectPool<NumberPopup>(
+                createFunc: () => CreateManaPopup(),
+                actionOnGet: (poolObject) => GetPopupFromPool(poolObject),
+                actionOnRelease: (poolObject) => ReturnPopupToPool(poolObject),
+                actionOnDestroy: (poolObject) => Destroy(poolObject.gameObject),
+                collectionCheck: false,
+                defaultCapacity: defaultPoolSize,
+                maxSize: maxPoolSize);
+
+            //damagePopupPool = new ObjectPool<NumberPopup>(CreateDamagePopup, GetDamagePopupFromPool, ReturnDamagePopupToPool);
+            //healPopupPool = new ObjectPool<NumberPopup>(CreateHealPopup, GetHealPopupFromPool, ReturnHealPopupToPool);
         }
 
         // pools =================================================================
         private NumberPopup CreateDamagePopup()
         {
-            var popupInstance = Instantiate(damagePopup, damagePopupRoot);
+            var popupInstance = Instantiate(damagePopup, popupRoot);
             popupInstance.gameObject.name = $"(Pool) {damagePopup.name} {popupInstance.transform.GetSiblingIndex()}";
             popupInstance.SetPool(damagePopupPool);
             popupInstance.gameObject.SetActive(false);
 
             return popupInstance;
         }
-        private void GetDamagePopupFromPool(NumberPopup popup) => popup.gameObject.SetActive(true);
-        private void ReturnDamagePopupToPool(NumberPopup popup) => popup.gameObject.SetActive(false);
-
         private NumberPopup CreateHealPopup()
         {
-            var popupInstance = Instantiate(healPopup, healPopupRoot);
+            var popupInstance = Instantiate(healPopup, popupRoot);
             popupInstance.gameObject.name = $"(Pool) {healPopup.name} {popupInstance.transform.GetSiblingIndex()}";
             popupInstance.SetPool(healPopupPool);
             popupInstance.gameObject.SetActive(false);
 
             return popupInstance;
         }
-        private void GetHealPopupFromPool(NumberPopup popup) => popup.gameObject.SetActive(true);
-        private void ReturnHealPopupToPool(NumberPopup popup) => popup.gameObject.SetActive(false);
+        private NumberPopup CreateManaPopup()
+        {
+            var popupInstance = Instantiate(manaPopup, popupRoot);
+            popupInstance.gameObject.name = $"(Pool) {manaPopup.name} {popupInstance.transform.GetSiblingIndex()}";
+            popupInstance.SetPool(manaPopupPool);
+            popupInstance.gameObject.SetActive(false);
+
+            return popupInstance;
+        }
+        private void GetPopupFromPool(NumberPopup popup) => popup.gameObject.SetActive(true);
+        private void ReturnPopupToPool(NumberPopup popup) => popup.gameObject.SetActive(false);
 
         // popups ================================================================
         public NumberPopup SpawnDamagePopup(Vector3 position)
@@ -90,15 +102,12 @@ namespace GameJam
             return popupInstance;
         }
 
-        private Vector3 GetRandomPopupPosition(Vector3 pos)
+        public NumberPopup SpawnManaPopup(Vector3 position)
         {
-            Vector2 randomOffset = Random.insideUnitCircle * popupOffsetRadius;
-            Vector3 randomPosAroundSpawn = new Vector3(
-                pos.x,
-                pos.y + randomOffset.y,
-                0);
+            NumberPopup popupInstance = manaPopupPool.Get();
+            popupInstance.Setup(position);
 
-            return randomPosAroundSpawn;
+            return popupInstance;
         }
     }
 }
