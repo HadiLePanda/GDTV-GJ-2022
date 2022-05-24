@@ -5,6 +5,7 @@ namespace GameJam
     public interface IManaBonus
     {
         int GetManaBonus(int baseMana);
+        int GetManaRecoveryBonus();
     }
 
     public class Mana : Energy
@@ -28,6 +29,19 @@ namespace GameJam
                     bonus += bonusComponent.GetHealthBonus(baseThisLevel);
                 }
                 return baseThisLevel + bonus;
+            }
+        }
+
+        public override int RecoveryPerTick
+        {
+            get
+            {
+                int bonus = 0;
+                foreach (IManaBonus bonusComponent in bonusComponents)
+                {
+                    bonus += bonusComponent.GetManaRecoveryBonus();
+                }
+                return recoveryPerTick + bonus;
             }
         }
     }

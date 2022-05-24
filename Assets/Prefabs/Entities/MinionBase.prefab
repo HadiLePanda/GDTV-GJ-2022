@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8878893780932301120}
   - component: {fileID: 2408405054997805656}
   m_Layer: 2
-  m_Name: AggroAreaa
+  m_Name: AggroArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3546138968846472665}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &8878893780932301120
 SphereCollider:
@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_Name
       value: MinionBase
@@ -126,6 +130,18 @@ PrefabInstance:
     - target: {fileID: 3306745209460241746, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.b
+      value: 0.20630117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.g
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.r
+      value: 0.24272582
       objectReference: {fileID: 0}
     - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: entity

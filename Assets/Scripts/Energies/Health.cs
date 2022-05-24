@@ -5,6 +5,7 @@ namespace GameJam
     public interface IHealthBonus
     {
         int GetHealthBonus(int baseHealth);
+        int GetHealthRecoveryBonus();
     }
 
     public class Health : Energy
@@ -28,6 +29,19 @@ namespace GameJam
                     bonus += bonusComponent.GetHealthBonus(baseThisLevel);
                 }
                 return baseThisLevel + bonus;
+            }
+        }
+
+        public override int RecoveryPerTick
+        {
+            get
+            {
+                int bonus = 0;
+                foreach (IHealthBonus bonusComponent in bonusComponents)
+                {
+                    bonus += bonusComponent.GetHealthRecoveryBonus();
+                }
+                return recoveryPerTick + bonus;
             }
         }
     }

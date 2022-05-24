@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 namespace GameJam
 {
     public enum DamageType { Normal, Crit, Block, Invincible }
-    public enum HealType { Normal, Crit, Uncurable }
+    public enum HealType { Normal, Crit, Recovery, Uncurable }
 
     // inventory, attributes etc. can influence values
     public interface ICombatBonus
@@ -217,7 +217,7 @@ namespace GameJam
             // are still attacked if they are outside of the aggro range
             target.OnAggroBy(entity);
 
-            targetCombat.ShowDamagePopup(damageDealt, damageType);
+            targetCombat.SpawnDamagePopup(damageDealt, damageType);
 
             // reset last combat time for both
             entity.lastCombatTime = Time.time;
@@ -256,7 +256,7 @@ namespace GameJam
             OnDoneHealing?.Invoke(healingDone, target);
 
             // show effects
-            targetCombat.ShowHealPopup(healingDone, healType);
+            targetCombat.SpawnHealPopup(healingDone, healType);
 
             // reset last combat time for both
             entity.lastCombatTime = Time.time;
@@ -277,7 +277,7 @@ namespace GameJam
                 target.Mana.Remove(manaAmount);
                 entity.Mana.Add(manaAmount);
 
-                entity.Combat.ShowManaPopup(manaAmount);
+                entity.Combat.SpawnManaPopup(manaAmount);
             }
             // drain health
             if (healthAmount > 0)
@@ -285,8 +285,8 @@ namespace GameJam
                 target.Health.Remove(healthAmount);
                 entity.Health.Add(healthAmount);
 
-                target.Combat.ShowDamagePopup(healthAmount, DamageType.Normal);
-                entity.Combat.ShowHealPopup(healthAmount, HealType.Normal);
+                target.Combat.SpawnDamagePopup(healthAmount, DamageType.Normal);
+                entity.Combat.SpawnHealPopup(healthAmount, HealType.Normal);
             }
 
             target.Combat.PlayDrainedEffects();
@@ -366,7 +366,7 @@ namespace GameJam
         }
 
         // popups ======================================================================
-        public void ShowDamagePopup(int amount, DamageType damageType)
+        public void SpawnDamagePopup(int amount, DamageType damageType)
         {
             if (amount <= 0) { return; }
 
@@ -374,11 +374,7 @@ namespace GameJam
             NumberPopup popup = numberPopupManager.SpawnDamagePopup(position);
             string damagedAmountText = $"-{amount}";
 
-            if (damageType == DamageType.Normal)
-            {
-                popup.numberText.text = damagedAmountText;
-            }
-            else if (damageType == DamageType.Crit)
+            if (damageType == DamageType.Crit)
             {
                 TextMeshPro popupText = popup.numberText;
                 popupText.fontSize = popupText.fontSize + popupCritFontSizeIncrease;
@@ -394,9 +390,13 @@ namespace GameJam
                 popupText.text = "<i>Invincible</i>";
                 popupText.color = new Color(0.5f, 0.5f, 0.5f, 0.2f); // grey transparent text
             }
+            else
+            {
+                popup.numberText.text = damagedAmountText;
+            }
         }
 
-        public void ShowHealPopup(int amount, HealType healType)
+        public void SpawnHealPopup(int amount, HealType healType)
         {
             if (amount <= 0) { return; }
 
@@ -404,20 +404,22 @@ namespace GameJam
             NumberPopup popup = numberPopupManager.SpawnHealPopup(position);
             string healedAmountText = $"+{amount}";
 
-            if (healType == HealType.Normal)
-            {
-                popup.numberText.text = healedAmountText;
-            }
-            else if (healType == HealType.Crit)
+            if (healType == HealType.Crit)
             {
                 TextMeshPro popupText = popup.numberText;
                 popupText.fontSize = popupText.fontSize + popupCritFontSizeIncrease;
                 popupText.text = healedAmountText + " Crit!";
             }
+            else
+            {
+                popup.numberText.text = healedAmountText;
+            }
         }
 
-        public void ShowManaPopup(int amount)
+        public void SpawnManaPopup(int amount)
         {
+            if (amount <= 0) { return; }
+
             Vector3 position = GetPopupSpawnPosition();
             NumberPopup popup = numberPopupManager.SpawnManaPopup(position);
             string manaAmountText = $"+{amount}";
@@ -439,6 +441,5 @@ namespace GameJam
 
             return position;
         }
-
     }
 }
