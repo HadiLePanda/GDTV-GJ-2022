@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8878893780932301120}
   - component: {fileID: 2408405054997805656}
   m_Layer: 2
-  m_Name: AggroAreaa
+  m_Name: AggroArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,6 +130,18 @@ PrefabInstance:
     - target: {fileID: 3306745209460241746, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.b
+      value: 0.20630117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.g
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineColor.r
+      value: 0.24272582
       objectReference: {fileID: 0}
     - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: entity

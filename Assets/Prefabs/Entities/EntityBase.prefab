@@ -355,6 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3306745209404433239}
+  - component: {fileID: 3805589280802996005}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -377,6 +378,24 @@ Transform:
   m_Father: {fileID: 790547519236012407}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3805589280802996005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3306745209404433238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3306745209460241745
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +513,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 5800695283273392684}
+  health: {fileID: 8373195640828608181}
+  spawnFull: 1
+  recoveryTickRate: 1
+  recoveryPerTick: 0
+  current: 0
   baseHealth:
     baseValue: 100
     bonusPerLevel: 10
@@ -510,6 +534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 5800695283273392684}
+  health: {fileID: 8373195640828608181}
+  spawnFull: 1
+  recoveryTickRate: 1
+  recoveryPerTick: 0
+  current: 0
   baseMana:
     baseValue: 100
     bonusPerLevel: 10

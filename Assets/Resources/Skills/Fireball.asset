@@ -26,7 +26,7 @@ MonoBehaviour:
     baseValue: 5
     bonusPerLevel: 0
   castTime:
-    baseValue: 0.5
+    baseValue: 0.3
     bonusPerLevel: 0
   cooldown:
     baseValue: 0.5

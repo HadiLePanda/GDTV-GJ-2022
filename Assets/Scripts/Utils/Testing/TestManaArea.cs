@@ -12,7 +12,7 @@ namespace GameJam
             if (col.TryGetComponent(out Entity entity))
             {
                 entity.Mana.Add(mana);
-                entity.Combat.ShowManaPopup(mana);
+                entity.Combat.SpawnManaPopup(mana);
             }
         }
     }

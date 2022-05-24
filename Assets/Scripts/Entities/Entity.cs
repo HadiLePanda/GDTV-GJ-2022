@@ -59,6 +59,10 @@ namespace GameJam
         public event Action<Entity> OnAggroByEntity;
         public event Action OnDied;
 
+        public delegate void RecoveredEnergyCallback(Entity entity, int amount);
+        public static RecoveredEnergyCallback OnEntityRecoveredMana;
+        public static RecoveredEnergyCallback OnEntityRecoveredHealth;
+
         private Coroutine decayRoutine;
 
         public AudioClip[] GetHurtSounds() => hurtSounds;
@@ -78,7 +82,20 @@ namespace GameJam
         protected virtual void OnEnable()
         {
             Health.OnEmpty += OnDeath;
+            Health.OnRecovered += OnRecoveredHealth;
+            Mana.OnRecovered += OnRecoveredMana;
         }
+
+        private void OnRecoveredMana(int amount)
+        {
+            Combat.SpawnManaPopup(amount);
+        }
+
+        private void OnRecoveredHealth(int amount)
+        {
+            Combat.SpawnHealPopup(amount, HealType.Recovery);
+        }
+
         protected virtual void OnDisable()
         {
             Health.OnEmpty -= OnDeath;

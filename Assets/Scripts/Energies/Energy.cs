@@ -52,6 +52,8 @@ namespace GameJam
         // old value, new value
         public delegate void EnergyChangedDelegate(int oldValue, int newValue);
         public event EnergyChangedDelegate OnChanged;
+        public delegate void EnergyRecoveredDelegate(int amount);
+        public event EnergyRecoveredDelegate OnRecovered;
         public event Action OnEmpty;
 
         public void Add(int value)
@@ -86,12 +88,18 @@ namespace GameJam
             InvokeRepeating(nameof(Recover), recoveryTickRate, recoveryTickRate);
         }
 
-        public void Recover()
+        public virtual void Recover()
         {
             // don't recover while dead
             if (!enabled || health.Current <= 0) { return; }
 
-            Add(RecoveryPerTick);
+            int valueBefore = current;
+            int recoveryAmount = RecoveryPerTick;
+            Add(recoveryAmount);
+
+            // if we gained something, notify
+            if (Current != valueBefore)
+                OnRecovered?.Invoke(recoveryAmount);
         }
 
         private void OnValidate()
