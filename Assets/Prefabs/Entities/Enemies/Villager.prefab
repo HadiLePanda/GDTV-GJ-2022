@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 6659227801298000577, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: fec449723619b8d4ea5aac976d5509c3, type: 2}
+      objectReference: {fileID: 22100000, guid: d4a415d3494f7a9418d8d6810753f63c, type: 2}
     - target: {fileID: 7829797563796742505, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: minionPrefab
       value: 
