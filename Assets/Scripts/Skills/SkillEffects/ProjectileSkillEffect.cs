@@ -16,10 +16,9 @@ namespace GameJam
 
         private Rigidbody rb;
         private float spawnTime;
+        private Vector3 castForwardDirection;
 
         ProjectileData data;
-
-        Vector3 castForwardDirection;
 
         public GameObject GetExplosionEffect() => explosionEffect;
         public AudioClip GetExplosionSound() => explosionSound;
@@ -30,7 +29,17 @@ namespace GameJam
             this.caster = caster;
             this.data = projectileData;
 
-            castForwardDirection = caster.transform.forward;
+            if (caster is Player player)
+            {
+                // for the player we get the direction of cast towards the look pointer
+                castForwardDirection = (player.Movement.look.lookTarget.transform.position - player.Skills.effectMount.position).normalized;
+            }
+            else
+            {
+                // for other entities, just shoot forward
+                castForwardDirection = caster.transform.forward;
+            }
+            
 
             spawnTime = Time.time;
         }
@@ -80,7 +89,7 @@ namespace GameJam
             }
             else if (HasTarget())
             {
-                Vector3 directionToTarget = target.transform.position - transform.position;
+                Vector3 directionToTarget = (target.transform.position - transform.position).normalized;
                 forceDirection = directionToTarget;
             }
             else
