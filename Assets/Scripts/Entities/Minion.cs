@@ -2,17 +2,11 @@
 
 namespace GameJam
 {
-    public class Minion : Entity
+    public class Minion : Mob
     {
-        [Header("Minion Sounds")]
-        [SerializeField] private AudioClip[] ambientSounds;
-        public float ambientSoundProbability = 0.01f;
-
         [Header("Minion Settings")]
         [Tooltip("In Seconds.")]
         [SerializeField] private float lifetime = 10f;
-
-        public AudioClip[] GetAmbientSounds() => ambientSounds;
 
         private float remainingLifetime;
         public float RemainingLifetime
@@ -35,8 +29,10 @@ namespace GameJam
             RemainingLifetime = GetLifetime();
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             ProcessLifetime();
         }
 

@@ -3,7 +3,7 @@
 namespace GameJam
 {
     [RequireComponent(typeof(Corpse))]
-    public class Enemy : Entity
+    public class Enemy : Mob
     {
         // combat ==============================================
         public override bool CanAttack(Entity entity)

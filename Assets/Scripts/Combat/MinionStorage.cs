@@ -17,9 +17,10 @@ namespace GameJam
     public class MinionStorage : MonoBehaviour
     {
         [Header("Storage")]
+        [Tooltip("Maximum amount of minions stored inside")]
         [SerializeField] private int maxCapacity = 20;
-        [Tooltip("Allows to store no more that many unique minions")]
-        [SerializeField] private int numberOfSlots = 20;
+        [Tooltip("Allows to store no more than this number of unique minions")]
+        [SerializeField] private int numberOfSlots = 5;
 
         [Header("Settings")]
         [SerializeField] private float spawnRadius = 10f;

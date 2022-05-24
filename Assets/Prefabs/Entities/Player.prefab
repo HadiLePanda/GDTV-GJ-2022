@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4178328156971361559}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1423384753889826159
 MonoBehaviour:
@@ -54,6 +54,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 278272353735081429, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2161435162622540630, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -62,6 +66,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3306745209460241745, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -118,6 +126,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4029063735265762032, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: entity
       value: 
@@ -154,17 +166,9 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 7753708023207134043, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7753708023207134043, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7790018970950068519, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -173,9 +177,19 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 163820315328288699, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 1450032007698468933}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1712233545849679248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 278272353735081429, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 1450032007698468933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &2208758689019014513 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 772536929695137076, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 1450032007698468933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2226777858572855602 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 790547519236012407, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 1450032007698468933}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &3221396534162435841 stripped
@@ -222,11 +236,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203afa0f42a82b14f8ebe810e7203044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 5105717605407840113}
   movement: {fileID: 4103099476298569182}
   animationDirectionDampening: 0.05
   animationTurnDampening: 0.1
   className: 
+--- !u!114 &782405630027591102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178328156971361556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad99614b5a24c5c489bbd048c4563706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 4851245712951273114}
+  skillTemplates: []
+  _effectMount: {fileID: 1712233545849679248}
+  _auraMount: {fileID: 2226777858572855602}
+  currentSkill: -1
+  experience: {fileID: 6194860031019577770}
 --- !u!114 &1951594698990085787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,9 +291,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3fac6a08c5dcee4b9c48219c7b4f6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feetAudio: {fileID: 1610474304337790974}
+  footstepSounds: []
+  jumpSound: {fileID: 0}
+  landSound: {fileID: 0}
+  walkStepLength: 1
+  runStepLength: 0.7
+  runStepInterval: 3
   animator: {fileID: 4931120101418041374}
   controller: {fileID: 5105717605407840113}
-  feetAudio: {fileID: 1610474304337790974}
   look: {fileID: 1951594698990085787}
   controllerCollider: {fileID: 7477546929503301835}
   state: 0
@@ -271,8 +308,6 @@ MonoBehaviour:
   walkSpeed: 5
   walkAcceleration: 15
   walkDeceleration: 20
-  runStepLength: 0.7
-  runStepInterval: 3
   crouchSpeed: 3
   crouchAcceleration: 5
   crouchDeceleration: 10
@@ -294,9 +329,6 @@ MonoBehaviour:
   lastFall: {x: 0, y: 0, z: 0}
   climbSpeed: 3
   gravityMultiplier: 2
-  footstepSounds: []
-  jumpSound: {fileID: 0}
-  landSound: {fileID: 0}
 --- !u!114 &4851245712951273114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,10 +346,19 @@ MonoBehaviour:
   VoiceAudio: {fileID: 8148822390600958030}
   SkillAudio: {fileID: 2208758689019014513}
   Level: {fileID: 4944875209654743657}
-  Combat: {fileID: 3221396534162435841}
   Health: {fileID: 6929946361498463984}
   Mana: {fileID: 3604616003345946307}
+  Combat: {fileID: 3221396534162435841}
+  Skills: {fileID: 782405630027591102}
+  Movement: {fileID: 4103099476298569182}
+  entityRoot: {fileID: 2226777858572855602}
   modelRoot: {fileID: 4178328156892492562}
+  brain: {fileID: 11400000, guid: 368e346f4aa7d924cb4901aa90b6f034, type: 2}
+  target: {fileID: 0}
+  state: 0
+  stunTimeEnd: 0
+  lastCombatTime: 0
+  pendingSkill: 0
   Faction: {fileID: 11400000, guid: e6ac4a21edabe86469dff9fc6ef7ca77, type: 2}
   corpseDecayTime: 5
   hurtSounds: []
@@ -325,10 +366,12 @@ MonoBehaviour:
   decaySounds: []
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
-  stunTimeEnd: 0
-  lastCombatTime: 0
-  Movement: {fileID: 0}
   minionStorage: {fileID: 1423384753889826159}
+  visRange: 300
+  attackToMoveRangeRatio: 0.8
+  nextTarget: {fileID: 0}
+  cancelActionKey: 0
+  cancelActionRequested: 0
 --- !u!114 &5105717605407840113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +395,7 @@ MonoBehaviour:
   height: 2
   collisionLayerMask:
     serializedVersion: 2
-    m_Bits: 759
+    m_Bits: 2807
   isLocalHuman: 1
   slideAlongCeiling: 1
   slowAgainstWalls: 1
@@ -363,6 +406,24 @@ MonoBehaviour:
   slideGravityMultiplier: 1
   slideStartDelay: 0.1
   slideStopDelay: 0.1
+--- !u!114 &6194860031019577770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178328156971361556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1290ecd9e2c608340b1c84979f51bec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 4944875209654743657}
+  maxLevelDifference: 2
+  _current: 0
+  _max:
+    multiplier: 100
+    baseValue: 1.1
 --- !u!4 &4178328156971361559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3306745209460241746, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -415,6 +476,10 @@ PrefabInstance:
     - target: {fileID: 7454339695538751474, guid: 5639e605481faf447ab2b92a6b35473b, type: 3}
       propertyPath: m_Name
       value: DeathKnight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454339695538751474, guid: 5639e605481faf447ab2b92a6b35473b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7798249771988032840, guid: 5639e605481faf447ab2b92a6b35473b, type: 3}
       propertyPath: m_RootOrder
