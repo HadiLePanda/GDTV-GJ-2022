@@ -75,7 +75,37 @@ ModelImporter:
   - first:
       74: -4864718358596981803
     second: AnimalArmature|Walk
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes_Black
+    second: {fileID: 2100000, guid: 7d898ae8ab5a16d448c421c0dc9efa19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main
+    second: {fileID: 2100000, guid: 3780439ad077caa4b8b087c91ffc3c46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main_Light
+    second: {fileID: 2100000, guid: bc5e1588671bcf044a07a80b44dfae7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nose
+    second: {fileID: 2100000, guid: 7d898ae8ab5a16d448c421c0dc9efa19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: 189db1d6f976a8248a5fb3cb08d79bad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100000, guid: 3d4c7043f1718f9469f366f8e0809d64, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
