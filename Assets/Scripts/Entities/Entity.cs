@@ -166,5 +166,15 @@ namespace GameJam
         {
             Destroy(gameObject);
         }
+
+        public virtual void FootL()
+        {
+
+        }
+
+        public virtual void FootR()
+        {
+
+        }
     }
 }
