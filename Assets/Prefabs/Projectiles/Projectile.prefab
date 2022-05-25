@@ -82,6 +82,9 @@ MonoBehaviour:
   explosionSound: {fileID: 0}
   rbForceMode: 0
   followCasterLook: 0
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 2241
 --- !u!1 &7320702901076263102
 GameObject:
   m_ObjectHideFlags: 0

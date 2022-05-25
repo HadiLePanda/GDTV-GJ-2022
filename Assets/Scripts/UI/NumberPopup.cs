@@ -43,13 +43,8 @@ namespace GameJam
             // fade out
             if (numberText.alpha > 0)
             {
-                ProcessFadingOut();
+                numberText.alpha = Mathf.MoveTowards(numberText.alpha, 0f, fadeDuration * Time.deltaTime);
             }
-        }
-
-        private void ProcessFadingOut()
-        {
-            numberText.alpha = Mathf.MoveTowards(numberText.alpha, 0f, fadeDuration * Time.deltaTime);
         }
     }
 }

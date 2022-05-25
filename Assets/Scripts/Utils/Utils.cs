@@ -49,6 +49,16 @@ namespace GameJam
             return res != "" ? res : "0s";
         }
 
+        // helper function to calculate a bounds radius in WORLD SPACE
+        // -> collider.radius is local scale
+        // -> collider.bounds is world scale
+        // -> use x+y extends average just to be sure (for capsules, x==y extends)
+        // -> use 'extends' instead of 'size' because extends are the radius.
+        //    in other words: if we come from the right, we only want to stop at
+        //    the radius aka half the size, not twice the radius aka size.
+        public static float BoundsRadius(Bounds bounds) =>
+            (bounds.extents.x + bounds.extents.z) / 2;
+
         // Distance between two ClosestPoints
         // this is needed in cases where entites are really big. in those cases,
         // we can't just move to entity.transform.position, because it will be
@@ -80,6 +90,37 @@ namespace GameJam
             // (use Debug.DrawLine here to see the difference)
             return Vector3.Distance(a.ClosestPoint(b.transform.position),
                                     b.ClosestPoint(a.transform.position));
+        }
+
+        // closest point from an entity's collider to another point
+        // this is used all over the place, so let's put it into one place so it's
+        // easier to modify the method if needed
+        public static Vector3 ClosestPoint(Entity entity, Vector3 point)
+        {
+            // IMPORTANT: DO NOT use the collider itself. the position changes
+            //            during animations, causing situations where attacks are
+            //            interrupted because the target's hips moved a bit out of
+            //            attack range, even though the target didn't actually move!
+            //            => use transform.position and collider.radius instead!
+            //
+            //            this is probably faster than collider.ClosestPoints too
+
+            // first of all, get radius but in WORLD SPACE not in LOCAL SPACE.
+            // otherwise parent scales are not applied.
+            float radius = BoundsRadius(entity.Collider.bounds);
+
+            // now get the direction from point to entity
+            // IMPORTANT: use entity.transform.position not
+            //            collider.transform.position. that would still be the hip!
+            Vector3 direction = entity.transform.position - point;
+            //Debug.DrawLine(point, point + direction, Color.red, 1, false);
+
+            // subtract radius from direction's length
+            Vector3 directionSubtracted = Vector3.ClampMagnitude(direction, direction.magnitude - radius);
+
+            // return the point
+            //Debug.DrawLine(point, point + directionSubtracted, Color.green, 1, false);
+            return point + directionSubtracted;
         }
 
         // random point on NavMesh for item drops, etc.
