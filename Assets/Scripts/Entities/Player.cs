@@ -10,6 +10,7 @@ namespace GameJam
         public new PlayerSkills Skills => (PlayerSkills)base.Skills;
 
         [Header("Player Components")]
+        public Experience Experience;
         [SerializeField] private MinionStorage minionStorage;
 
         [Header("Player Game Settings")]
@@ -33,6 +34,31 @@ namespace GameJam
         private void Awake()
         {
             localPlayer = this;
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            Combat.OnKilledEntity += OnKilledEnemy;
+        }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            Combat.OnKilledEntity -= OnKilledEnemy;
+        }
+
+        // events //////////////////////////////////////////////////////////////////
+        private void OnKilledEnemy(Entity victim)
+        {
+            // killed a monster that gives exp
+            if (victim is Enemy enemy && enemy.ExperienceReward > 0)
+            {
+                long xpReward = Experience.BalanceExperienceReward(enemy.ExperienceReward, Level.Current, enemy.Level.Current);
+
+                 Experience.Current += xpReward;
+
+                // spawn 
+            }
         }
 
         // visibility ==========================================
@@ -86,6 +112,15 @@ namespace GameJam
 
             // empty the minion storage just in case
             minionStorage.Empty();
+        }
+
+        private void OnValidate()
+        {
+            // auto-reference
+            if (Experience == null && TryGetComponent(out Experience experienceComponent))
+            {
+                Experience = experienceComponent;
+            }
         }
     }
 }

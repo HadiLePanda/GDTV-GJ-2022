@@ -351,7 +351,11 @@ namespace GameJam
             else if (player.State == "CASTING") stateResult = UpdateServer_CASTING(player);
             else if (player.State == "STUNNED") stateResult = UpdateServer_STUNNED(player);
             else if (player.State == "DEAD") stateResult = UpdateServer_DEAD(player);
-            else Debug.LogError("invalid state:" + player.State);
+            else
+            {
+                Debug.LogError("invalid state:" + player.State);
+                stateResult = "IDLE";
+            }
 
             UpdateClient(entity);
            

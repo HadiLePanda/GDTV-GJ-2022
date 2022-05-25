@@ -427,6 +427,17 @@ namespace GameJam
             popup.numberText.text = manaAmountText;
         }
 
+        public void SpawnExperiencePopup(int amount)
+        {
+            if (amount <= 0) { return; }
+
+            Vector3 position = GetPopupSpawnPosition();
+            NumberPopup popup = numberPopupManager.SpawnExperiencePopup(position);
+            string expAmountText = $"+{amount} EXP";
+
+            popup.numberText.text = expAmountText;
+        }
+
         private Vector3 GetPopupSpawnPosition()
         {
             // showing it above their head looks best, and we don't have to use

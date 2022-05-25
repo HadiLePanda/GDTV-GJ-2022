@@ -147,6 +147,14 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 2378291863127274425}
+    - target: {fileID: 6315122209739138725, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 2378291863127274425}
+    - target: {fileID: 7139562577539001653, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 2378291863127274425}
     - target: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -230,7 +238,7 @@ MonoBehaviour:
   Movement: {fileID: 3207445734564894285}
   entityRoot: {fileID: 496404580657722349}
   modelRoot: {fileID: 2447962232464386509}
-  brain: {fileID: 0}
+  brain: {fileID: 11400000, guid: 634d2447f9855134f9a22fb3d33a5293, type: 2}
   target: {fileID: 0}
   state: 0
   stunTimeEnd: 0
@@ -243,8 +251,11 @@ MonoBehaviour:
   decaySounds: []
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
+  stunnedOverlay: {fileID: 7990511592590214381}
   ambientSounds: []
   ambientSoundProbability: 0.01
+  startPosition: {x: 0, y: 0, z: 0}
+  experienceReward: 1
 --- !u!114 &3207445734564894285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +314,21 @@ MonoBehaviour:
   minionPrefab: {fileID: 0}
   resurrectEffect: {fileID: 0}
   resurrectSound: {fileID: 0}
+--- !u!114 &7912475970701641204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447962232508661707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8517ae8fc23eba24590d7d754319ba6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mob: {fileID: 2378291863127274425}
+  animationDirectionDampening: 0.05
+  animationTurnDampening: 0.1
 --- !u!114 &3027163130994478108 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2745409364881819270, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -344,6 +370,11 @@ MonoBehaviour:
 --- !u!82 &7571361546321746577 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 872294877232761498}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7990511592590214381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7131727518534536823, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 872294877232761498}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8658331378291192879 stripped

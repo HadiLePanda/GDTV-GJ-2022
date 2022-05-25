@@ -391,21 +391,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5755135696494330089, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 1278932376505871060, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5755135696494330089, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 4
+    - target: {fileID: 2380258481730939971, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7649977087723990023, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+    - target: {fileID: 7649977088043921791, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 350
+      value: 425
       objectReference: {fileID: 0}
-    - target: {fileID: 7649977087723990023, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+    - target: {fileID: 7649977088043921791, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 341.9
+      value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 7649977088070673948, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_Name

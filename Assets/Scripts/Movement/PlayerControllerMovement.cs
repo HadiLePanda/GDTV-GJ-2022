@@ -12,6 +12,7 @@ namespace GameJam
     {
         // components to be assigned in inspector
         [Header("Components")]
+        public Player player;
         public Animator animator;
         public CharacterController2k controller;
         public PlayerLook look;
@@ -508,6 +509,10 @@ namespace GameJam
             // QE key rotation
             //RotateWithKeys();
 
+            // horizontal input axis rotates the character instead of strafing
+            if (player.IsMovementAllowed())
+                transform.Rotate(Vector3.up * inputDir.x * rotationSpeed * Time.fixedDeltaTime);
+
             // move with acceleration (feels better)
             horizontalSpeed = AccelerateSpeed(inputDir, horizontalSpeed, swimSpeed, inputDir != Vector2.zero ? swimAcceleration : swimDeceleration);
             moveDir.x = desiredDir.x * horizontalSpeed;
@@ -529,8 +534,12 @@ namespace GameJam
         // use Update to check Input
         void Update()
         {
-            if (!jumpKeyPressed) jumpKeyPressed = Input.GetButtonDown("Jump");
-            if (!crouchKeyPressed) crouchKeyPressed = Input.GetKeyDown(crouchKey);
+            // only if movement allowed (not typing, dead, menu etc.)
+            if (player.IsMovementAllowed())
+            {
+                if (!jumpKeyPressed) jumpKeyPressed = Input.GetButtonDown("Jump");
+                if (!crouchKeyPressed) crouchKeyPressed = Input.GetKeyDown(crouchKey);
+            }
         }
 
         // CharacterController movement is physics based and requires FixedUpdate.
@@ -538,7 +547,7 @@ namespace GameJam
         void FixedUpdate()
         {
             // get input and desired direction based on camera and ground
-            Vector2 inputDir = GetInputDirection();
+            Vector2 inputDir = player.IsMovementAllowed() ? GetInputDirection() : Vector2.zero;
             Vector3 desiredDir = GetDesiredDirection(inputDir);
 
             Debug.DrawLine(transform.position, transform.position + desiredDir, Color.blue);
@@ -564,34 +573,6 @@ namespace GameJam
             // reset keys no matter what
             jumpKeyPressed = false;
             crouchKeyPressed = false;
-        }
-
-        void OnGUI()
-        {
-            // show data next to player for easier debugging. this is very useful!
-            if (Debug.isDebugBuild)
-            {
-                // project player position to screen
-                Vector3 center = controllerCollider.bounds.center;
-                Vector3 point = cam.WorldToScreenPoint(center);
-
-                // in front of camera and in screen?
-                if (point.z >= 0 && Utils.IsPointInScreen(point))
-                {
-                    GUI.color = new Color(0, 0, 0, 0.5f);
-                    GUILayout.BeginArea(new Rect(point.x, Screen.height - point.y, 150, 200));
-
-                    // some info for all players, including local
-                    GUILayout.Label("grounded=" + controller.isGrounded);
-                    GUILayout.Label("groundedTol=" + isGroundedWithinTolerance);
-                    GUILayout.Label("lastFall=" + lastFall);
-                    GUILayout.Label("sliding=" + controller.slidingState);
-                    GUILayout.Label("state=" + State);
-
-                    GUILayout.EndArea();
-                    GUI.color = Color.white;
-                }
-            }
         }
 
         void ProgressStepCycle(Vector3 inputDir, float speed)
@@ -688,6 +669,43 @@ namespace GameJam
             // not touching water anymore? then clear water collider
             if (co.CompareTag("Water"))
                 waterCollider = null;
+        }
+
+        private void OnValidate()
+        {
+            // auto-reference entity
+            if (player == null && TryGetComponent(out Player playerComponent))
+            {
+                player = playerComponent;
+            }
+        }
+
+        void OnGUI()
+        {
+            // show data next to player for easier debugging. this is very useful!
+            if (Debug.isDebugBuild)
+            {
+                // project player position to screen
+                Vector3 center = controllerCollider.bounds.center;
+                Vector3 point = cam.WorldToScreenPoint(center);
+
+                // in front of camera and in screen?
+                if (point.z >= 0 && Utils.IsPointInScreen(point))
+                {
+                    GUI.color = new Color(0, 0, 0, 0.5f);
+                    GUILayout.BeginArea(new Rect(point.x, Screen.height - point.y, 150, 200));
+
+                    // some info for all players, including local
+                    GUILayout.Label("grounded=" + controller.isGrounded);
+                    GUILayout.Label("groundedTol=" + isGroundedWithinTolerance);
+                    GUILayout.Label("lastFall=" + lastFall);
+                    GUILayout.Label("sliding=" + controller.slidingState);
+                    GUILayout.Label("state=" + State);
+
+                    GUILayout.EndArea();
+                    GUI.color = Color.white;
+                }
+            }
         }
     }
 }

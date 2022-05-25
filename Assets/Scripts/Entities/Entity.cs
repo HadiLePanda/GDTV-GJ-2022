@@ -31,6 +31,19 @@ namespace GameJam
         public Transform entityRoot;
         public Transform modelRoot;
 
+        // pet's destination should always be right next to player, not inside him
+        // -> we use a helper property so we don't have to recalculate it each time
+        // -> we offset the position by exactly 1 x bounds to the left because dogs
+        //    are usually trained to walk on the left of the owner. looks natural.
+        public Vector3 MinionDestination
+        {
+            get
+            {
+                Bounds bounds = Collider.bounds;
+                return transform.position - transform.right * bounds.size.x;
+            }
+        }
+
         [Header("Brain")]
         public ScriptableBrain brain;
         [ReadOnlyInspector] [SerializeField] protected Entity target = null;
@@ -47,14 +60,15 @@ namespace GameJam
         [Header("Death")]
         [SerializeField] private float corpseDecayTime = 5f;
 
-        [Header("Entity Sounds")]
+        [Header("Entity Effects")]
         [SerializeField] protected AudioClip[] hurtSounds;
         [SerializeField] protected AudioClip[] deathSounds;
         [SerializeField] protected AudioClip[] decaySounds;
-
-        [Header("Entity Effects")]
         [SerializeField] protected GameObject deathEffect;
         [SerializeField] protected GameObject decayEffect;
+
+        [Header("Overlays")]
+        [SerializeField] protected GameObject stunnedOverlay;
 
         public event Action<Entity> OnAggroByEntity;
         public event Action OnDied;
@@ -72,7 +86,8 @@ namespace GameJam
         public GameObject GetDecayEffect() => decayEffect;
 
         public bool IsAlive => Health.Current > 0;
-        public bool IsStunned => stunTimeEnd > 0;
+        public bool IsStunned => state == "STUNNED";
+        public float GetDecayTime() => corpseDecayTime;
 
         public Entity Target => target;
         public void SetTarget(Entity entity) => target = entity;
@@ -85,23 +100,14 @@ namespace GameJam
             Health.OnRecovered += OnRecoveredHealth;
             Mana.OnRecovered += OnRecoveredMana;
         }
-
-        private void OnRecoveredMana(int amount)
-        {
-            Combat.SpawnManaPopup(amount);
-        }
-
-        private void OnRecoveredHealth(int amount)
-        {
-            Combat.SpawnHealPopup(amount, HealType.Recovery);
-        }
-
         protected virtual void OnDisable()
         {
             Health.OnEmpty -= OnDeath;
+            Health.OnRecovered -= OnRecoveredHealth;
+            Mana.OnRecovered -= OnRecoveredMana;
         }
 
-        protected void Start()
+        protected virtual void Start()
         {
             state = "IDLE";
 
@@ -125,6 +131,11 @@ namespace GameJam
                     target = null;
                 }
             }
+
+            if (stunnedOverlay != null)
+            {
+                stunnedOverlay.SetActive(IsStunned);
+            }
         }
 
         // function to check which entities need to be updated.
@@ -143,7 +154,7 @@ namespace GameJam
             return distanceToPlayer <= player.VisRange(); // || IsHidden()
         }
 
-        // visibility //////////////////////////////////////////////////////////////
+        // visibility ============================================================
         // hide an entity
         public void Hide() => entityRoot.gameObject.SetActive(false);
 
@@ -205,6 +216,17 @@ namespace GameJam
             Health.Remove(damage);
         }
 
+        // recovery ==============================================
+        private void OnRecoveredMana(int amount)
+        {
+            Combat.SpawnManaPopup(amount);
+        }
+
+        private void OnRecoveredHealth(int amount)
+        {
+            Combat.SpawnHealPopup(amount, HealType.Recovery);
+        }
+
         // death ======================================
         protected virtual void OnDeath()
         {
@@ -235,6 +257,12 @@ namespace GameJam
             RemoveCorpse();
         }
 
+        public virtual void RemoveCorpse()
+        {
+            Destroy(gameObject);
+        }
+
+        // effects ==============================================
         protected virtual void PlayDecayEffects()
         {
             if (GetDecayEffect() != null)
@@ -243,15 +271,11 @@ namespace GameJam
             if (GetDecaySounds().Length > 0)
             {
                 AudioClip randomClip = Utils.GetRandomClip(GetDecaySounds());
-                VoiceAudio.PlayOneShot(randomClip);
+                Game.Sfx.PlayWorldSfx(randomClip, transform.position);
             }
         }
 
-        public virtual void RemoveCorpse()
-        {
-            Destroy(gameObject);
-        }
-
+        // events ===============================================
         public virtual void FootL()
         {
 
