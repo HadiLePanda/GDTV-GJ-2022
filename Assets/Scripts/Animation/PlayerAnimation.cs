@@ -1,5 +1,4 @@
-﻿// keep track of some meta info like class, account etc.
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GameJam
 {
@@ -7,17 +6,17 @@ namespace GameJam
     {
         // fields for all player components to avoid costly GetComponent calls
         [Header("Components")]
-        public PlayerControllerMovement movement;
+        public Player player;
+
+        private Skills Skills => player.Skills;
+        private PlayerControllerMovement Movement => player.Movement;
 
         [Header("Animation")]
         public float animationDirectionDampening = 0.05f;
         public float animationTurnDampening = 0.1f;
         Vector3 lastForward;
 
-        // the player as singleton, for easier access from other scripts
-        [HideInInspector] public string className = ""; // the prefab name
-
-        void Start()
+        private void Start()
         {
             lastForward = transform.forward;
         }
@@ -42,10 +41,10 @@ namespace GameJam
             return turnAngle >= 180 ? turnAngle - 360 : turnAngle;
         }
 
-        void LateUpdate()
+        private void LateUpdate()
         {
             // local velocity (based on rotation) for animations
-            Vector3 localVelocity = transform.InverseTransformDirection(movement.GetVelocity());
+            Vector3 localVelocity = transform.InverseTransformDirection(Movement.GetVelocity());
 
             // Turn value so that mouse-rotating the character plays some animation
             // instead of only raw rotating the model.
@@ -54,32 +53,54 @@ namespace GameJam
 
             // apply animation parameters to all animators.
             // there might be multiple if we use skinned mesh equipment.
-            foreach (Animator animator in GetComponentsInChildren<Animator>())
+            foreach (Animator anim in GetComponentsInChildren<Animator>())
             {
-                animator.SetBool("DEAD", false);
-                animator.SetFloat("DirX", localVelocity.x, animationDirectionDampening, Time.deltaTime); // smooth idle<->run transitions
-                animator.SetFloat("DirY", localVelocity.y, animationDirectionDampening, Time.deltaTime); // smooth idle<->run transitions
-                animator.SetFloat("DirZ", localVelocity.z, animationDirectionDampening, Time.deltaTime); // smooth idle<->run transitions
-                animator.SetFloat("LastFallY", movement.lastFall.y);
-                animator.SetFloat("Turn", turnAngle, animationTurnDampening, Time.deltaTime); // smooth turn
-                animator.SetBool("CROUCHING", movement.State == MoveState.CROUCHING);
-                animator.SetBool("CLIMBING", movement.State == MoveState.CLIMBING);
-                animator.SetBool("SWIMMING", movement.State == MoveState.SWIMMING);
+                anim.SetFloat("DirX", localVelocity.x, animationDirectionDampening, Time.deltaTime); // smooth idle<->run transitions
+                anim.SetFloat("DirY", localVelocity.y, animationDirectionDampening, Time.deltaTime); // smooth idle<->run transitions
+                anim.SetFloat("DirZ", localVelocity.z, animationDirectionDampening, Time.deltaTime); // smooth idle<->run transitions
+                anim.SetFloat("LastFallY", Movement.lastFall.y);
+                anim.SetFloat("Turn", turnAngle, animationTurnDampening, Time.deltaTime); // smooth turn
+                anim.SetBool("CROUCHING", Movement.State == MoveState.CROUCHING);
+                anim.SetBool("CLIMBING", Movement.State == MoveState.CLIMBING);
+                anim.SetBool("SWIMMING", Movement.State == MoveState.SWIMMING);
+                anim.SetBool("DEAD", player.State == "DEAD");
+
+                foreach (Skill skill in Skills.skills)
+                {
+                    if (skill.level > 0 && !(skill.data is PassiveSkill))
+                    {
+                        if (!Utils.AnimatorParameterExists(skill.name, anim))
+                        {
+                            Debug.LogError($"(Player: {name}) Animator parameter not set: {skill.name}. Remember to assign it!");
+                            continue;
+                        }
+
+                        anim.SetBool(skill.name, skill.CastTimeRemaining() > 0);
+                    }
+                }
 
                 // smoothest way to do climbing-idle is to stop right where we were
                 //if (movement.state == MoveState.CLIMBING)
                 //    animator.speed = localVelocity.y == 0 ? 0 : 1;
                 //else
-                    animator.speed = 1;
+                anim.speed = 1;
 
                 // grounded detection works best via .state
                 // -> check AIRBORNE state instead of controller.isGrounded to have some
                 //    minimum fall tolerance so we don't play the AIRBORNE animation
                 //    while walking down steps etc.
-                animator.SetBool("OnGround", movement.State != MoveState.AIRBORNE);
+                anim.SetBool("OnGround", Movement.State != MoveState.AIRBORNE);
 
                 // upper body layer
                 //animator.SetBool("UPPERBODY_HANDS", true);
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (player == null && TryGetComponent(out Player playerComponent))
+            {
+                player = playerComponent;
             }
         }
     }

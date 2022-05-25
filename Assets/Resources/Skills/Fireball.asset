@@ -29,7 +29,7 @@ MonoBehaviour:
     baseValue: 0.3
     bonusPerLevel: 0
   cooldown:
-    baseValue: 0.5
+    baseValue: 2
     bonusPerLevel: 0
   castRange:
     baseValue: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   loopCastStartSound: 0
   projectile: {fileID: 1332423956408868471, guid: f970390397c9d4c4e8ee86de88524690, type: 3}
   damage:
-    baseValue: 10
+    baseValue: 30
     bonusPerLevel: 0
   manaDrain:
     baseValue: 0
@@ -48,13 +48,13 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   speed:
-    baseValue: 3
+    baseValue: 2
     bonusPerLevel: 0
   lifetime:
     baseValue: 5
     bonusPerLevel: 0
   stunChance:
-    baseValue: 0.05
+    baseValue: 0.2
     bonusPerLevel: 0
   stunTime:
     baseValue: 2
