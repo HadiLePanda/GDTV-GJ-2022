@@ -12,6 +12,7 @@ namespace GameJam
         [SerializeField] private NumberPopup damagePopup;
         [SerializeField] private NumberPopup healPopup;
         [SerializeField] private NumberPopup manaPopup;
+        [SerializeField] private NumberPopup experiencePopup;
         [SerializeField] private int defaultPoolSize = 20;
         [SerializeField] private int maxPoolSize = 30;
 
@@ -105,6 +106,14 @@ namespace GameJam
         public NumberPopup SpawnManaPopup(Vector3 position)
         {
             NumberPopup popupInstance = manaPopupPool.Get();
+            popupInstance.Setup(position);
+
+            return popupInstance;
+        }
+
+        public NumberPopup SpawnExperiencePopup(Vector3 position)
+        {
+            NumberPopup popupInstance = Instantiate(experiencePopup, popupRoot);
             popupInstance.Setup(position);
 
             return popupInstance;

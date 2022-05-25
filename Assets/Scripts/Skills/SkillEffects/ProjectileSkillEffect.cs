@@ -13,6 +13,7 @@ namespace GameJam
         [Header("Settings")]
         [SerializeField] private ForceMode rbForceMode = ForceMode.VelocityChange;
         [SerializeField] private bool followCasterLook;
+        [SerializeField] private LayerMask blockingLayers;
 
         private Rigidbody rb;
         private float spawnTime;
@@ -131,6 +132,15 @@ namespace GameJam
 
         private void OnTriggerEnter(Collider col)
         {
+            // collide with blocking obstacles
+            if ((blockingLayers.value & (1 << col.transform.gameObject.layer)) > 0)
+            {
+                Debug.Log("Hit with Layermask");
+                DestroyProjectile();
+                return;
+            }
+
+            // hit entities
             if (col.TryGetComponent(out Entity entity))
             {
                 // if this projectile is homing to a target, it can only hit target

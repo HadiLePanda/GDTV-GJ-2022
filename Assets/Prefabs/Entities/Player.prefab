@@ -58,9 +58,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1814760339607507934, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2161435162622540630, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082578102920848068, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3306745209404433238, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_Layer
@@ -154,6 +162,14 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6315122209739138725, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 4851245712951273114}
+    - target: {fileID: 7139562577539001653, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 4851245712951273114}
     - target: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -218,6 +234,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10483c02e449f274baa3dd867c4cf4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4073918883844887049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3213032247439704652, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 1450032007698468933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!222 &1909188347140514412
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4073918883844887049}
+  m_CullTransparentMesh: 1
 --- !u!4 &4178328156892492562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3306745209404433239, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -240,10 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203afa0f42a82b14f8ebe810e7203044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 4103099476298569182}
+  player: {fileID: 4851245712951273114}
   animationDirectionDampening: 0.05
   animationTurnDampening: 0.1
-  className: 
 --- !u!114 &782405630027591102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +330,7 @@ MonoBehaviour:
   walkStepLength: 1
   runStepLength: 0.7
   runStepInterval: 3
+  player: {fileID: 4851245712951273114}
   animator: {fileID: 4931120101418041374}
   controller: {fileID: 5105717605407840113}
   look: {fileID: 1951594698990085787}
@@ -370,6 +399,8 @@ MonoBehaviour:
   decaySounds: []
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
+  stunnedOverlay: {fileID: 8567940000773135922}
+  Experience: {fileID: 6194860031019577770}
   minionStorage: {fileID: 1423384753889826159}
   visRange: 300
   attackToMoveRangeRatio: 0.8
@@ -468,6 +499,11 @@ CapsuleCollider:
 --- !u!82 &8148822390600958030 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 1450032007698468933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8567940000773135922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7131727518534536823, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 1450032007698468933}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3602763790231103242
