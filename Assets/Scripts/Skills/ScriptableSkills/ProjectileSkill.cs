@@ -50,7 +50,7 @@ namespace GameJam
         public override void Apply(Entity caster, int skillLevel)
         {
             // spawn projectile
-            ProjectileSkillEffect projectileInstance = Instantiate(projectile, caster.Skills.effectMount.position, Quaternion.identity);
+            ProjectileSkillEffect projectileInstance = Instantiate(projectile, caster.Skills.effectMount.position, caster.transform.rotation);
 
             // setup projectile data
             ProjectileData projectileData = new ProjectileData()

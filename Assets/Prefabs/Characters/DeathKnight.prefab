@@ -4023,7 +4023,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2791337733517301648}
-  - component: {fileID: 8096625736427539946}
   m_Layer: 0
   m_Name: DeathKnight
   m_TagString: Untagged
@@ -4108,26 +4107,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8096625736427539946
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3312118583856794922}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4df0760853108414691fd993ea7ae118, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3684072989919301626
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,7 +5029,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 2314ccc6b9f4c7b42b9ac274cf865f75, type: 2}
   - {fileID: 2100000, guid: eb73a23ad0e5a8b4aa9e665c9d42081a, type: 2}
   - {fileID: 2100000, guid: 7d898ae8ab5a16d448c421c0dc9efa19, type: 2}
-  - {fileID: 2100000, guid: bc5e1588671bcf044a07a80b44dfae7a, type: 2}
+  - {fileID: 2100000, guid: f5d1982d2b7879947820482cb7327387, type: 2}
   - {fileID: 2100000, guid: 0e7d20e2e6864804ca04dd06a4f3d3d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
