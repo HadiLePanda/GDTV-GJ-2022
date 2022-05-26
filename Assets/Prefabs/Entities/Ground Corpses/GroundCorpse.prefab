@@ -53,6 +53,9 @@ MonoBehaviour:
   resurrectSound: {fileID: 0}
   corpseEntity: {fileID: 5980059176362705222, guid: a58b7aa068e695448b82e53bf495fa90, type: 3}
   entityNameTextMesh: {fileID: 2366489546440922763}
+  useCustomLevel: 0
+  minionLevel: 1
+  numberOfCorpses: 1
 --- !u!65 &1698480948719726803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -293,6 +296,10 @@ PrefabInstance:
     - target: {fileID: 2454476644064743789, guid: 6ad228f596496364182ac67cf3aa1d21, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548140254208084528, guid: 6ad228f596496364182ac67cf3aa1d21, type: 3}
+      propertyPath: m_Intensity
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7616026517594256356, guid: 6ad228f596496364182ac67cf3aa1d21, type: 3}
       propertyPath: m_Name
