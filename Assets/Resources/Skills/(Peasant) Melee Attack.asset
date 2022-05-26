@@ -17,7 +17,7 @@ MonoBehaviour:
   showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
-  allowMovement: 0
+  allowMovement: 1
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 0.3
+    baseValue: 0.5
     bonusPerLevel: 0
   cooldown:
     baseValue: 0.6

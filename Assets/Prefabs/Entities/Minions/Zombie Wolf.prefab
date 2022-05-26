@@ -56,6 +56,10 @@ PrefabInstance:
       value: Zombie Wolf
       objectReference: {fileID: 0}
     - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 9ed3be4f245eb5642b6b36730953cdd5, type: 3}
+    - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0da03864598517548994acada6c700af, type: 2}
