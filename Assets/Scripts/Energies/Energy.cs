@@ -12,9 +12,9 @@ namespace GameJam
 
         [Header("Energy Settings")]
         [SerializeField] protected bool spawnFull = true;
+        [SerializeField] protected int recoveryPerTick = 1;
         [Tooltip("The amount of seconds between each recovery interval tick")]
         [SerializeField] protected float recoveryTickRate = 1f;
-        [SerializeField] protected int recoveryPerTick = 1;
 
         [Header("Debug")]
         [SerializeField] [ReadOnlyInspector] private int current = 0;

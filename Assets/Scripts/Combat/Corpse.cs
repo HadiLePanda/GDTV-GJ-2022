@@ -3,48 +3,50 @@
 namespace GameJam
 {
     [DisallowMultipleComponent]
-    public class Corpse : MonoBehaviour
+    public abstract class Corpse : MonoBehaviour
     {
         //TODO maybe add a ragdoll and a setup method to be called from the entity dying
-
-        [Header("References")]
-        [SerializeField] private Entity entity;
-
         [Header("Corpse Minion")]
-        [SerializeField] private Minion minionPrefab;
+        [SerializeField] protected Minion minionPrefab;
 
         [Header("Resurrection Effects")]
         [SerializeField] protected GameObject resurrectEffect;
         [SerializeField] protected AudioClip resurrectSound;
 
-        public Entity Entity => entity;
-
         public GameObject GetResurrectEffect() => resurrectEffect;
         public AudioClip GetResurrectSound() => resurrectSound;
 
-        // resurrection ========================================
-        public bool CanBeResurrected() => !entity.IsAlive && minionPrefab != null;
+        protected Entity entityInstance;
 
-        public void ResurrectAsMinion(Entity owner)
+        public abstract Entity GetEntity();
+        public abstract int GetEntityLevel();
+
+        // resurrection ========================================
+        public abstract bool CanBeResurrected();
+
+        public virtual void ResurrectAsMinion(Entity owner)
         {
             if (!CanBeResurrected()) { return; }
 
-            Minion minionInstance = SpawnMinion(owner);
+            Minion minionInstance = SpawnMinion(owner, GetEntityLevel());
             PlayResurrectionEffects(minionInstance.transform.position);
 
-            entity.RemoveCorpse();
+            if (entityInstance != null)
+            {
+                entityInstance.RemoveCorpse();
+            }
         }
 
-        private Minion SpawnMinion(Entity owner)
+        protected Minion SpawnMinion(Entity owner, int level)
         {
             Minion minionInstance = Instantiate(minionPrefab, transform.position, transform.rotation);
 
-            minionInstance.Setup(owner, entity.Level.Current, minionInstance.GetLifetime());
+            minionInstance.Setup(owner, level, minionInstance.GetLifetime(), GetEntity());
 
             return minionInstance;
         }
 
-        private void PlayResurrectionEffects(Vector3 position)
+        protected void PlayResurrectionEffects(Vector3 position)
         {
             if (resurrectEffect != null)
                 Game.Vfx.SpawnParticle(resurrectEffect, position);

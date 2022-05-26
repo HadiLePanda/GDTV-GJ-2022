@@ -102,13 +102,23 @@ namespace GameJam
         // damage ====================================================================
         private void ApplyAttack(Entity target)
         {
+            // get hit normal
+            Quaternion hitRotation = Quaternion.FromToRotation(target.transform.position, transform.transform.position);
+            Vector3 hitNormal = hitRotation.eulerAngles;
+
             // apply damage
-            caster.Combat.DealDamage(target, data.damage, Vector3.zero, -Vector3.forward, data.stunChance, data.stunTime);
+            caster.Combat.DealDamage(target,
+                                    data.damage,
+                                    target.transform.position, hitNormal,
+                                    data.stunChance,
+                                    data.stunTime);
 
             // apply drain
             if (data.manaDrain > 0 || data.healthDrain > 0)
             {
-                caster.Combat.Drain(target, data.manaDrain, data.healthDrain);
+                caster.Combat.Drain(target,
+                                    data.manaDrain,
+                                    data.healthDrain);
             }
         }
 

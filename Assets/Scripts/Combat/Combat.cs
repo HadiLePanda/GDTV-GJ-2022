@@ -111,6 +111,7 @@ namespace GameJam
         }
 
         private NumberPopupManager numberPopupManager;
+        private float nextHurtSoundTime;
 
         // events
         public delegate void DealtDamageCallback(int damage, Entity target);
@@ -317,8 +318,11 @@ namespace GameJam
         private void PlayHurtEffects(DamageType damageType, Vector3 hitPoint, Vector3 hitNormal)
         {
             // hurt sound
-            if (entity.GetHurtSounds().Length > 0)
+            if (entity.GetHurtSounds().Length > 0 &&
+                Time.time > nextHurtSoundTime)
             {
+                nextHurtSoundTime = Time.time;
+
                 AudioClip randomClip = Utils.GetRandomClip(entity.GetHurtSounds());
                 entity.VoiceAudio.PlayOneShot(randomClip);
             }

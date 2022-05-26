@@ -8,6 +8,9 @@ namespace GameJam
         [Header("Enemy Settings")]
         [SerializeField] private int experienceReward = 1;
 
+        [Header("Enemy Corpse")]
+        [SerializeField] private Corpse corpse;
+
         public int ExperienceReward => experienceReward;
 
         protected override void Start()
