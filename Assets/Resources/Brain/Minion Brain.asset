@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Minion Brain
   m_EditorClassIdentifier: 
   moveProbability: 0.1
-  moveDistance: 10
+  moveWanderDistance: 10
   returnDistance: 25
-  followDistance: 5
+  followDistance: 20
   teleportDistance: 30
   attackToMoveRangeRatio: 0.8

@@ -35,8 +35,14 @@ namespace GameJam
 
         public override bool CheckFOV(Entity caster, int skillLevel)
         {
+            Entity correctedTarget = caster.Target;
+
+            // case where we apply without target
             // can cast without visibility
-            return true;
+            if (correctedTarget == null)
+                return true;
+
+            return correctedTarget != null && caster.FieldOfView.IsInFOV(correctedTarget.transform);
         }
 
         public override bool CheckTarget(Entity caster)
@@ -55,9 +61,9 @@ namespace GameJam
             // setup projectile data
             ProjectileData projectileData = new ProjectileData()
             {
-                damage = damage.Get(skillLevel),
+                damage = caster.Combat.damage + damage.Get(skillLevel),
                 manaDrain = manaDrain.Get(skillLevel),
-                healthDrain = manaDrain.Get(skillLevel),
+                healthDrain = healthDrain.Get(skillLevel),
                 speed = speed.Get(skillLevel),
                 lifetime = lifetime.Get(skillLevel),
                 stunChance = stunChance.Get(skillLevel),

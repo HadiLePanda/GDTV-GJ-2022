@@ -7,7 +7,7 @@ namespace GameJam
     {
         [Header("Movement")]
         [Range(0, 1)] public float moveProbability = 0.1f; // chance per second
-        public float moveDistance = 10;
+        public float moveWanderDistance = 10;
         public float returnDistance = 25; // return to player if dist > ...
         // pets should follow their targets even if they run out of the movement radius.
         // the follow dist should always be bigger than the biggest archer's attack range,
@@ -106,15 +106,28 @@ namespace GameJam
                 // we had a target in attack range before and trying to cast a skill
                 // on it. check self (alive, mana, weapon etc.) and target
                 Skill skill = minion.Skills.skills[minion.Skills.currentSkill];
-                if (minion.Skills.CastCheckSelf(skill) && minion.Skills.CastCheckTarget(skill))
+                if (minion.Skills.CastCheckSelf(skill))
                 {
-                    // start casting
-                    minion.Skills.StartCast(skill);
-                    return "CASTING";
+                    if (minion.Skills.CastCheckTarget(skill))
+                    {
+                        // start casting
+                        minion.Skills.StartCast(skill);
+                        return "CASTING";
+                    }
+                    else
+                    {
+                        // invalid target. clear the attempted current skill.
+                        minion.SetTarget(null);
+                        minion.Skills.currentSkill = -1;
+                        return "IDLE";
+                    }
+                   
                 }
                 else
                 {
-                    // invalid target. reset attempted current skill cast.
+                    // we can't cast this skill at the moment (cooldown/low mana/...)
+                    // -> clear the attempted current skill, but keep the target to
+                    // continue later
                     minion.SetTarget(null);
                     minion.Skills.currentSkill = -1;
                     return "IDLE";
@@ -131,7 +144,7 @@ namespace GameJam
             {
                 // walk to a random position in movement radius (from 'start')
                 // note: circle y is 0 because we add it to start.y
-                Vector2 circle2D = Random.insideUnitCircle * moveDistance;
+                Vector2 circle2D = Random.insideUnitCircle * moveWanderDistance;
                 minion.Movement.Navigate(minion.startPosition + new Vector3(circle2D.x, 0, circle2D.y), 0);
                 return "MOVING";
             }
@@ -189,7 +202,7 @@ namespace GameJam
             if (EventTargetTooFarToFollow(minion))
             {
                 // we had a target before, but it's out of follow range now.
-                // clear it and go back to start. don't stay here.
+                // clear it and go back to owner. don't stay here.
                 minion.SetTarget(null);
                 minion.Skills.CancelCast();
                 minion.Movement.Navigate(minion.Owner.MinionDestination, 0);
@@ -284,7 +297,8 @@ namespace GameJam
 
                 // did the target die? then clear it so that the monster doesn't
                 // run towards it if the target respawned
-                if (minion.Target != null && !minion.Target.IsAlive) minion.SetTarget(null);
+                if (minion.Target != null && !minion.Target.IsAlive)
+                    minion.SetTarget(null);
 
                 // go back to IDLE. reset current skill.
                 ((MobSkills)minion.Skills).lastSkill = minion.Skills.currentSkill;

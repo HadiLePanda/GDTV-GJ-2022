@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peasant
       objectReference: {fileID: 0}
+    - target: {fileID: 3314071084518855872, guid: f480b4d61a1550d479da7278bb9131f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8152284621971295039, guid: f480b4d61a1550d479da7278bb9131f3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f480b4d61a1550d479da7278bb9131f3, type: 3}
@@ -155,7 +159,7 @@ PrefabInstance:
     - target: {fileID: 2052906438463419703, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: skillTemplates.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: eb3b5b6a1bd3d3a4b8e5cbba4569c6fd, type: 2}
+      objectReference: {fileID: 11400000, guid: 5b0057d33a2dfb84aa13f73739c7468d, type: 2}
     - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: hurtSounds.Array.size
       value: 1
@@ -232,10 +236,6 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 4df0760853108414691fd993ea7ae118, type: 3}
-    - target: {fileID: 6659227801298000577, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: d4a415d3494f7a9418d8d6810753f63c, type: 2}
     - target: {fileID: 7829797563796742505, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: minionPrefab
       value: 

@@ -47,12 +47,22 @@ namespace GameJam
             }
         }
 
-        public void Setup(Entity owner, int level, float lifetime)
+        public void Setup(Entity owner, int level, float lifetime, Entity corpseEntity = null)
         {
             this.owner = owner;
 
             // change faction to owner's
             Faction = owner.Faction;
+            
+            // copy entity skills based on skill templates
+            if (corpseEntity != null && corpseEntity.Skills.skills.Count > 0)
+            {
+                Skills.skills.Clear();
+                foreach (ScriptableSkill skillData in corpseEntity.Skills.skillTemplates)
+                {
+                    Skills.skills.Add(new Skill(skillData));
+                }
+            }
 
             // setup runtime stats
             Level.SetLevel(level);

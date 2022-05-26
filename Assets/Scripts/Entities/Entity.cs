@@ -12,6 +12,7 @@ namespace GameJam
     [RequireComponent(typeof(Level))]
     [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(Mana))]
+    [RequireComponent(typeof(FieldOfView))]
     [DisallowMultipleComponent]
     public abstract class Entity : MonoBehaviour, IDamageable
     {
@@ -20,6 +21,7 @@ namespace GameJam
         public Collider Collider;
         public AudioSource VoiceAudio;
         public AudioSource SkillAudio;
+        public FieldOfView FieldOfView;
         public Level Level;
         public Health Health;
         public Mana Mana;
@@ -58,7 +60,7 @@ namespace GameJam
         public Faction Faction;
 
         [Header("Death")]
-        [SerializeField] private float corpseDecayTime = 5f;
+        [SerializeField] private float corpseDecayTime = 10f;
 
         [Header("Entity Effects")]
         [SerializeField] protected AudioClip[] hurtSounds;
@@ -126,7 +128,7 @@ namespace GameJam
                     state = brain.UpdateBrain(this);
                 }
 
-                if (target != null && (target.IsHidden() || target.IsWorthUpdating()))
+                if (target != null && (target.IsHidden() || !target.IsWorthUpdating()))
                 {
                     target = null;
                 }
@@ -161,7 +163,7 @@ namespace GameJam
         public void Show() => entityRoot.gameObject.SetActive(true);
 
         // is the entity currently hidden?
-        public bool IsHidden() => entityRoot.gameObject.activeSelf;
+        public bool IsHidden() => !entityRoot.gameObject.activeSelf;
 
         // combat =====================================
         // we need a function to check if an entity can attack another.
@@ -208,7 +210,7 @@ namespace GameJam
             return true;
         }
 
-        // damageable =================================
+        // damageable ============================================
         public void TakeDamage(int damage)
         {
             if (!IsAlive) { return; }
@@ -227,7 +229,7 @@ namespace GameJam
             Combat.SpawnHealPopup(amount, HealType.Recovery);
         }
 
-        // death ======================================
+        // death =================================================
         protected virtual void OnDeath()
         {
             // the body starts to decay on death for a window of possibility to resurrect
@@ -239,7 +241,7 @@ namespace GameJam
             OnDied?.Invoke();
         }
 
-        // decay ===============================================
+        // death decay ===============================================
         protected virtual void StartDecay()
         {
             if (decayRoutine != null)
@@ -282,6 +284,11 @@ namespace GameJam
         }
 
         public virtual void FootR()
+        {
+
+        }
+
+        public virtual void Hit()
         {
 
         }
