@@ -86,7 +86,7 @@ namespace GameJam
                     else
                     {
                         // invalid target. clear the attempted current skill.
-                        enemy.SetTarget(null);
+                        //enemy.SetTarget(null);
                         enemy.Skills.currentSkill = -1;
                         return "IDLE";
                     }
@@ -195,12 +195,11 @@ namespace GameJam
         {
             if (EventRandomAmbientSound(enemy)) { } // don't care
 
-            // keep looking at the target for server & clients (only Y rotation)
-            // disabled
-            //if (enemy.Target)
-            //{
-            //    enemy.Movement.LookAtY(enemy.Target.transform.position);
-            //}
+            // keep looking at the target (only Y rotation)
+            if (enemy.Target)
+            {
+                enemy.Movement.LookAtY(enemy.Target.transform.position);
+            }
 
             // events sorted by priority (e.g. target doesn't matter if we died)
             if (EventDied(enemy))

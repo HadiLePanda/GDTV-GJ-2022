@@ -2,7 +2,7 @@
 
 namespace GameJam
 {
-    public class Mob : Entity
+    public abstract class Mob : Entity
     {
         [Header("Mob Sounds")]
         [SerializeField] private AudioClip[] ambientSounds;

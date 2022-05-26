@@ -21,7 +21,7 @@ namespace GameJam
                 {
                     if (hit.collider.TryGetComponent(out Corpse corpse))
                     {
-                        player.Combat.DealDamage(corpse.Entity, damage, hit.point, hit.normal);
+                        player.Combat.DealDamage(corpse.GetEntity(), damage, hit.point, hit.normal);
                     }
                 }
             }

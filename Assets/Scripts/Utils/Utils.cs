@@ -92,6 +92,55 @@ namespace GameJam
                                     b.ClosestPoint(a.transform.position));
         }
 
+        // Distance between two ClosestPoints
+        // this is needed in cases where entities are really big. in those cases,
+        // we can't just move to entity.transform.position, because it will be
+        // unreachable. instead we have to go the closest point on the boundary.
+        //
+        // Vector3.Distance(a.transform.position, b.transform.position):
+        //    _____        _____
+        //   |     |      |     |
+        //   |  x==|======|==x  |
+        //   |_____|      |_____|
+        //
+        //
+        // Utils.ClosestDistance(a.collider, b.collider):
+        //    _____        _____
+        //   |     |      |     |
+        //   |     |x====x|     |
+        //   |_____|      |_____|
+        //
+        // IMPORTANT:
+        //   we always pass Entity instead of Collider, because
+        //   entity.transform.position is animation independent while
+        //   collider.transform.position changes during animations (the hips)!
+        public static float ClosestDistance(Entity a, Entity b)
+        {
+            // IMPORTANT: DO NOT use the collider itself. the position changes
+            //            during animations, causing situations where attacks are
+            //            interrupted because the target's hips moved a bit out of
+            //            attack range, even though the target didn't actually move!
+            //            => use transform.position and collider.radius instead!
+            //
+            //            this is probably faster than collider.ClosestPoints too
+
+            // at first calculate the distance from A to B, subtract both radius
+            // IMPORTANT: use entity.transform.position not
+            //            collider.transform.position. that would still be the hip!
+            float distance = Vector3.Distance(a.transform.position, b.transform.position);
+
+            // calculate both collider radius
+            float radiusA = BoundsRadius(a.Collider.bounds);
+            float radiusB = BoundsRadius(b.Collider.bounds);
+
+            // subtract both radius
+            float distanceInside = distance - radiusA - radiusB;
+
+            // return distance. if it's <0 because they are inside each other, then
+            // return 0.
+            return Mathf.Max(distanceInside, 0);
+        }
+
         // closest point from an entity's collider to another point
         // this is used all over the place, so let's put it into one place so it's
         // easier to modify the method if needed

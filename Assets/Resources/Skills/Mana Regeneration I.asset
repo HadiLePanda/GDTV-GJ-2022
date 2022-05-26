@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a03e252d2ecdc54b9bcca030850eacf, type: 3}
+  m_Name: Mana Regeneration I
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  learnDefault: 1
+  showCastBar: 0
+  cancelCastIfTargetDied: 0
+  canCancelCast: 0
+  allowMovement: 1
+  requiredLevel:
+    baseValue: 0
+    bonusPerLevel: 0
+  maxLevel: 1
+  manaCosts:
+    baseValue: 0
+    bonusPerLevel: 0
+  castTime:
+    baseValue: 0
+    bonusPerLevel: 0
+  cooldown:
+    baseValue: 0
+    bonusPerLevel: 0
+  castRange:
+    baseValue: 0
+    bonusPerLevel: 0
+  castStartSound: {fileID: 0}
+  castEndSound: {fileID: 0}
+  loopCastStartSound: 0
+  healthMaxBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  manaMaxBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  damageBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  defenseBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  blockChanceBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  criticalChanceBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  healthPercentPerSecondBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  manaPercentPerSecondBonus:
+    baseValue: 0.01
+    bonusPerLevel: 0
+  speedBonus:
+    baseValue: 0
+    bonusPerLevel: 0

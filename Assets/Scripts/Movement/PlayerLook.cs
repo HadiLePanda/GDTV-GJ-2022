@@ -73,7 +73,7 @@ namespace GameJam
         {
             if (!player.IsAlive) return;
 
-            // rotate model to look towards cursor position
+            // rotate to look towards cursor position
             Vector3 mousePoint = Input.mousePosition;
 
             var mouseRay = cam.ScreenPointToRay(mousePoint);
@@ -86,17 +86,17 @@ namespace GameJam
                 mouseWorld.y = transform.position.y;
 
                 var hitPos = hit.point;
-                hitPos.y = transform.position.y;
+                hitPos.y = transform.position.y + 1;
 
                 lookTarget.transform.position = hitPos;
             }
             else
             {
-                lookTarget.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 5);
+                lookTarget.transform.position = player.transform.position.ChangeZ(player.transform.position.z + 5);
             }
 
-            //player.modelRoot.transform.LookAt(lookTarget.transform.position);
-            player.transform.LookAt(lookTarget.transform.position);
+            Vector3 targetPosition = lookTarget.transform.position.ChangeY(transform.position.y);
+            player.transform.LookAt(targetPosition);
         }
 
         // debugging ///////////////////////////////////////////////////////////////
