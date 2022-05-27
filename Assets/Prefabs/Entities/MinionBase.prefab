@@ -159,6 +159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DecayBar
       objectReference: {fileID: 0}
+    - target: {fileID: 8973029664290111167, guid: c5920840275d7e042a7fc75c177381ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5920840275d7e042a7fc75c177381ef, type: 3}
 --- !u!1001 &2077709349288517771
