@@ -104,7 +104,7 @@ namespace GameJam
             randomSpawnPos.y = 0f;
 
             Minion minionInstance = Instantiate(storedMinionAtIndex.minion, randomSpawnPos, transform.rotation);
-            minionInstance.Setup(entity, storedMinionAtIndex.level, storedMinionAtIndex.remainingLifetime);
+            minionInstance.Setup(entity, storedMinionAtIndex.level);
         }
 
         public void Empty()

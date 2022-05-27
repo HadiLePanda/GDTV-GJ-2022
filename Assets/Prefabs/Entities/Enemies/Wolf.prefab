@@ -15,6 +15,22 @@ PrefabInstance:
       propertyPath: skillTemplates.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 38ab766ed2c111442b56d879215fbe91, type: 2}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: hurtSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: deathSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: hurtSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b14af0f19d79954db22f934f08e7af9, type: 3}
+    - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: deathSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f81fa7c83e5cab54d9d30d57293df037, type: 3}
     - target: {fileID: 2447962232508661704, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -71,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0da03864598517548994acada6c700af, type: 2}
+    - target: {fileID: 7829797563796742505, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: minionPrefab
+      value: 
+      objectReference: {fileID: 7573730918590115891, guid: 061f3f9309da0c94091c4ba626ba8348, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
 --- !u!4 &4107975324659252171 stripped

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2445f5877810b4196325c7e61e0f9e, type: 3}
   m_Name: Enemy Basic Brain
   m_EditorClassIdentifier: 
+  minAmbientSoundDelay: 1
   moveProbability: 0.1
-  moveDistance: 10
-  followDistance: 20
+  moveDistance: 30
+  followDistance: 40
   attackToMoveRangeRatio: 0.8

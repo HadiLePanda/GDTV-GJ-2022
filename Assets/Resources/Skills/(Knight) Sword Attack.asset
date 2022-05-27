@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5413a7ef67b114ab6c4c3ba84be308, type: 3}
+  m_Name: (Knight) Sword Attack
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  learnDefault: 1
+  showCastBar: 0
+  cancelCastIfTargetDied: 0
+  canCancelCast: 0
+  allowMovement: 1
+  requiredLevel:
+    baseValue: 0
+    bonusPerLevel: 0
+  maxLevel: 1
+  manaCosts:
+    baseValue: 0
+    bonusPerLevel: 0
+  castTime:
+    baseValue: 0.5
+    bonusPerLevel: 0
+  cooldown:
+    baseValue: 0.6
+    bonusPerLevel: 0
+  castRange:
+    baseValue: 1
+    bonusPerLevel: 0
+  castStartSound: {fileID: 8300000, guid: 73cb56ba003104744bd09f1bedbf0bd5, type: 3}
+  castEndSound: {fileID: 0}
+  loopCastStartSound: 0
+  damage:
+    baseValue: 5
+    bonusPerLevel: 0
+  stunChance:
+    baseValue: 0
+    bonusPerLevel: 0
+  stunTime:
+    baseValue: 0
+    bonusPerLevel: 0
+  manaDrain:
+    baseValue: 0
+    bonusPerLevel: 0
+  healthDrain:
+    baseValue: 2
+    bonusPerLevel: 0
+  drainToOwner: 1
+  effect: {fileID: 0}
