@@ -44,11 +44,11 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.19037023, g: 0.5849056, b: 0.27178228, a: 1}
-  m_Intensity: 7
-  m_Range: 20
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 0
+  m_Color: {r: 0.5679011, g: 0.18823527, b: 0.74509805, a: 1}
+  m_Intensity: 20
+  m_Range: 15
+  m_SpotAngle: 59.866196
+  m_InnerSpotAngle: 17.959866
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -244,31 +244,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.08067818
+      value: 0.4627451
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.46226418
+      value: 0.08235295
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.22377293
+      value: 0.14794634
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: InitialModule.startColor.minColor.a
-      value: 0.50980395
+      value: 0.83137256
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: InitialModule.startColor.minColor.b
-      value: 0.028390896
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: InitialModule.startColor.minColor.g
-      value: 0.20754719
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: InitialModule.startColor.minColor.r
-      value: 0.07189085
+      value: 0.56984854
       objectReference: {fileID: 0}
     - target: {fileID: 198677932445220266, guid: a9726ee302999a84ea27e4657abb703f, type: 3}
       propertyPath: ShapeModule.sphericalDirectionAmount

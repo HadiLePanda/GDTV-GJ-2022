@@ -339,7 +339,7 @@ namespace GameJam
             if (entity.GetDeathSounds().Length > 0)
             {
                 AudioClip randomClip = Utils.GetRandomClip(entity.GetDeathSounds());
-                Game.Sfx.PlayWorldSfx(randomClip, transform.position);
+                Game.Audio.PlayWorldSfx(randomClip, transform.position);
             }
             if (entity.GetDeathEffect() != null)
             {
@@ -351,7 +351,7 @@ namespace GameJam
         {
             if (GetDrainedSound() != null)
             {
-                Game.Sfx.PlayWorldSfx(GetDrainedSound(), transform.position);
+                Game.Audio.PlayWorldSfx(GetDrainedSound(), transform.position);
             }
             if (GetDrainedEffect() != null)
             {

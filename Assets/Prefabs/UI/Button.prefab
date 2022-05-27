@@ -40,7 +40,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 40}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5968081389216462362
 CanvasRenderer:
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a1a2ba4e46530429660db0991b90d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonHoverSound: {fileID: 0}
-  buttonClickSound: {fileID: 0}
+  buttonHoverSound: {fileID: 8300000, guid: 909350815aeb4c64db550c7e96590144, type: 3}
+  buttonClickSound: {fileID: 8300000, guid: ed7aacdbdf02c064ca6866750729cba1, type: 3}
 --- !u!1001 &7688173930929993661
 PrefabInstance:
   m_ObjectHideFlags: 0

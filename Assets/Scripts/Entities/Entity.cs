@@ -60,7 +60,7 @@ namespace GameJam
         public Faction Faction;
 
         [Header("Death")]
-        [SerializeField] private float corpseDecayTime = 10f;
+        [SerializeField] private float deathDecayTime = 10f;
 
         [Header("Entity Effects")]
         [SerializeField] protected AudioClip[] hurtSounds;
@@ -80,6 +80,7 @@ namespace GameJam
         public static RecoveredEnergyCallback OnEntityRecoveredHealth;
 
         private Coroutine decayRoutine;
+        public float lastAmbientSoundTime;
 
         public AudioClip[] GetHurtSounds() => hurtSounds;
         public AudioClip[] GetDeathSounds() => deathSounds;
@@ -89,7 +90,7 @@ namespace GameJam
 
         public bool IsAlive => Health.Current > 0;
         public bool IsStunned => state == "STUNNED";
-        public float GetDecayTime() => corpseDecayTime;
+        public float GetDecayTime() => deathDecayTime;
 
         public Entity Target => target;
         public void SetTarget(Entity entity) => target = entity;
@@ -252,7 +253,7 @@ namespace GameJam
 
         IEnumerator RemoveCorpseAfterDecayTime()
         {
-            yield return new WaitForSeconds(corpseDecayTime);
+            yield return new WaitForSeconds(deathDecayTime);
 
             PlayDecayEffects();
 
@@ -273,7 +274,7 @@ namespace GameJam
             if (GetDecaySounds().Length > 0)
             {
                 AudioClip randomClip = Utils.GetRandomClip(GetDecaySounds());
-                Game.Sfx.PlayWorldSfx(randomClip, transform.position);
+                Game.Audio.PlayWorldSfx(randomClip, transform.position);
             }
         }
 

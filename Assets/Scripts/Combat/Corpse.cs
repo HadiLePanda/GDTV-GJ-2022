@@ -41,7 +41,7 @@ namespace GameJam
         {
             Minion minionInstance = Instantiate(minionPrefab, transform.position, transform.rotation);
 
-            minionInstance.Setup(owner, level, minionInstance.GetLifetime(), GetEntity());
+            minionInstance.Setup(owner, level, GetEntity());
 
             return minionInstance;
         }
@@ -52,7 +52,7 @@ namespace GameJam
                 Game.Vfx.SpawnParticle(resurrectEffect, position);
 
             if (resurrectSound != null)
-                Game.Sfx.PlayWorldSfx(resurrectSound, position);
+                Game.Audio.PlayWorldSfx(resurrectSound, position);
         }
     }
 }

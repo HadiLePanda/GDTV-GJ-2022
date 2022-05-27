@@ -12,7 +12,7 @@ namespace GameJam
         // radius. the follow dist should always be bigger than the biggest archer's
         // attack range, so that archers will always pull aggro, even when attacking
         // from far away.
-        public float followDistance = 20;
+        public float followDistance = 40;
         [Range(0.1f, 1)] public float attackToMoveRangeRatio = 0.8f; // move as close as 0.8 * attackRange to a target
 
         // events //////////////////////////////////////////////////////////////////
@@ -22,18 +22,15 @@ namespace GameJam
         public bool EventMoveRandomly(Enemy enemy) =>
             Random.value <= moveProbability * Time.deltaTime;
 
-        public bool EventTargetTooFarToFollow(Enemy enemy) =>
-            enemy.Target != null &&
-            Vector3.Distance(enemy.startPosition, Utils.ClosestPoint(enemy.Target, enemy.transform.position)) > followDistance;
+        public bool EventTargetTooFarToFollow(Enemy enemy)
+        {
+            return enemy.Target != null &&
+                   Vector3.Distance(enemy.startPosition, Utils.ClosestPoint(enemy.Target, enemy.transform.position)) > followDistance;
+        }
 
         // states //////////////////////////////////////////////////////////////////
         string UpdateServer_IDLE(Enemy enemy)
         {
-            if (EventRandomAmbientSound(enemy))
-            {
-                PlayRandomLivingSound(enemy);
-            }
-
             // events sorted by priority (e.g. target doesn't matter if we died)
             if (EventDied(enemy))
             {
@@ -115,6 +112,13 @@ namespace GameJam
                 enemy.Movement.Navigate(enemy.startPosition + new Vector3(circle2D.x, 0, circle2D.y), 0);
                 return "MOVING";
             }
+
+            if (EventRandomAmbientSound(enemy))
+            {
+                PlayRandomLivingSound(enemy);
+                enemy.lastAmbientSoundTime = Time.time;
+            }
+
             if (EventDeathTimeElapsed(enemy)) { } // don't care
             if (EventMoveEnd(enemy)) { } // don't care
             if (EventSkillFinished(enemy)) { } // don't care
@@ -125,11 +129,6 @@ namespace GameJam
 
         string UpdateServer_MOVING(Enemy enemy)
         {
-            if (EventRandomAmbientSound(enemy))
-            {
-                PlayRandomLivingSound(enemy);
-            }
-
             // events sorted by priority (e.g. target doesn't matter if we died)
             if (EventDied(enemy))
             {
@@ -182,6 +181,13 @@ namespace GameJam
                 enemy.Movement.Reset();
                 return "IDLE";
             }
+
+            if (EventRandomAmbientSound(enemy))
+            {
+                PlayRandomLivingSound(enemy);
+                enemy.lastAmbientSoundTime = Time.time;
+            }
+
             if (EventDeathTimeElapsed(enemy)) { } // don't care
             if (EventSkillFinished(enemy)) { } // don't care
             if (EventTargetDisappeared(enemy)) { } // don't care

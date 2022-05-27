@@ -11,12 +11,12 @@ namespace GameJam
         public void PlayButtonHoverSound()
         {
             if (buttonHoverSound != null)
-                Game.Sfx.PlaySfx(buttonHoverSound);
+                Game.Audio.PlaySfx(buttonHoverSound);
         }
         public void PlayButtonClickSound()
         {
             if (buttonClickSound != null)
-                Game.Sfx.PlaySfx(buttonClickSound);
+                Game.Audio.PlaySfx(buttonClickSound);
         }
     }
 }

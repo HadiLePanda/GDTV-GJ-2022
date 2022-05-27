@@ -17,17 +17,18 @@ namespace GameJam
         {
             if (minion == null) { return; }
 
-            fill.fillAmount = minion.GetLifetime() != 0 ? minion.RemainingLifetime / minion.GetLifetime() : 0;
+            //TODO change to decay or remove all
+            fill.fillAmount = minion.GetDecayTime();//minion.GetLifetime() != 0 ? minion.RemainingLifetime / minion.GetLifetime() : 0;
 
-            if (minion.RemainingLifetime > 0)
-            {
-                decayTimeText.gameObject.SetActive(true);
-                decayTimeText.text = Utils.PrettySeconds(minion.RemainingLifetime).ToString();
-            }
-            else
-            {
-                decayTimeText.gameObject.SetActive(false);
-            }
+            //if (minion.RemainingLifetime > 0)
+            //{
+            //    decayTimeText.gameObject.SetActive(true);
+            //    decayTimeText.text = Utils.PrettySeconds(minion.RemainingLifetime).ToString();
+            //}
+            //else
+            //{
+            //    decayTimeText.gameObject.SetActive(false);
+            //}
         }
     }
 }
