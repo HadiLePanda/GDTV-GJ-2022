@@ -137,7 +137,7 @@ namespace GameJam
                 Game.Vfx.SpawnParticle(explosionEffect, transform.position, Quaternion.identity);
 
             if (GetExplosionSound() != null)
-                Game.Sfx.PlayWorldSfx(explosionSound, transform.position);
+                Game.Audio.PlayWorldSfx(explosionSound, transform.position);
         }
 
         private void OnTriggerEnter(Collider col)

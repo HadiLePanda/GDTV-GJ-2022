@@ -44,7 +44,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5706866510995442751
 MonoBehaviour:
@@ -136,16 +136,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: outlineWidth
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: outlineColor.b
-      value: 0.30709326
+      value: 0.11369702
       objectReference: {fileID: 0}
     - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: outlineColor.g
-      value: 0.34326223
+      value: 0.14788516
       objectReference: {fileID: 0}
     - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: outlineColor.r
-      value: 0.9716981
+      value: 0.6886792
       objectReference: {fileID: 0}
     - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: entity
@@ -283,13 +295,15 @@ MonoBehaviour:
   lastCombatTime: 0
   pendingSkill: 0
   Faction: {fileID: 11400000, guid: 73aa55fc2e2d7814f9523ae37412bd34, type: 2}
-  corpseDecayTime: 10
+  deathDecayTime: 10
   hurtSounds: []
   deathSounds: []
-  decaySounds: []
+  decaySounds:
+  - {fileID: 8300000, guid: 2a97e9e2c450ff24c961f12a75ca18a4, type: 3}
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
   stunnedOverlay: {fileID: 7990511592590214381}
+  lastAmbientSoundTime: 0
   ambientSounds: []
   ambientSoundProbability: 0.01
   startPosition: {x: 0, y: 0, z: 0}
@@ -328,7 +342,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -351,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 0}
   resurrectEffect: {fileID: 0}
-  resurrectSound: {fileID: 0}
+  resurrectSound: {fileID: 8300000, guid: bc40fdcb4396429479c1147b34ce6b5d, type: 3}
 --- !u!114 &7912475970701641204
 MonoBehaviour:
   m_ObjectHideFlags: 0

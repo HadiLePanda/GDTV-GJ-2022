@@ -7,10 +7,14 @@ namespace GameJam
 {
     public abstract class MobBrain : CommonBrain
     {
+        [Header("Mob Settings")]
+        [SerializeField] protected float minAmbientSoundDelay = 1f;
+
         public bool EventRandomAmbientSound(Mob entity)
         {
             return entity.IsAlive &&
-                   Random.value <= entity.ambientSoundProbability;
+                   Random.value <= entity.ambientSoundProbability * Time.deltaTime &&
+                   Time.time >= entity.lastAmbientSoundTime + minAmbientSoundDelay;
         }
 
         protected void PlayRandomLivingSound(Mob entity)

@@ -178,14 +178,6 @@ PrefabInstance:
       propertyPath: deathSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 4de80f81fb8387d41a13d2669001c83d, type: 3}
-    - target: {fileID: 8002782842424819717, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002782842424819717, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8417513864922494315, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: skillTemplates.Array.size
       value: 1

@@ -8,46 +8,45 @@ namespace GameJam
         [Header("Movement")]
         [Range(0, 1)] public float moveProbability = 0.1f; // chance per second
         public float moveWanderDistance = 10;
+        public float followDistance = 20;
         public float returnDistance = 25; // return to player if dist > ...
         // pets should follow their targets even if they run out of the movement radius.
         // the follow dist should always be bigger than the biggest archer's attack range,
         // so that archers will always pull aggro, even when attacking from far away.
-        public float followDistance = 20;
         // minion should teleport if the owner gets too far away for whatever reason
         public float teleportDistance = 30;
         [Range(0.1f, 1)] public float attackToMoveRangeRatio = 0.8f; // move as close as 0.8 * attackRange to a target
 
         // events //////////////////////////////////////////////////////////////////
-        public bool EventOwnerDisappeared(Minion minion) =>
-            minion.Owner == null;
+        public bool EventOwnerDisappearedOrDied(Minion minion) =>
+            minion.Owner == null || (minion.Owner != null && !minion.Owner.IsAlive);
 
         public bool EventMoveRandomly(Minion minion) =>
             Random.value <= moveProbability * Time.deltaTime;
 
         public bool EventDeathTimeElapsed(Minion minion) => false;
-            //minion.State == "DEAD" && Time.time >= minion.deathTimeEnd;
+        //minion.State == "DEAD" && Time.time >= minion.deathTimeEnd;
 
-        public bool EventNeedReturnToOwner(Minion minion) =>
-            minion.Target == null &&
-            Vector3.Distance(minion.Owner.MinionDestination, minion.transform.position) > returnDistance;
+        public bool EventNeedReturnToOwner(Minion minion)
+        {
+            return minion.Target == null &&
+                   Vector3.Distance(minion.GetOwnerDestination(), minion.transform.position) > returnDistance;
+        }
 
         public bool EventNeedTeleportToOwner(Minion minion) =>
-            Vector3.Distance(minion.Owner.MinionDestination, minion.transform.position) > teleportDistance;
+            Vector3.Distance(minion.GetOwnerDestination(), minion.transform.position) > teleportDistance;
 
-        public bool EventTargetTooFarToFollow(Minion minion) =>
-            minion.Target != null &&
-            Vector3.Distance(minion.Owner.MinionDestination, Utils.ClosestPoint(minion.Target, minion.transform.position)) > followDistance;
+        public bool EventTargetTooFarToFollow(Minion minion)
+        {
+            return minion.Target != null &&
+                   Vector3.Distance(minion.GetOwnerDestination(), Utils.ClosestPoint(minion.Target, minion.transform.position)) > followDistance;
+        }
 
         // states //////////////////////////////////////////////////////////////////
         string UpdateServer_IDLE(Minion minion)
         {
-            if (EventRandomAmbientSound(minion))
-            {
-                PlayRandomLivingSound(minion);
-            }
-
             // events sorted by priority (e.g. target doesn't matter if we died)
-            if (EventOwnerDisappeared(minion))
+            if (EventOwnerDisappearedOrDied(minion))
             {
                 // owner might get destroyed for some reason
                 minion.Health.Deplete();
@@ -72,7 +71,7 @@ namespace GameJam
             }
             if (EventNeedTeleportToOwner(minion))
             {
-                minion.Movement.Warp(minion.Owner.MinionDestination);
+                minion.Movement.Warp(minion.GetOwnerDestination());
                 return "IDLE";
             }
             if (EventNeedReturnToOwner(minion))
@@ -80,7 +79,7 @@ namespace GameJam
                 // return to owner only while IDLE
                 minion.SetTarget(null);
                 minion.Skills.CancelCast();
-                minion.Movement.Navigate(minion.Owner.MinionDestination, 0);
+                minion.Movement.Navigate(minion.GetOwnerDestination(), 0);
                 return "MOVING";
             }
             if (EventTargetTooFarToFollow(minion))
@@ -89,7 +88,7 @@ namespace GameJam
                 // clear it and go back to start. don't stay here.
                 minion.SetTarget(null);
                 minion.Skills.CancelCast();
-                minion.Movement.Navigate(minion.Owner.MinionDestination, 0);
+                minion.Movement.Navigate(minion.GetOwnerDestination(), 0);
                 return "MOVING";
             }
             if (EventTargetTooFarToAttack(minion))
@@ -148,6 +147,13 @@ namespace GameJam
                 minion.Movement.Navigate(minion.startPosition + new Vector3(circle2D.x, 0, circle2D.y), 0);
                 return "MOVING";
             }
+
+            if (EventRandomAmbientSound(minion))
+            {
+                PlayRandomLivingSound(minion);
+                minion.lastAmbientSoundTime = Time.time;
+            }
+
             if (EventMoveEnd(minion)) { } // don't care
             if (EventDeathTimeElapsed(minion)) { } // don't care
             if (EventSkillFinished(minion)) { } // don't care
@@ -158,13 +164,8 @@ namespace GameJam
 
         string UpdateServer_MOVING(Minion minion)
         {
-            if (EventRandomAmbientSound(minion))
-            {
-                PlayRandomLivingSound(minion);
-            }
-
             // events sorted by priority (e.g. target doesn't matter if we died)
-            if (EventOwnerDisappeared(minion))
+            if (EventOwnerDisappearedOrDied(minion))
             {
                 // owner might get destroyed for some reason
                 minion.Health.Deplete();
@@ -196,7 +197,7 @@ namespace GameJam
             }
             if (EventNeedTeleportToOwner(minion))
             {
-                minion.Movement.Warp(minion.Owner.MinionDestination);
+                minion.Movement.Warp(minion.GetOwnerDestination());
                 return "IDLE";
             }
             if (EventTargetTooFarToFollow(minion))
@@ -205,7 +206,7 @@ namespace GameJam
                 // clear it and go back to owner. don't stay here.
                 minion.SetTarget(null);
                 minion.Skills.CancelCast();
-                minion.Movement.Navigate(minion.Owner.MinionDestination, 0);
+                minion.Movement.Navigate(minion.GetOwnerDestination(), 0);
                 return "MOVING";
             }
             if (EventTargetTooFarToAttack(minion))
@@ -217,6 +218,16 @@ namespace GameJam
                 minion.Movement.Navigate(destination, stoppingDistance);
                 return "MOVING";
             }
+            if (EventNeedReturnToOwner(minion))
+            {
+                //todo destination too far from owner, recalculate return position
+                //if ()
+                // return to owner only while IDLE
+                minion.SetTarget(null);
+                minion.Skills.CancelCast();
+                minion.Movement.Navigate(minion.GetOwnerDestination(), 0);
+                return "MOVING";
+            }
             if (EventAggro(minion))
             {
                 // target in attack range. try to cast a first skill on it
@@ -226,16 +237,13 @@ namespace GameJam
                 minion.Movement.Reset();
                 return "IDLE";
             }
-            if (EventNeedReturnToOwner(minion))
+
+            if (EventRandomAmbientSound(minion))
             {
-                //todo destination too far from owner, recalculate return position
-                //if ()
-                // return to owner only while IDLE
-                //minion.SetTarget(null);
-                minion.Skills.CancelCast();
-                minion.Movement.Navigate(minion.Owner.MinionDestination, 0);
-                return "MOVING";
+                PlayRandomLivingSound(minion);
+                minion.lastAmbientSoundTime = Time.time;
             }
+
             if (EventDeathTimeElapsed(minion)) { } // don't care
             if (EventSkillFinished(minion)) { } // don't care
             if (EventTargetDisappeared(minion)) { } // don't care
@@ -253,7 +261,7 @@ namespace GameJam
                 minion.Movement.LookAtY(minion.Target.transform.position);
 
             // events sorted by priority (e.g. target doesn't matter if we died)
-            if (EventOwnerDisappeared(minion))
+            if (EventOwnerDisappearedOrDied(minion))
             {
                 // owner might get destroyed for some reason
                 minion.Health.Deplete();
@@ -298,7 +306,9 @@ namespace GameJam
                 // did the target die? then clear it so that the monster doesn't
                 // run towards it if the target respawned
                 if (minion.Target != null && !minion.Target.IsAlive)
+                {
                     minion.SetTarget(null);
+                }
 
                 // go back to IDLE. reset current skill.
                 ((MobSkills)minion.Skills).lastSkill = minion.Skills.currentSkill;
@@ -322,7 +332,7 @@ namespace GameJam
             if (EventRandomAmbientSound(minion)) { } // don't care
 
             // events sorted by priority (e.g. target doesn't matter if we died)
-            if (EventOwnerDisappeared(minion))
+            if (EventOwnerDisappearedOrDied(minion))
             {
                 // owner might get destroyed for some reason
                 minion.Health.Deplete();
@@ -349,7 +359,7 @@ namespace GameJam
             if (EventRandomAmbientSound(minion)) { } // don't care, can't make a sound while dead
 
             // events sorted by priority (e.g. target doesn't matter if we died)
-            if (EventOwnerDisappeared(minion))
+            if (EventOwnerDisappearedOrDied(minion))
             {
                 // owner might get destroyed for some reason
                 minion.Health.Deplete();
@@ -418,7 +428,7 @@ namespace GameJam
 
             // draw the movement area (around 'start' if game running,
             // or around current position if still editing)
-            Vector3 startHelp = Application.isPlaying ? minion.Owner.MinionDestination : minion.transform.position;
+            Vector3 startHelp = Application.isPlaying ? minion.GetOwnerDestination() : minion.transform.position;
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(startHelp, returnDistance);
 

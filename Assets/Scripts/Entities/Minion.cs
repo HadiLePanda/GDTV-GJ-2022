@@ -8,7 +8,7 @@ namespace GameJam
         [Tooltip("In Seconds. Time before decaying.")]
         [SerializeField] private float lifetime = 10f;
 
-        private float remainingLifetime;
+        /*private float remainingLifetime;
         public float RemainingLifetime
         {
             get => remainingLifetime;
@@ -16,38 +16,50 @@ namespace GameJam
             {
                 remainingLifetime = Mathf.Clamp(value, 0f, GetLifetime());
             }
-        }
+        }*/
 
         private Entity owner;
         public Entity Owner => owner;
 
-        public float GetLifetime() => lifetime;
-        public void AddLifetime(float time) => RemainingLifetime += time;
+        public Vector3 OwnerDestinationOffset { get; private set; } = Vector3.zero;
 
-        private void Awake()
+        public Vector3 GetOwnerDestination() => owner.MinionDestination + OwnerDestinationOffset;
+
+        protected override void Start()
         {
-            RemainingLifetime = GetLifetime();
+            base.Start();
+
+            // randomize follow position offset
+            OwnerDestinationOffset = new Vector3(Random.Range(0f, 5f), Random.Range(0f, 3f), Random.Range(0f, 3f));
         }
 
-        protected override void Update()
-        {
-            base.Update();
+        //public float GetLifetime() => lifetime;
+        //public void AddLifetime(float time) => RemainingLifetime += time;
 
-            ProcessLifetime();
-        }
+        //private void Awake()
+        //{
+        //    RemainingLifetime = GetLifetime();
+        //}
 
-        private void ProcessLifetime()
-        {
-            RemainingLifetime -= Time.deltaTime;
+        //protected override void Update()
+        //{
+        //    base.Update();
+        //
+        //    //ProcessLifetime();
+        //}
 
-            // lifetime ran out, minion dies
-            if (RemainingLifetime <= 0)
-            {
-                Health.Deplete();
-            }
-        }
+        //private void ProcessLifetime()
+        //{
+        //    RemainingLifetime -= Time.deltaTime;
+        //
+        //    // lifetime ran out, minion dies
+        //    if (RemainingLifetime <= 0)
+        //    {
+        //        Health.Deplete();
+        //    }
+        //}
 
-        public void Setup(Entity owner, int level, float lifetime, Entity corpseEntity = null)
+        public void Setup(Entity owner, int level, Entity corpseEntity = null)
         {
             this.owner = owner;
 
@@ -66,7 +78,7 @@ namespace GameJam
 
             // setup runtime stats
             Level.SetLevel(level);
-            RemainingLifetime = lifetime;
+            //RemainingLifetime = lifetime;
         }
 
         // combat =====================================
@@ -119,7 +131,7 @@ namespace GameJam
         {
             base.OnDeath();
 
-            RemainingLifetime = 0;
+            //RemainingLifetime = 0;
             Mana.Deplete();
         }
     }
