@@ -101,7 +101,18 @@ namespace GameJam
                                 ? minion.Owner
                                 : null;
 
-                Entity correctedDrainReceiver = owner ? owner : caster;
+                Entity correctedDrainReceiver;
+                // if checked as drain to owner, don't do it as a non-minion entity
+                if (!drainToOwner)
+                {
+                    correctedDrainReceiver = caster;
+                }
+                else
+                {
+                    correctedDrainReceiver = owner;
+                }
+
+                if (correctedDrainReceiver == null) { return; }
 
                 correctedDrainReceiver.Combat.Drain(correctedTarget,
                                                     manaToDrain,

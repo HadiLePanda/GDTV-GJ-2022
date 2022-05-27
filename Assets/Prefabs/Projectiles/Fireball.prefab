@@ -353,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 1648986359294345790, guid: 7d87a68b35e60524081604965a443bf1, type: 3}
       propertyPath: explosionSound
       value: 
-      objectReference: {fileID: 8300000, guid: 04be86c43545cf64ca921a797169bc15, type: 3}
+      objectReference: {fileID: 8300000, guid: d1ba4e424c8a1bc448fc68392f71f232, type: 3}
     - target: {fileID: 2787281642528709024, guid: 7d87a68b35e60524081604965a443bf1, type: 3}
       propertyPath: m_Size.x
       value: 0.7

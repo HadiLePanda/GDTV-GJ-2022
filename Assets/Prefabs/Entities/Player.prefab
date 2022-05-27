@@ -347,9 +347,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feetAudio: {fileID: 1610474304337790974}
-  footstepSounds: []
-  jumpSound: {fileID: 0}
-  landSound: {fileID: 0}
+  footstepSounds:
+  - {fileID: 8300000, guid: bd5653e52c4636e4aa3b0ced8f49a18d, type: 3}
+  - {fileID: 8300000, guid: 6c8508d96905ea749ae50b49916fde55, type: 3}
+  jumpSound: {fileID: 8300000, guid: fe175f117cf3fb2428d279bc830a1830, type: 3}
+  landSound: {fileID: 8300000, guid: a967f92e38352bb4291945423de63499, type: 3}
   walkStepLength: 1
   runStepLength: 0.7
   runStepInterval: 3
@@ -417,13 +419,14 @@ MonoBehaviour:
   lastCombatTime: 0
   pendingSkill: 0
   Faction: {fileID: 11400000, guid: e6ac4a21edabe86469dff9fc6ef7ca77, type: 2}
-  corpseDecayTime: 5
+  deathDecayTime: 10
   hurtSounds: []
   deathSounds: []
   decaySounds: []
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
   stunnedOverlay: {fileID: 8567940000773135922}
+  lastAmbientSoundTime: 0
   Experience: {fileID: 6194860031019577770}
   minionStorage: {fileID: 1423384753889826159}
   visRange: 300
@@ -1208,30 +1211,6 @@ PrefabInstance:
     - target: {fileID: 5578961620389074941, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
       propertyPath: m_Name
       value: Aura_Necromancy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
-      propertyPath: lengthInSec
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.23529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
-      propertyPath: InitialModule.startColor.minColor.a
-      value: 0.18431373
-      objectReference: {fileID: 0}
-    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
