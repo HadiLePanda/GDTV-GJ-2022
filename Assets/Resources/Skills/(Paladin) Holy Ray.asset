@@ -9,48 +9,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd5413a7ef67b114ab6c4c3ba84be308, type: 3}
-  m_Name: (Knight) Sword Attack
+  m_Script: {fileID: 11500000, guid: 2f1aa47c1bd1440409de4bdceaad15af, type: 3}
+  m_Name: (Paladin) Holy Ray
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   learnDefault: 1
   showCastBar: 0
-  cancelCastIfTargetDied: 0
+  cancelCastIfTargetDied: 1
   canCancelCast: 0
-  allowMovement: 1
+  allowMovement: 0
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0
   maxLevel: 1
   manaCosts:
-    baseValue: 0
+    baseValue: 10
     bonusPerLevel: 0
   castTime:
-    baseValue: 0.5
+    baseValue: 0.8
     bonusPerLevel: 0
   cooldown:
-    baseValue: 0.6
+    baseValue: 3
     bonusPerLevel: 0
   castRange:
-    baseValue: 1
+    baseValue: 10
     bonusPerLevel: 0
-  castStartSound: {fileID: 8300000, guid: 73cb56ba003104744bd09f1bedbf0bd5, type: 3}
-  castEndSound: {fileID: 0}
+  castStartSound: {fileID: 8300000, guid: dcf1b614c0324e74484e087fba6672a6, type: 3}
+  castEndSound: {fileID: 8300000, guid: f48afb54d2c6b2740ab3ef0d507cb5ab, type: 3}
   loopCastStartSound: 0
+  projectile: {fileID: 6836276262611344017, guid: 16f2e985513435542b1c251255de8b2e, type: 3}
   damage:
-    baseValue: 5
-    bonusPerLevel: 0
-  stunChance:
-    baseValue: 0
-    bonusPerLevel: 0
-  stunTime:
-    baseValue: 0
+    baseValue: 30
     bonusPerLevel: 0
   manaDrain:
     baseValue: 0
     bonusPerLevel: 0
   healthDrain:
+    baseValue: 0
+    bonusPerLevel: 0
+  speed:
+    baseValue: 4
+    bonusPerLevel: 0
+  lifetime:
+    baseValue: 5
+    bonusPerLevel: 0
+  stunChance:
+    baseValue: 0.05
+    bonusPerLevel: 0
+  stunTime:
     baseValue: 2
     bonusPerLevel: 0
-  drainToOwner: 1
-  effect: {fileID: 0}

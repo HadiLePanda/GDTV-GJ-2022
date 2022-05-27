@@ -116,7 +116,7 @@ namespace GameJam
                     else
                     {
                         // invalid target. clear the attempted current skill.
-                        minion.SetTarget(null);
+                        //minion.SetTarget(null);
                         minion.Skills.currentSkill = -1;
                         return "IDLE";
                     }
@@ -127,7 +127,6 @@ namespace GameJam
                     // we can't cast this skill at the moment (cooldown/low mana/...)
                     // -> clear the attempted current skill, but keep the target to
                     // continue later
-                    minion.SetTarget(null);
                     minion.Skills.currentSkill = -1;
                     return "IDLE";
                 }
