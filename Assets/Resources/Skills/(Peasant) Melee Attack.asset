@@ -34,8 +34,8 @@ MonoBehaviour:
   castRange:
     baseValue: 1
     bonusPerLevel: 0
-  castStartSound: {fileID: 8300000, guid: 2920b41080c06dc47bba362c36abf2f9, type: 3}
-  castEndSound: {fileID: 0}
+  castStartSound: {fileID: 0}
+  castEndSound: {fileID: 8300000, guid: 0a8027dbceb4d47c4bdad316eb99a9d8, type: 3}
   loopCastStartSound: 0
   damage:
     baseValue: 5
@@ -50,7 +50,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   healthDrain:
-    baseValue: 2
+    baseValue: 1
     bonusPerLevel: 0
   drainToOwner: 1
   effect: {fileID: 0}

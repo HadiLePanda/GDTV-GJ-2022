@@ -155,6 +155,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4851245712951273114}
     - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: FieldOfView
+      value: 
+      objectReference: {fileID: 7793630356095195038}
+    - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: canBeStunned
       value: 0
       objectReference: {fileID: 0}
@@ -305,11 +309,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 4851245712951273114}
+  SkillAudio: {fileID: 2208758689019014513}
   skillTemplates:
   - {fileID: 11400000, guid: 8dc0a320c2b54af4f9062d0623d82f6e, type: 2}
   - {fileID: 11400000, guid: 17b063178c3ddf0438c86a7b5cc1d8b4, type: 2}
   - {fileID: 11400000, guid: f609d5be060e8594b9cd4d4a232bbe7d, type: 2}
-  - {fileID: 11400000, guid: b3f200b6c9c85e04caf266bcf3bee4db, type: 2}
+  - {fileID: 11400000, guid: 623d97c664f6c4140afc06416cf2c685, type: 2}
+  - {fileID: 11400000, guid: 6314f82336be36b4c98d2a7c04b5070f, type: 2}
   _effectMount: {fileID: 1712233545849679248}
   _auraMount: {fileID: 2226777858572855602}
   currentSkill: -1
@@ -429,8 +435,6 @@ MonoBehaviour:
   Animator: {fileID: 4931120101418041374}
   Collider: {fileID: 7477546929503301835}
   VoiceAudio: {fileID: 8148822390600958030}
-  SkillAudio: {fileID: 2208758689019014513}
-  FieldOfView: {fileID: 7792229553000629488}
   Level: {fileID: 4944875209654743657}
   Health: {fileID: 6929946361498463984}
   Mana: {fileID: 3604616003345946307}
@@ -453,7 +457,6 @@ MonoBehaviour:
   decaySounds: []
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
-  stunnedOverlay: {fileID: 8567940000773135922}
   Experience: {fileID: 6194860031019577770}
   Look: {fileID: 1951594698990085787}
   Skillbar: {fileID: 2549098724187790505}
@@ -515,19 +518,6 @@ MonoBehaviour:
   _max:
     multiplier: 100
     baseValue: 1.1
---- !u!114 &7792229553000629488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4178328156971361556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82c24cf6eb67e74da8b5d5f1694ab71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: 140
 --- !u!4 &4178328156971361559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3306745209460241746, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -570,14 +560,20 @@ CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 8348012609731764366, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 1450032007698468933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7793630356095195038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8662398909207873499, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 1450032007698468933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178328156971361556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82c24cf6eb67e74da8b5d5f1694ab71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &8148822390600958030 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
-  m_PrefabInstance: {fileID: 1450032007698468933}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8567940000773135922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7131727518534536823, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 1450032007698468933}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2890792218378387209

@@ -18,12 +18,14 @@ namespace GameJam
     }
 
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(FieldOfView))]
     public class Combat : MonoBehaviour
     {
         public static float popupCritFontSizeIncrease = 0.5f;
 
         [Header("Components")]
         [SerializeField] protected Entity entity;
+        public FieldOfView FieldOfView;
 
         [Header("Stats")]
         public LinearInt baseDamage = new LinearInt { baseValue = 1 };
@@ -41,6 +43,9 @@ namespace GameJam
         [SerializeField] protected GameObject criticalDamageEffect;
         [SerializeField] protected GameObject drainedEffect;
         [SerializeField] protected AudioClip drainedSound;
+
+        [Header("Overlays")]
+        [SerializeField] protected GameObject stunnedOverlay;
 
         // wrappers for easier access
         protected Level Level => entity.Level;
@@ -136,6 +141,14 @@ namespace GameJam
         private void Start()
         {
             numberPopupManager = FindObjectOfType<NumberPopupManager>();
+        }
+
+        private void Update()
+        {
+            if (stunnedOverlay != null)
+            {
+                stunnedOverlay.SetActive(entity.IsStunned);
+            }
         }
 
         // combat ======================================================================================================
@@ -427,8 +440,6 @@ namespace GameJam
         // popups ======================================================================
         public void SpawnDamagePopup(int amount, DamageType damageType)
         {
-            if (amount <= 0) { return; }
-
             Vector3 position = GetDamagePopupSpawnPosition();
             NumberPopup popup = numberPopupManager.SpawnDamagePopup(position);
             string damagedAmountText = $"-{amount}";
@@ -502,8 +513,8 @@ namespace GameJam
             // showing it above their head looks best, and we don't have to use
             // a custom shader to draw world space UI in front of the entity
             Bounds bounds = entity.Collider.bounds;
-            float randomOffsetX = Random.Range(0f, 0.5f);
-            float randomOffsetY = Random.Range(0f, 0.3f);
+            float randomOffsetX = Random.Range(0f, 1f);
+            float randomOffsetY = Random.Range(0f, 1f);
             Vector3 position = new Vector3(
                 bounds.center.x + randomOffsetX,
                 bounds.max.y + randomOffsetY,
