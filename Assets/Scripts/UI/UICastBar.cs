@@ -22,10 +22,12 @@ namespace GameJam
                 panel.SetActive(true);
 
                 Skill skill = player.Skills.skills[player.Skills.currentSkill];
-                float ratio = (skill.castTime - skill.CastTimeRemaining()) / skill.castTime;
+                float ratio = skill.castTime > 0
+                              ? (skill.castTime - skill.CastTimeRemaining()) / skill.castTime
+                              : 0;
 
                 castFill.fillAmount = ratio;
-                skillNameText.text = skill.name;
+                skillNameText.text = skill.name.Replace("(Player) ", "");
                 progressText.text = skill.CastTimeRemaining().ToString("F1") + "s";
             }
             else panel.SetActive(false);
