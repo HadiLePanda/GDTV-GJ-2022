@@ -307,7 +307,8 @@ MonoBehaviour:
   entity: {fileID: 4851245712951273114}
   skillTemplates:
   - {fileID: 11400000, guid: 8dc0a320c2b54af4f9062d0623d82f6e, type: 2}
-  - {fileID: 11400000, guid: eb3b5b6a1bd3d3a4b8e5cbba4569c6fd, type: 2}
+  - {fileID: 11400000, guid: 17b063178c3ddf0438c86a7b5cc1d8b4, type: 2}
+  - {fileID: 11400000, guid: f609d5be060e8594b9cd4d4a232bbe7d, type: 2}
   - {fileID: 11400000, guid: b3f200b6c9c85e04caf266bcf3bee4db, type: 2}
   _effectMount: {fileID: 1712233545849679248}
   _auraMount: {fileID: 2226777858572855602}
@@ -328,6 +329,7 @@ MonoBehaviour:
   movement: {fileID: 4103099476298569182}
   player: {fileID: 4851245712951273114}
   lookTarget: {fileID: 0}
+  lookTargetOffsetY: 1
   viewBlockingLayers:
     serializedVersion: 2
     m_Bits: 2769
@@ -358,6 +360,7 @@ MonoBehaviour:
     hotKey: 52
   - reference: 
     hotKey: 53
+  selectedSlotIndex: 0
 --- !u!114 &4103099476298569182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +400,7 @@ MonoBehaviour:
   swimSpeed: 4
   swimAcceleration: 15
   swimDeceleration: 20
-  swimSurfaceOffset: 0.25
+  swimSurfaceOffset: 0.1
   underwaterThreshold: 0.9
   canStandInWaterCheckLayers:
     serializedVersion: 2
@@ -441,6 +444,7 @@ MonoBehaviour:
   state: 0
   stunTimeEnd: 0
   lastCombatTime: 0
+  lastAmbientSoundTime: 0
   pendingSkill: 0
   Faction: {fileID: 11400000, guid: e6ac4a21edabe86469dff9fc6ef7ca77, type: 2}
   deathDecayTime: 10
@@ -450,7 +454,6 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
   stunnedOverlay: {fileID: 8567940000773135922}
-  lastAmbientSoundTime: 0
   Experience: {fileID: 6194860031019577770}
   Look: {fileID: 1951594698990085787}
   Skillbar: {fileID: 2549098724187790505}
