@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAmbientSoundDelay: 1
   moveProbability: 0.1
-  moveWanderDistance: 5
+  moveWanderDistance: 0.5
   followDistance: 30
-  returnDistance: 10
+  returnDistance: 3
   teleportDistance: 30
   attackToMoveRangeRatio: 0.8

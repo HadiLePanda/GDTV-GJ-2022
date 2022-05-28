@@ -23,7 +23,7 @@ MonoBehaviour:
     bonusPerLevel: 0
   maxLevel: 1
   manaCosts:
-    baseValue: 0
+    baseValue: 50
     bonusPerLevel: 0
   castTime:
     baseValue: 1

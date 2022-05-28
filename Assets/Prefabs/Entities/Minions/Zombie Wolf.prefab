@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseDamage.baseValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseDamage.bonusPerLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3546138968846472665, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -63,6 +71,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0da03864598517548994acada6c700af, type: 2}
+    - target: {fileID: 7558747404374744638, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseHealth.baseValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: hurtSounds.Array.size
       value: 1

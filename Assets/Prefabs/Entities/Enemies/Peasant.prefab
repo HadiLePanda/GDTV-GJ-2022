@@ -235,6 +235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peasant
       objectReference: {fileID: 0}
+    - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: baseDamage.baseValue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6659227801298000577, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -247,6 +251,10 @@ PrefabInstance:
       propertyPath: minionPrefab
       value: 
       objectReference: {fileID: 4481291529834983719, guid: 13b2d62c26ff9f34cbc69a62b05b79b7, type: 3}
+    - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: baseHealth.baseValue
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
 --- !u!4 &5910124951067794226 stripped

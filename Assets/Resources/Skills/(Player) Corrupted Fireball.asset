@@ -17,13 +17,13 @@ MonoBehaviour:
   showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
-  allowMovement: 1
+  allowMovement: 0
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0
   maxLevel: 1
   manaCosts:
-    baseValue: 2
+    baseValue: 30
     bonusPerLevel: 0
   castTime:
     baseValue: 0.2
@@ -39,10 +39,10 @@ MonoBehaviour:
   loopCastStartSound: 0
   projectile: {fileID: 6171746926983923201, guid: 6205779a032bd1e46901bb7b78d19ef8, type: 3}
   damage:
-    baseValue: 10
+    baseValue: 2
     bonusPerLevel: 0
   manaDrain:
-    baseValue: 1
+    baseValue: 40
     bonusPerLevel: 0
   healthDrain:
     baseValue: 0

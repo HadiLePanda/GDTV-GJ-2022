@@ -38,7 +38,7 @@ MonoBehaviour:
   castEndSound: {fileID: 8300000, guid: 60c301e4fee26a541baf8ca2669d3d99, type: 3}
   loopCastStartSound: 1
   healsHealth:
-    baseValue: 10
+    baseValue: 5
     bonusPerLevel: 0
   healsMana:
     baseValue: 10

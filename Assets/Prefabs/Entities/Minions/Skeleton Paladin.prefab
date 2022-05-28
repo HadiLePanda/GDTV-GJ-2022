@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseDamage.baseValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseDamage.bonusPerLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3546138968846472665, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -59,6 +67,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4236804095548483085, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseMana.baseValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -71,18 +83,26 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7558747404374744638, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseHealth.baseValue
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7840778836366045036, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: entity
       value: 
       objectReference: {fileID: 7355504461531319797}
     - target: {fileID: 8417513864922494315, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: skillTemplates.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8417513864922494315, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: skillTemplates.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 41a4e3adbda6afd4491333508cc04618, type: 2}
+    - target: {fileID: 8417513864922494315, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: skillTemplates.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 864c2963f9885c7489ec219c1126b1ef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
 --- !u!4 &4166795346821268766 stripped

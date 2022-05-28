@@ -26,10 +26,10 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 2
+    baseValue: 0.5
     bonusPerLevel: 0
   cooldown:
-    baseValue: 3
+    baseValue: 1
     bonusPerLevel: 0
   castRange:
     baseValue: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   loopCastStartSound: 0
   effect: {fileID: 520178882510280183, guid: 0b0b5eff047a6e247bc6967983ad6ab0, type: 3}
   manaDrain:
-    baseValue: 10
+    baseValue: 20
     bonusPerLevel: 0
   healthDrain:
     baseValue: 0
