@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicGlow
       objectReference: {fileID: 0}
+    - target: {fileID: 6259595608321632982, guid: 2f7bb963801a04945a64042b7aa4fe79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8175670901271277885, guid: 2f7bb963801a04945a64042b7aa4fe79, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: minionPrefab
       value: 
       objectReference: {fileID: 7573730918590115891, guid: 061f3f9309da0c94091c4ba626ba8348, type: 3}
+    - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: baseHealth.baseValue
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
 --- !u!4 &4107975324659252171 stripped
