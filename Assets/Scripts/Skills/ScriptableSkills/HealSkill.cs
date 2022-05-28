@@ -14,7 +14,7 @@ namespace GameJam
         [Tooltip("Include ourselves in the healing")]
         public bool canHealSelf = false;
         [Tooltip("Include other entities of the same faction in the healing")]
-        public bool canHealOthers = true;
+        public bool canHealAllies = true;
         [Tooltip("Heal only the entities of the same type (i.e zombies only heal other zombies)")]
         public bool canHealOnlySameType = false;
 

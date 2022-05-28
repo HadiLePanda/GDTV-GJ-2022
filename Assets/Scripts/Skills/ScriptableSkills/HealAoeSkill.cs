@@ -52,22 +52,24 @@ namespace GameJam
                 if (candidate != null &&
                     candidate.IsAlive) // can't heal dead people
                 {
-                    // can heal ourself
+                    // caster
                     if (canHealSelf &&
                         candidate == caster)
                     {
                         candidates.Add(candidate);
                     }
 
-                    // can heal others
-                    if (canHealOthers &&
+                    // allies of the caster
+                    if (canHealAllies &&
                         caster.CanHeal(candidate))
                     {
-                        // check case where can only heal same type
+                        // only heal same type check
                         if (canHealOnlySameType &&
                             caster.GetType() != candidate.GetType())
-                        { return; }
-
+                        {
+                            continue;
+                        }
+                        
                         candidates.Add(candidate);
                     }
                 }

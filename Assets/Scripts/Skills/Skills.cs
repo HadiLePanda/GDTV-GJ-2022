@@ -14,6 +14,7 @@ namespace GameJam
     {
         [Header("References")]
         [SerializeField] protected Entity entity = null;
+        public AudioSource SkillAudio;
 
         // 'skillTemplates' are the available skills (first one is default attack)
         // 'skills' are the loaded skills with cooldowns etc.

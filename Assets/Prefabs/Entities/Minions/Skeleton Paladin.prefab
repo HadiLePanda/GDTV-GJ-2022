@@ -91,6 +91,18 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 7355504461531319797}
+    - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: hurtSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: hurtSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 207b2ef1191f84ef4b108dd42e852a63, type: 3}
+    - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: hurtSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 72059a03e7f8b4ba187d29618fe8f6cd, type: 3}
     - target: {fileID: 8417513864922494315, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: skillTemplates.Array.size
       value: 2

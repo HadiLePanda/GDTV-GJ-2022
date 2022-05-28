@@ -12,7 +12,6 @@ namespace GameJam
     [RequireComponent(typeof(Level))]
     [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(Mana))]
-    [RequireComponent(typeof(FieldOfView))]
     [DisallowMultipleComponent]
     public abstract class Entity : MonoBehaviour, IDamageable
     {
@@ -20,8 +19,6 @@ namespace GameJam
         public Animator Animator;
         public Collider Collider;
         public AudioSource VoiceAudio;
-        public AudioSource SkillAudio;
-        public FieldOfView FieldOfView;
         public Level Level;
         public Health Health;
         public Mana Mana;
@@ -67,9 +64,6 @@ namespace GameJam
         [SerializeField] protected AudioClip[] decaySounds;
         [SerializeField] protected GameObject deathEffect;
         [SerializeField] protected GameObject decayEffect;
-
-        [Header("Overlays")]
-        [SerializeField] protected GameObject stunnedOverlay;
 
         public event Action<Entity> OnAggroByEntity;
         public event Action OnDied;
@@ -131,11 +125,6 @@ namespace GameJam
                 {
                     target = null;
                 }
-            }
-
-            if (stunnedOverlay != null)
-            {
-                stunnedOverlay.SetActive(IsStunned);
             }
         }
 
@@ -249,9 +238,6 @@ namespace GameJam
             // the body starts to decay on death for a window of possibility to resurrect
             StartDecay();
 
-            //TODO reset movement and navigation
-            //Movement.Reset();
-
             OnDied?.Invoke();
         }
 
@@ -270,10 +256,10 @@ namespace GameJam
 
             PlayDecayEffects();
 
-            RemoveCorpse();
+            RemoveEntity();
         }
 
-        public virtual void RemoveCorpse()
+        public virtual void RemoveEntity()
         {
             Destroy(gameObject);
         }

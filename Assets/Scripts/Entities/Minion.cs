@@ -64,7 +64,6 @@ namespace GameJam
 
             // setup runtime stats
             Level.SetLevel(level);
-            //RemainingLifetime = lifetime;
         }
 
         // combat =====================================
@@ -117,7 +116,7 @@ namespace GameJam
         {
             base.OnDeath();
 
-            //RemainingLifetime = 0;
+            Movement.Reset();
             Mana.Deplete();
         }
     }

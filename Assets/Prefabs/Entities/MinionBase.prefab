@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 7994175787738324274}
+    - target: {fileID: 4083427276748586820, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+      propertyPath: FieldOfView
+      value: 
+      objectReference: {fileID: 7269518212642416464}
     - target: {fileID: 4273092499474560606, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: m_Name
       value: Aura
@@ -400,19 +404,6 @@ MonoBehaviour:
   mob: {fileID: 7994175787738324274}
   animationDirectionDampening: 0.05
   animationTurnDampening: 0.1
---- !u!114 &7446392441832764781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3546138968846472666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82c24cf6eb67e74da8b5d5f1694ab71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: 140
 --- !u!114 &7994175787738324274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,8 +419,6 @@ MonoBehaviour:
   Animator: {fileID: 5522774697462624464}
   Collider: {fileID: 8002782842424819717}
   VoiceAudio: {fileID: 8781002236064755840}
-  SkillAudio: {fileID: 1615978196119903679}
-  FieldOfView: {fileID: 7446392441832764781}
   Level: {fileID: 5500500455334265511}
   Health: {fileID: 7558747404374744638}
   Mana: {fileID: 4236804095548483085}
@@ -453,7 +442,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2a97e9e2c450ff24c961f12a75ca18a4, type: 3}
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
-  stunnedOverlay: {fileID: 9092061493296934652}
   ambientSounds: []
   ambientSoundProbability: 0.01
   startPosition: {x: 0, y: 0, z: 0}
@@ -470,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 7994175787738324274}
+  SkillAudio: {fileID: 1615978196119903679}
   skillTemplates: []
   _effectMount: {fileID: 2236352354555878750}
   _auraMount: {fileID: 1597959155161324028}
@@ -517,6 +506,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5955756258452904316, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 2077709349288517771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7269518212642416464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8662398909207873499, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
+  m_PrefabInstance: {fileID: 2077709349288517771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546138968846472666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82c24cf6eb67e74da8b5d5f1694ab71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7558747404374744638 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8373195640828608181, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
@@ -536,11 +536,6 @@ CapsuleCollider:
 --- !u!82 &8781002236064755840 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7280599481963597835, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
-  m_PrefabInstance: {fileID: 2077709349288517771}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &9092061493296934652 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7131727518534536823, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
   m_PrefabInstance: {fileID: 2077709349288517771}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8405214328509713824

@@ -13,8 +13,9 @@ namespace GameJam
         public bool remainAfterDeath;
         public BuffSkillEffect effect;
         public bool canBuffSelf = true;
-        public bool canBuffOthers = true; // so that players can buff other players
+        public bool canBuffAllies = true; // so that players can buff other entities
         public bool canBuffEnemies = false; // so that players can buff monsters
+        public bool canBuffOnlySameType = false;
 
         // helper function to spawn the skill effect on someone
         // (used by all the buff implementations and to load them after saving)

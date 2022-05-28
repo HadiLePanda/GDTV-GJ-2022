@@ -34,7 +34,7 @@ namespace GameJam
 
             if (entityInstance != null)
             {
-                entityInstance.RemoveCorpse();
+                entityInstance.RemoveEntity();
             }
         }
 

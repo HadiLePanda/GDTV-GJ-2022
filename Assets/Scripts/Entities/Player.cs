@@ -66,9 +66,9 @@ namespace GameJam
             {
                 long xpReward = Experience.BalanceExperienceReward(enemy.ExperienceReward, Level.Current, enemy.Level.Current);
 
-                 Experience.Current += xpReward;
+                Experience.Current += xpReward;
 
-                // spawn 
+                Combat.SpawnExperiencePopup((int)xpReward);
             }
         }
 
@@ -100,12 +100,13 @@ namespace GameJam
         {
             base.OnDeath();
 
+            Movement.Reset();
             Mana.Deplete();
 
             KillAllSummonedMinions();
         }
 
-        public override void RemoveCorpse()
+        public override void RemoveEntity()
         {
             // hide player model
             modelRoot.gameObject.SetActive(false);

@@ -48,4 +48,4 @@ MonoBehaviour:
   isMainMenu: 0
   levelMusic: {fileID: 0}
   levelAmbient: {fileID: 0}
-  gameOverSound: {fileID: 0}
+  gameOverSound: {fileID: 8300000, guid: b4ca459c38f1a44b4bd8b479beee0bb0, type: 3}
