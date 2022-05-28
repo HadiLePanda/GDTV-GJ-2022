@@ -62,7 +62,13 @@ namespace GameJam
             // left click to use the selected skill
             if (Input.GetMouseButtonDown(0))
             {
-                ((PlayerSkills)player.Skills).TryUse(selectedSlotIndex);
+                SkillbarEntry entry = slots[selectedSlotIndex];
+                int skillIndex = player.Skills.GetSkillIndexByName(entry.reference);
+                
+                if (skillIndex != -1)
+                {
+                    ((PlayerSkills)player.Skills).TryUse(skillIndex);
+                }
             }
 
             //TODO right click to cast the resurrect skill
@@ -78,31 +84,9 @@ namespace GameJam
             {
                 SkillbarEntry entry = slots[i];
 
-                // skill inside hotbar?
-                int skillIndex = player.Skills.GetSkillIndexByName(entry.reference);
-                if (skillIndex != -1)
+                if (Input.GetKeyDown(entry.hotKey))
                 {
-                    Skill skill = player.Skills.skills[skillIndex];
-                    bool canCast = player.Skills.CastCheckSelf(skill);
-
-                    // if movement does NOT support navigation then we need to
-                    // check distance too. otherwise distance doesn't matter
-                    // because we can navigate anywhere.
-                    if (!player.Movement.CanNavigate())
-                    {
-                        canCast &= player.Skills.CastCheckDistance(skill, out Vector3 _);
-                        canCast &= player.Skills.CastCheckFOV(skill);
-                    }
-                    // hotkey pressed and not typing in any input right now?
-                    if (Input.GetKeyDown(entry.hotKey) &&
-                        //!Utils.AnyUIInputActive() &&
-                        canCast) // checks mana, cooldowns, etc.) {
-                    {
-                        // try use the skill or walk closer if needed
-                        //((PlayerSkills)player.Skills).TryUse(skillIndex);
-                        // select the slot index
-                        selectedSlotIndex = skillIndex;
-                    }
+                    selectedSlotIndex = i;
                 }
             }
         }
@@ -110,7 +94,6 @@ namespace GameJam
         // skillbar ////////////////////////////////////////////////////////////////
         private void Load()
         {
-            Debug.Log("loading skillbar for " + name);
             List<Skill> learned = player.Skills.skills.Where(skill => skill.level > 0).ToList();
 
             List<Skill> learnedCastableSkills = learned

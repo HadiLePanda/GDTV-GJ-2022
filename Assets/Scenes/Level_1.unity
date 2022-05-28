@@ -4872,7 +4872,7 @@ PrefabInstance:
     - target: {fileID: 782405630027591102, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
       propertyPath: skillTemplates.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: e1b6332c797f2434499370af45cd5685, type: 2}
+      objectReference: {fileID: 11400000, guid: 623d97c664f6c4140afc06416cf2c685, type: 2}
     - target: {fileID: 815600680301621730, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
       propertyPath: m_Layer
       value: 8
