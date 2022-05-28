@@ -1,13 +1,15 @@
-// Group heal that heals all entities of same type in cast range
+﻿// Area heal that heals all entities of same type in cast range
 // => player heals players in cast range
 // => monster heals monsters in cast range
+//
+// Based on BuffSkill so it can be added to Buffs list.
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameJam
 {
-    [CreateAssetMenu(menuName = "Game/Skills/Heal AoE", order = 1)]
-    public class HealAoeSkill : HealSkill
+    [CreateAssetMenu(menuName = "Game/Skills/Buff AoE", order = 1)]
+    public class BuffAoeSkill : BuffSkill
     {
         // OverlapSphereNonAlloc array to avoid allocations.
         // -> static so we don't create one per skill
@@ -50,26 +52,33 @@ namespace GameJam
                 Collider co = hitsBuffer[i];
                 Entity candidate = co.GetComponentInParent<Entity>();
                 if (candidate != null &&
-                    candidate.IsAlive) // can't heal dead people
+                    candidate.IsAlive) // can't buff dead people
                 {
-                    // caster
-                    if (canHealSelf &&
+                    // ourself
+                    if (canBuffSelf &&
                         candidate == caster)
                     {
                         candidates.Add(candidate);
                     }
 
                     // allies of the caster
-                    if (canHealAllies &&
-                        caster.CanHeal(candidate))
+                    if (canBuffAllies &&
+                        caster.CanHeal(candidate)) // based on if we can heal them
                     {
                         // only heal same type check
-                        if (canHealOnlySameType &&
+                        if (canBuffOnlySameType &&
                             caster.GetType() != candidate.GetType())
                         {
                             continue;
                         }
-                        
+
+                        candidates.Add(candidate);
+                    }
+
+                    // enemies
+                    if (canBuffEnemies &&
+                        caster.CanAttack(candidate))
+                    {
                         candidates.Add(candidate);
                     }
                 }
@@ -78,10 +87,10 @@ namespace GameJam
             // apply to all candidates
             foreach (Entity candidate in candidates)
             {
-                caster.Combat.Heal(candidate, healsHealth.Get(skillLevel));
-                caster.Combat.HealMana(candidate, healsMana.Get(skillLevel));
+                // add buff or replace if already in there
+                candidate.Skills.AddOrRefreshBuff(new Buff(this, skillLevel));
 
-                // show effect on candidate
+                // show effect on target
                 SpawnEffect(caster, candidate);
             }
         }

@@ -27,7 +27,6 @@ namespace GameJam
             foreach (ScriptableSkill skillData in skillTemplates)
             {
                 skills.Add(new Skill(skillData));
-                Debug.Log($"Added {skills.Count} skills");
             }
 
             // spawn effects for any buffs that might still be active after loading

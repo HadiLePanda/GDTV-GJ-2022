@@ -73,7 +73,6 @@ namespace GameJam
                         slot.cooldownOverlay.SetActive(cooldown > 0);
                         slot.cooldownText.text = cooldown.ToString("F0");
                         slot.cooldownCircle.fillAmount = skill.cooldown > 0 ? cooldown / skill.cooldown : 0;
-                        slot.selectedOverlay.SetActive(i == selectedSlotIndex);
                     }
                     else
                     {
@@ -89,8 +88,9 @@ namespace GameJam
                         slot.image.sprite = null;
                         slot.cooldownOverlay.SetActive(false);
                         slot.cooldownCircle.fillAmount = 0;
-                        slot.selectedOverlay.SetActive(false);
                     }
+
+                    slot.selectedOverlay.SetActive(i == selectedSlotIndex);
                 }
             }
             else panel.SetActive(false);

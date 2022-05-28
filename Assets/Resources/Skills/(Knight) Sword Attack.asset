@@ -17,7 +17,7 @@ MonoBehaviour:
   showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
-  allowMovement: 1
+  allowMovement: 0
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   healthDrain:
-    baseValue: 2
+    baseValue: 0
     bonusPerLevel: 0
-  drainToOwner: 1
+  drainToOwner: 0
   effect: {fileID: 0}

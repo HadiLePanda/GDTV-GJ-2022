@@ -1793,7 +1793,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &738356488
 PrefabInstance:
@@ -2862,7 +2862,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1521579981 stripped
 Transform:
@@ -4919,12 +4919,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782405630027591102, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
       propertyPath: skillTemplates.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 782405630027591102, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
+      propertyPath: skillTemplates.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 623d97c664f6c4140afc06416cf2c685, type: 2}
     - target: {fileID: 782405630027591102, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
       propertyPath: skillTemplates.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 623d97c664f6c4140afc06416cf2c685, type: 2}
+      objectReference: {fileID: 11400000, guid: 6314f82336be36b4c98d2a7c04b5070f, type: 2}
+    - target: {fileID: 782405630027591102, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
+      propertyPath: skillTemplates.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: b3f200b6c9c85e04caf266bcf3bee4db, type: 2}
     - target: {fileID: 815600680301621730, guid: 6c13b9883215c6e42ad2d1ed869da9a9, type: 3}
       propertyPath: m_Layer
       value: 8
