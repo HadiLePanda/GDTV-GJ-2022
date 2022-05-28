@@ -307,7 +307,8 @@ MonoBehaviour:
   entity: {fileID: 4851245712951273114}
   skillTemplates:
   - {fileID: 11400000, guid: 8dc0a320c2b54af4f9062d0623d82f6e, type: 2}
-  - {fileID: 11400000, guid: eb3b5b6a1bd3d3a4b8e5cbba4569c6fd, type: 2}
+  - {fileID: 11400000, guid: 17b063178c3ddf0438c86a7b5cc1d8b4, type: 2}
+  - {fileID: 11400000, guid: f609d5be060e8594b9cd4d4a232bbe7d, type: 2}
   - {fileID: 11400000, guid: b3f200b6c9c85e04caf266bcf3bee4db, type: 2}
   _effectMount: {fileID: 1712233545849679248}
   _auraMount: {fileID: 2226777858572855602}
@@ -328,12 +329,38 @@ MonoBehaviour:
   movement: {fileID: 4103099476298569182}
   player: {fileID: 4851245712951273114}
   lookTarget: {fileID: 0}
+  lookTargetOffsetY: 1
   viewBlockingLayers:
     serializedVersion: 2
     m_Bits: 2769
   raycastLayers:
     serializedVersion: 2
     m_Bits: 4294967035
+--- !u!114 &2549098724187790505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178328156971361556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f13441049ea7b459053442c3d1bccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4851245712951273114}
+  slots:
+  - reference: 
+    hotKey: 49
+  - reference: 
+    hotKey: 50
+  - reference: 
+    hotKey: 51
+  - reference: 
+    hotKey: 52
+  - reference: 
+    hotKey: 53
+  selectedSlotIndex: 0
 --- !u!114 &4103099476298569182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +377,7 @@ MonoBehaviour:
   footstepSounds:
   - {fileID: 8300000, guid: bd5653e52c4636e4aa3b0ced8f49a18d, type: 3}
   - {fileID: 8300000, guid: 6c8508d96905ea749ae50b49916fde55, type: 3}
-  jumpSound: {fileID: 8300000, guid: fe175f117cf3fb2428d279bc830a1830, type: 3}
+  jumpSound: {fileID: 8300000, guid: 1a9abdcacc68aa447b151d0b1f93754b, type: 3}
   landSound: {fileID: 8300000, guid: a967f92e38352bb4291945423de63499, type: 3}
   walkStepLength: 1
   runStepLength: 0.7
@@ -373,7 +400,7 @@ MonoBehaviour:
   swimSpeed: 4
   swimAcceleration: 15
   swimDeceleration: 20
-  swimSurfaceOffset: 0.25
+  swimSurfaceOffset: 0.1
   underwaterThreshold: 0.9
   canStandInWaterCheckLayers:
     serializedVersion: 2
@@ -417,6 +444,7 @@ MonoBehaviour:
   state: 0
   stunTimeEnd: 0
   lastCombatTime: 0
+  lastAmbientSoundTime: 0
   pendingSkill: 0
   Faction: {fileID: 11400000, guid: e6ac4a21edabe86469dff9fc6ef7ca77, type: 2}
   deathDecayTime: 10
@@ -426,8 +454,9 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
   stunnedOverlay: {fileID: 8567940000773135922}
-  lastAmbientSoundTime: 0
   Experience: {fileID: 6194860031019577770}
+  Look: {fileID: 1951594698990085787}
+  Skillbar: {fileID: 2549098724187790505}
   minionStorage: {fileID: 1423384753889826159}
   visRange: 300
   attackToMoveRangeRatio: 0.8

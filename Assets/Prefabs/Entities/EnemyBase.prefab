@@ -293,6 +293,7 @@ MonoBehaviour:
   state: 0
   stunTimeEnd: 0
   lastCombatTime: 0
+  lastAmbientSoundTime: 0
   pendingSkill: 0
   Faction: {fileID: 11400000, guid: 73aa55fc2e2d7814f9523ae37412bd34, type: 2}
   deathDecayTime: 10
@@ -303,7 +304,6 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
   stunnedOverlay: {fileID: 7990511592590214381}
-  lastAmbientSoundTime: 0
   ambientSounds: []
   ambientSoundProbability: 0.01
   startPosition: {x: 0, y: 0, z: 0}
@@ -322,7 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feetAudio: {fileID: 1034985846479559969}
-  footstepSounds: []
+  footstepSounds:
+  - {fileID: 8300000, guid: b993df4a93c1d304ab19d8b2eb88c9a5, type: 3}
+  - {fileID: 8300000, guid: 5c9bdbce37b06a24fa6ea793bcfd1907, type: 3}
   jumpSound: {fileID: 0}
   landSound: {fileID: 0}
   walkStepLength: 1

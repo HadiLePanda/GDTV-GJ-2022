@@ -435,6 +435,7 @@ MonoBehaviour:
   state: 0
   stunTimeEnd: 0
   lastCombatTime: 0
+  lastAmbientSoundTime: 0
   pendingSkill: 0
   Faction: {fileID: 11400000, guid: e6ac4a21edabe86469dff9fc6ef7ca77, type: 2}
   deathDecayTime: 10
@@ -445,11 +446,9 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
   stunnedOverlay: {fileID: 9092061493296934652}
-  lastAmbientSoundTime: 0
   ambientSounds: []
   ambientSoundProbability: 0.01
   startPosition: {x: 0, y: 0, z: 0}
-  lifetime: 10
 --- !u!114 &8417513864922494315
 MonoBehaviour:
   m_ObjectHideFlags: 0

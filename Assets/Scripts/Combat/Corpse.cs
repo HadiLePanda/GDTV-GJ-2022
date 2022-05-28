@@ -18,8 +18,9 @@ namespace GameJam
 
         protected Entity entityInstance;
 
-        public abstract Entity GetEntity();
+        public abstract Entity GetEntityPrefab();
         public abstract int GetEntityLevel();
+        public Entity GetEntityInstance() => entityInstance;
 
         // resurrection ========================================
         public abstract bool CanBeResurrected();
@@ -41,7 +42,7 @@ namespace GameJam
         {
             Minion minionInstance = Instantiate(minionPrefab, transform.position, transform.rotation);
 
-            minionInstance.Setup(owner, level, GetEntity());
+            minionInstance.Setup(owner, level, GetEntityPrefab());
 
             return minionInstance;
         }

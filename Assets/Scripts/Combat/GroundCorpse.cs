@@ -16,10 +16,10 @@ namespace GameJam
 
         protected int remainingCorpses;
 
-        public override Entity GetEntity() => corpseEntity;
-        public override int GetEntityLevel() => GetEntity() == null || useCustomLevel
+        public override Entity GetEntityPrefab() => corpseEntity;
+        public override int GetEntityLevel() => GetEntityPrefab() == null || useCustomLevel
                                                 ? minionLevel
-                                                : GetEntity().Level.Current;
+                                                : GetEntityPrefab().Level.Current;
 
         private void Start()
         {
@@ -29,7 +29,7 @@ namespace GameJam
 
         public override bool CanBeResurrected()
         {
-            return GetEntity() != null && minionPrefab != null;
+            return GetEntityPrefab() != null && minionPrefab != null;
         }
 
         public override void ResurrectAsMinion(Entity owner)
