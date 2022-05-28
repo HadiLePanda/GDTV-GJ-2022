@@ -21,7 +21,7 @@ namespace GameJam
                 {
                     if (hit.collider.TryGetComponent(out Corpse corpse))
                     {
-                        player.Combat.DealDamage(corpse.GetEntity(), damage, hit.point, hit.normal);
+                        player.Combat.DealDamage(corpse.GetEntityPrefab(), damage, hit.point, hit.normal);
                     }
                 }
             }
@@ -37,33 +37,31 @@ namespace GameJam
                         corpse.CanBeResurrected())
                     {
                         corpse.ResurrectAsMinion(Player.localPlayer);
-
-                        Debug.Log("Resurrecting " + hit.transform.name);
                     }
                 }
             }
 
             // skills testing
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                player.Skills.CmdUse(0);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                player.Skills.CmdUse(1);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                player.Skills.CmdUse(2);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                player.Skills.TryUse(3);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                player.Skills.TryUse(4);
-            }
+            //if (Input.GetKeyDown(KeyCode.Alpha1))
+            //{
+            //    player.Skills.CmdUse(0);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha2))
+            //{
+            //    player.Skills.CmdUse(1);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha3))
+            //{
+            //    player.Skills.CmdUse(2);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha4))
+            //{
+            //    player.Skills.TryUse(3);
+            //}
+            //if (Input.GetKeyDown(KeyCode.Alpha5))
+            //{
+            //    player.Skills.TryUse(4);
+            //}
         }
     }
 }

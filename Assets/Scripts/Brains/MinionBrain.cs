@@ -199,6 +199,16 @@ namespace GameJam
                 minion.Movement.Warp(minion.GetOwnerDestination());
                 return "IDLE";
             }
+            if (EventNeedReturnToOwner(minion))
+            {
+                //todo destination too far from owner, recalculate return position
+                //if ()
+                // return to owner only while IDLE
+                minion.SetTarget(null);
+                minion.Skills.CancelCast();
+                minion.Movement.Navigate(minion.GetOwnerDestination(), 0);
+                return "MOVING";
+            }
             if (EventTargetTooFarToFollow(minion))
             {
                 // we had a target before, but it's out of follow range now.
@@ -215,16 +225,6 @@ namespace GameJam
                 float stoppingDistance = ((MobSkills)minion.Skills).CurrentCastRange() * attackToMoveRangeRatio;
                 Vector3 destination = Utils.ClosestPoint(minion.Target, minion.transform.position);
                 minion.Movement.Navigate(destination, stoppingDistance);
-                return "MOVING";
-            }
-            if (EventNeedReturnToOwner(minion))
-            {
-                //todo destination too far from owner, recalculate return position
-                //if ()
-                // return to owner only while IDLE
-                minion.SetTarget(null);
-                minion.Skills.CancelCast();
-                minion.Movement.Navigate(minion.GetOwnerDestination(), 0);
                 return "MOVING";
             }
             if (EventAggro(minion))

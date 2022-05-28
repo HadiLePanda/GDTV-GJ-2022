@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e405bd8f4a4a24f97b4243b6c332e2, type: 3}
+  m_Name: (Priest) Holy Group Heal
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  learnDefault: 0
+  showCastBar: 0
+  cancelCastIfTargetDied: 0
+  canCancelCast: 0
+  allowMovement: 1
+  requiredLevel:
+    baseValue: 0
+    bonusPerLevel: 0
+  maxLevel: 1
+  manaCosts:
+    baseValue: 0
+    bonusPerLevel: 0
+  castTime:
+    baseValue: 3
+    bonusPerLevel: 0
+  cooldown:
+    baseValue: 7
+    bonusPerLevel: 0
+  castRange:
+    baseValue: 20
+    bonusPerLevel: 0
+  castStartSound: {fileID: 8300000, guid: 3ce012577734b39499f0e1d5dba2de2f, type: 3}
+  castEndSound: {fileID: 8300000, guid: 60c301e4fee26a541baf8ca2669d3d99, type: 3}
+  loopCastStartSound: 1
+  healsHealth:
+    baseValue: 10
+    bonusPerLevel: 0
+  healsMana:
+    baseValue: 10
+    bonusPerLevel: 0
+  effect: {fileID: 3964592373973071733, guid: 8b44d7d23d47a55449cbe66b83a9d5cf, type: 3}
+  canHealSelf: 0
+  canHealOthers: 1
+  canHealOnlySameType: 0

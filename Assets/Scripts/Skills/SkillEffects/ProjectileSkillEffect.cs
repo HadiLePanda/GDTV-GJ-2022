@@ -33,7 +33,7 @@ namespace GameJam
             if (caster is Player player)
             {
                 // for the player we get the direction of cast towards the look pointer
-                castForwardDirection = (player.Movement.look.lookTarget.transform.position - player.Skills.effectMount.position).normalized;
+                castForwardDirection = (player.Movement.look.lookTarget.transform.position.ChangeY(0) - player.Skills.effectMount.position.ChangeY(0)).normalized;
             }
             else
             {
@@ -145,7 +145,6 @@ namespace GameJam
             // collide with blocking obstacles
             if ((blockingLayers.value & (1 << col.transform.gameObject.layer)) > 0)
             {
-                Debug.Log("Hit with Layermask");
                 DestroyProjectile();
                 return;
             }

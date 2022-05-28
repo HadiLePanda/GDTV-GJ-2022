@@ -9,53 +9,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f1aa47c1bd1440409de4bdceaad15af, type: 3}
-  m_Name: Corrupted Fireball
+  m_Script: {fileID: 11500000, guid: 70c254471021feb42831624abc34747d, type: 3}
+  m_Name: (Player) Mana Drain
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a487d3b76cbca9a4d8183b4d2c18ba45, type: 3}
   learnDefault: 1
   showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
-  allowMovement: 1
+  allowMovement: 0
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0
   maxLevel: 1
   manaCosts:
-    baseValue: 2
+    baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 0.3
+    baseValue: 2
     bonusPerLevel: 0
   cooldown:
-    baseValue: 0.4
+    baseValue: 3
     bonusPerLevel: 0
   castRange:
     baseValue: 0
     bonusPerLevel: 0
-  castStartSound: {fileID: 0}
+  castStartSound: {fileID: 8300000, guid: 1e8fd0286a2440043b7fd840260bc39d, type: 3}
   castEndSound: {fileID: 0}
   loopCastStartSound: 0
-  projectile: {fileID: 6171746926983923201, guid: 6205779a032bd1e46901bb7b78d19ef8, type: 3}
-  damage:
-    baseValue: 10
-    bonusPerLevel: 0
+  effect: {fileID: 520178882510280183, guid: 0b0b5eff047a6e247bc6967983ad6ab0, type: 3}
   manaDrain:
     baseValue: 10
     bonusPerLevel: 0
   healthDrain:
     baseValue: 0
     bonusPerLevel: 0
-  speed:
-    baseValue: 1
-    bonusPerLevel: 0
-  lifetime:
-    baseValue: 5
-    bonusPerLevel: 0
   stunChance:
-    baseValue: 0.05
+    baseValue: 0.1
     bonusPerLevel: 0
   stunTime:
-    baseValue: 1
+    baseValue: 2
     bonusPerLevel: 0

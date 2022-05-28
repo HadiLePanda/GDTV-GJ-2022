@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1aa47c1bd1440409de4bdceaad15af, type: 3}
+  m_Name: (Player) Corrupted Fireball
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b1771f21a9d36ab4c9e437b0fde7c4bb, type: 3}
+  learnDefault: 1
+  showCastBar: 0
+  cancelCastIfTargetDied: 0
+  canCancelCast: 0
+  allowMovement: 1
+  requiredLevel:
+    baseValue: 0
+    bonusPerLevel: 0
+  maxLevel: 1
+  manaCosts:
+    baseValue: 2
+    bonusPerLevel: 0
+  castTime:
+    baseValue: 0.2
+    bonusPerLevel: 0
+  cooldown:
+    baseValue: 0.3
+    bonusPerLevel: 0
+  castRange:
+    baseValue: 0
+    bonusPerLevel: 0
+  castStartSound: {fileID: 0}
+  castEndSound: {fileID: 8300000, guid: 9d56e21bf226f0647a71cf9ba9316377, type: 3}
+  loopCastStartSound: 0
+  projectile: {fileID: 6171746926983923201, guid: 6205779a032bd1e46901bb7b78d19ef8, type: 3}
+  damage:
+    baseValue: 10
+    bonusPerLevel: 0
+  manaDrain:
+    baseValue: 1
+    bonusPerLevel: 0
+  healthDrain:
+    baseValue: 0
+    bonusPerLevel: 0
+  speed:
+    baseValue: 1
+    bonusPerLevel: 0
+  lifetime:
+    baseValue: 5
+    bonusPerLevel: 0
+  stunChance:
+    baseValue: 0.05
+    bonusPerLevel: 0
+  stunTime:
+    baseValue: 1
+    bonusPerLevel: 0

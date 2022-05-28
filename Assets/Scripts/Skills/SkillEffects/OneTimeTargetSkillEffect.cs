@@ -2,6 +2,7 @@
 
 namespace GameJam
 {
+    [RequireComponent(typeof(ParticleSystem))]
     public class OneTimeTargetSkillEffect : SkillEffect
     {
         public bool followTarget = true;

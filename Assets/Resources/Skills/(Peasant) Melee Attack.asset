@@ -34,7 +34,7 @@ MonoBehaviour:
   castRange:
     baseValue: 1
     bonusPerLevel: 0
-  castStartSound: {fileID: 0}
+  castStartSound: {fileID: 8300000, guid: 2920b41080c06dc47bba362c36abf2f9, type: 3}
   castEndSound: {fileID: 0}
   loopCastStartSound: 0
   damage:

@@ -34,15 +34,13 @@ namespace GameJam
         public Transform modelRoot;
 
         // pet's destination should always be right next to player, not inside him
-        // -> we use a helper property so we don't have to recalculate it each time
-        // -> we offset the position by exactly 1 x bounds to the left because dogs
-        //    are usually trained to walk on the left of the owner. looks natural.
+        // -> we use a helper property so we have a base reference point
         public Vector3 MinionDestination
         {
             get
             {
                 Bounds bounds = Collider.bounds;
-                return transform.position - transform.right * bounds.size.x;
+                return transform.position - transform.forward * bounds.size.x;
             }
         }
 
@@ -52,6 +50,7 @@ namespace GameJam
         [ReadOnlyInspector][SerializeField] protected string state = "IDLE";
         [ReadOnlyInspector] public double stunTimeEnd;
         [ReadOnlyInspector] public double lastCombatTime;
+        [ReadOnlyInspector] public float lastAmbientSoundTime;
 
         [Header("Skills")]
         [ReadOnlyInspector] public int pendingSkill;
@@ -80,7 +79,6 @@ namespace GameJam
         public static RecoveredEnergyCallback OnEntityRecoveredHealth;
 
         private Coroutine decayRoutine;
-        public float lastAmbientSoundTime;
 
         public AudioClip[] GetHurtSounds() => hurtSounds;
         public AudioClip[] GetDeathSounds() => deathSounds;
@@ -183,6 +181,15 @@ namespace GameJam
                    !NavMesh.Raycast(transform.position, entity.transform.position, out NavMeshHit hit, NavMesh.AllAreas);
         }
 
+        public virtual bool CanHeal(Entity entity)
+        {
+            return IsAlive &&
+                   entity.IsAlive &&
+                   entity != this &&
+                   IsFactionAlly(entity) &&
+                   !NavMesh.Raycast(transform.position, entity.transform.position, out NavMeshHit hit, NavMesh.AllAreas);
+        }
+
         public virtual bool CanResurrect(Entity entity)
         {
             return IsAlive &&
@@ -190,6 +197,12 @@ namespace GameJam
                    entity != this &&
                    IsFactionAlly(entity) &&
                    !NavMesh.Raycast(transform.position, entity.transform.position, out NavMeshHit hit, NavMesh.AllAreas);
+        }
+        public virtual bool CanResurrectCorpse(Corpse corpse)
+        {
+            return IsAlive &&
+                   (corpse is MobAliveCorpse aliveCorpse && IsFactionAlly(aliveCorpse.GetEntityInstance())) &&
+                   !NavMesh.Raycast(transform.position, corpse.transform.position, out NavMeshHit hit, NavMesh.AllAreas);
         }
 
         public virtual void OnAggroBy(Entity entity)
