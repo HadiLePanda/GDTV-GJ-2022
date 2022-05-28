@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 60e89bfe6f320ed4cae12f422e532a27, type: 3}
   learnDefault: 1
-  showCastBar: 0
+  showCastBar: 1
   cancelCastIfTargetDied: 0
   canCancelCast: 0
   allowMovement: 0

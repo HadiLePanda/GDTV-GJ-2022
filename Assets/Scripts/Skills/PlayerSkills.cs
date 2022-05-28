@@ -21,12 +21,13 @@ namespace GameJam
             experience.OnLevelUp -= OnLevelUp;
         }
 
-        private void Start()
+        private void Awake()
         {
             // load skills based on skill templates
             foreach (ScriptableSkill skillData in skillTemplates)
             {
                 skills.Add(new Skill(skillData));
+                Debug.Log($"Added {skills.Count} skills");
             }
 
             // spawn effects for any buffs that might still be active after loading
@@ -62,7 +63,7 @@ namespace GameJam
             // only if not casting already
             // (might need to ignore that when coming from pending skill where
             //  CASTING is still true)
-            if (entity.State != "CASTING" || ignoreState)
+            if ((entity.State != "CASTING" || ignoreState)) //0 <= skillIndex && skillIndex < skills.Count &&
             {
                 Skill skill = skills[skillIndex];
                 if (CastCheckSelf(skill) && CastCheckTarget(skill))
