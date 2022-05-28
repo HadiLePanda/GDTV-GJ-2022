@@ -88,7 +88,7 @@ namespace GameJam
         public virtual void OnCastStarted(Entity caster)
         {
             // cancel any looping cast sound just to make sure
-            if (caster.SkillAudio != null && castStartSound != null)
+            if (caster.Skills.SkillAudio != null && castStartSound != null)
             {
                 CancelAnyCastLoopSound(caster);
                 StartCastSound(caster, loopCastStartSound);
@@ -98,7 +98,7 @@ namespace GameJam
         public virtual void OnCastFinished(Entity caster)
         {
             // cancel any looping cast sound, play cast end sound
-            if (caster.SkillAudio != null && castEndSound != null)
+            if (caster.Skills.SkillAudio != null && castEndSound != null)
             {
                 CancelAnyCastLoopSound(caster);
                 PlayCastEndSound(caster);
@@ -124,33 +124,33 @@ namespace GameJam
             // => gets stopped at the cast finish
             if (loopCastSound)
             {
-                caster.SkillAudio.loop = true;
-                caster.SkillAudio.clip = castStartSound;
-                caster.SkillAudio.Play();
+                caster.Skills.SkillAudio.loop = true;
+                caster.Skills.SkillAudio.clip = castStartSound;
+                caster.Skills.SkillAudio.Play();
             }
             else
             {
-                caster.SkillAudio.loop = false;
-                caster.SkillAudio.PlayOneShot(castStartSound);
+                caster.Skills.SkillAudio.loop = false;
+                caster.Skills.SkillAudio.PlayOneShot(castStartSound);
             }
         }
         private void CancelAnyCastLoopSound(Entity caster)
         {
-            if (castStartSound == null && caster.SkillAudio.clip == null) return;
+            if (castStartSound == null && caster.Skills.SkillAudio.clip == null) return;
 
             // stop the casting loop sound if any
             if (loopCastStartSound)
             {
-                caster.SkillAudio.Stop();
-                caster.SkillAudio.loop = false;
-                caster.SkillAudio.clip = null;
+                caster.Skills.SkillAudio.Stop();
+                caster.Skills.SkillAudio.loop = false;
+                caster.Skills.SkillAudio.clip = null;
             }
         }
         private void PlayCastEndSound(Entity caster)
         {
             if (castEndSound == null) return;
 
-            caster.SkillAudio.PlayOneShot(castEndSound);
+            caster.Skills.SkillAudio.PlayOneShot(castEndSound);
         }
 
         // tooltip /////////////////////////////////////////////////////////////////

@@ -29,6 +29,13 @@ namespace GameJam
                     (entity is Minion minion && minion.Owner != this));
         }
 
+        protected override void OnDeath()
+        {
+            base.OnDeath();
+
+            Movement.Reset();
+        }
+
         // aggro ///////////////////////////////////////////////////////////////////
         // this function is called by entities that attack us and by AggroArea
         public override void OnAggroBy(Entity entity)

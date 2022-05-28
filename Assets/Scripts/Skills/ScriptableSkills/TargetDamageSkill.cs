@@ -62,7 +62,7 @@ namespace GameJam
             if (correctedTarget == caster)
                 return true;
 
-            return correctedTarget != null && caster.FieldOfView.IsInFOV(correctedTarget.transform);
+            return correctedTarget != null && caster.Combat.FieldOfView.IsInFOV(correctedTarget.transform);
         }
 
         // (has corrected target already)

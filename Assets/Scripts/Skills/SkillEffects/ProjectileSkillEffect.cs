@@ -13,6 +13,7 @@ namespace GameJam
         [Header("Settings")]
         [SerializeField] private ForceMode rbForceMode = ForceMode.VelocityChange;
         [SerializeField] private bool followCasterLook;
+        [SerializeField] private bool isHomingProjectile;
         [SerializeField] private LayerMask blockingLayers;
 
         private Rigidbody rb;
@@ -37,10 +38,9 @@ namespace GameJam
             }
             else
             {
-                // for other entities, just shoot forward
+                // for other entities, just shoot from where they're looking
                 castForwardDirection = caster.transform.forward;
             }
-            
 
             spawnTime = Time.time;
         }
@@ -84,14 +84,14 @@ namespace GameJam
         private void ProcessMovement()
         {
             Vector3 forceDirection = Vector3.zero;
-            if (followCasterLook)
-            {
-                forceDirection = caster.transform.forward;
-            }
-            else if (HasTarget())
+            if (isHomingProjectile && HasTarget())
             {
                 Vector3 directionToTarget = (target.transform.position - transform.position).normalized;
                 forceDirection = directionToTarget;
+            }
+            else if (followCasterLook)
+            {
+                forceDirection = caster.transform.forward;
             }
             else
             {
