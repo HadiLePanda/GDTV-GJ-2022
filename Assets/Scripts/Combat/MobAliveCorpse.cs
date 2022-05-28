@@ -4,7 +4,7 @@
     {
         private Entity entity;
 
-        public override Entity GetEntity() => entity;
+        public override Entity GetEntityPrefab() => entity;
         public override int GetEntityLevel() => entity.Level.Current;
 
         private void Start()
@@ -15,7 +15,7 @@
 
         public override bool CanBeResurrected()
         {
-            return GetEntity() != null && !GetEntity().IsAlive && minionPrefab != null;
+            return GetEntityPrefab() != null && !GetEntityInstance().IsAlive && minionPrefab != null;
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace GameJam
 {
     [RequireComponent(typeof(PlayerSkills))]
+    [RequireComponent(typeof(PlayerSkillbar))]
     public class Player : Entity
     {
         public new PlayerControllerMovement Movement => (PlayerControllerMovement)base.Movement;
@@ -11,6 +13,8 @@ namespace GameJam
 
         [Header("Player Components")]
         public Experience Experience;
+        public PlayerLook Look;
+        public PlayerSkillbar Skillbar;
         [SerializeField] private MinionStorage minionStorage;
 
         [Header("Player Game Settings")]
@@ -45,6 +49,13 @@ namespace GameJam
         {
             base.OnDisable();
             Combat.OnKilledEntity -= OnKilledEnemy;
+        }
+
+        public override bool CanResurrectCorpse(Corpse corpse)
+        {
+            return IsAlive &&
+                   (corpse is MobAliveCorpse || corpse is GroundCorpse) &&
+                   !NavMesh.Raycast(transform.position, corpse.transform.position, out NavMeshHit hit, NavMesh.AllAreas);
         }
 
         // events //////////////////////////////////////////////////////////////////

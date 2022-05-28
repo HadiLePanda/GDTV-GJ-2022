@@ -9,6 +9,9 @@ namespace GameJam
         public Player player;
         public GameObject lookTarget;
 
+        [Header("Settings")]
+        public float lookTargetOffsetY = 1f;
+
         [Header("Camera")]
         // the layer mask to use when trying to detect view blocking
         // (this way we dont zoom in all the way when standing in another entity)
@@ -85,14 +88,14 @@ namespace GameJam
                 mouseWorld.z = transform.position.z;
                 mouseWorld.y = transform.position.y;
 
-                var hitPos = hit.point;
-                hitPos.y = transform.position.y + 1;
+                var hitPos = hit.point
+                                .ChangeY(transform.position.y + lookTargetOffsetY);
 
                 lookTarget.transform.position = hitPos;
             }
             else
             {
-                lookTarget.transform.position = player.transform.position.ChangeZ(player.transform.position.z + 5);
+                lookTarget.transform.position = lookTarget.transform.position.ChangeY(transform.position.y + lookTargetOffsetY); //player.transform.position.ChangeZ(player.transform.position.z + 5);
             }
 
             Vector3 targetPosition = lookTarget.transform.position.ChangeY(transform.position.y);

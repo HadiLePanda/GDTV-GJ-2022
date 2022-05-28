@@ -118,6 +118,7 @@ namespace GameJam
         public DealtDamageCallback OnDealtDamage;
         public delegate void DoneHealingCallback(int healing, Entity target);
         public DoneHealingCallback OnDoneHealing;
+        public DoneHealingCallback OnDoneManaHealing;
         public delegate void DrainedEntityCallback(int healthDrain, int manaDrain, Entity target);
         public DrainedEntityCallback OnDrainedEntity;
 
@@ -125,6 +126,7 @@ namespace GameJam
         public ReceivedDamageCallback OnReceivedDamage;
         public delegate void ReceivedHealingCallback(int healing, HealType healType, Entity healer);
         public ReceivedHealingCallback OnReceivedHealing;
+        public ReceivedHealingCallback OnReceivedManaHealing;
 
         public event Action<Entity> OnKilledEntity;
 
@@ -200,12 +202,10 @@ namespace GameJam
                         OnKilledEntity?.Invoke(target);
 
                         targetCombat.PlayDeathEffects();
-                        Debug.Log($"{name} Killed {target.name}");
                     }
                     else
                     {
                         targetCombat.PlayHurtEffects(damageType, hitPoint, hitNormal);
-                        Debug.Log($"{name} Damaged {target.name} for {damageDealt}");
                     }
                 }
             }
@@ -265,6 +265,45 @@ namespace GameJam
 
             return healingDone;
         }
+
+        public virtual int HealMana(Entity target, int amount)
+        {
+            // can't heal a dead target
+            if (!target.IsAlive) { return 0; }
+
+            HealType healType = HealType.Normal;
+            Combat targetCombat = target.Combat;
+            bool isCrit = Random.value < criticalChance;
+
+            // (leave at least 1 heal, otherwise it may be frustrating for weaker players)
+            int healingDone = Mathf.Max(1, amount);
+
+            // critical hit?
+            if (isCrit)
+            {
+                healingDone = Mathf.CeilToInt(healingDone * 1.5f);
+                healType = HealType.Crit;
+            }
+
+            // do the healing
+            target.Mana.Add(healingDone);
+
+            // call OnReceivedHealing event on the target
+            // -> can be used for monsters to pull aggro
+            // -> can be used by equipment to decrease durability etc.
+            targetCombat.OnReceivedManaHealing?.Invoke(healingDone, healType, entity);
+
+            OnDoneManaHealing?.Invoke(healingDone, target);
+
+            // show effects
+            targetCombat.SpawnManaPopup(healingDone);
+
+            // reset last combat time for both
+            entity.lastCombatTime = Time.time;
+            target.lastCombatTime = Time.time;
+
+            return healingDone;
+        }
         
         public virtual void Drain(Entity target, int manaAmount, int healthAmount)
         {
@@ -284,15 +323,31 @@ namespace GameJam
             if (healthAmount > 0)
             {
                 target.Health.Remove(healthAmount);
-                entity.Health.Add(healthAmount);
-
                 target.Combat.SpawnDamagePopup(healthAmount, DamageType.Normal);
+
+                entity.Health.Add(healthAmount);
                 entity.Combat.SpawnHealPopup(healthAmount, HealType.Normal);
             }
 
             target.Combat.PlayDrainedEffects();
 
             OnDrainedEntity?.Invoke(healthAmount, manaAmount, target);
+
+            // reset last combat time for both
+            entity.lastCombatTime = Time.time;
+            target.lastCombatTime = Time.time;
+        }
+
+        public virtual void ResurrectCorpse(Corpse corpse)
+        {
+            if (!corpse.CanBeResurrected()) { return; }
+
+            Entity corpseEntityInstance = corpse.GetEntityInstance();
+
+            corpse.ResurrectAsMinion(entity);
+
+            // reset last combat time
+            entity.lastCombatTime = Time.time;
         }
 
         private void Stun(Entity victim, float stunTime)
@@ -374,7 +429,7 @@ namespace GameJam
         {
             if (amount <= 0) { return; }
 
-            Vector3 position = GetPopupSpawnPosition();
+            Vector3 position = GetDamagePopupSpawnPosition();
             NumberPopup popup = numberPopupManager.SpawnDamagePopup(position);
             string damagedAmountText = $"-{amount}";
 
@@ -404,7 +459,7 @@ namespace GameJam
         {
             if (amount <= 0) { return; }
 
-            Vector3 position = GetPopupSpawnPosition();
+            Vector3 position = GetHealPopupSpawnPosition();
             NumberPopup popup = numberPopupManager.SpawnHealPopup(position);
             string healedAmountText = $"+{amount}";
 
@@ -424,7 +479,7 @@ namespace GameJam
         {
             if (amount <= 0) { return; }
 
-            Vector3 position = GetPopupSpawnPosition();
+            Vector3 position = GetHealPopupSpawnPosition();
             NumberPopup popup = numberPopupManager.SpawnManaPopup(position);
             string manaAmountText = $"+{amount}";
             
@@ -435,20 +490,34 @@ namespace GameJam
         {
             if (amount <= 0) { return; }
 
-            Vector3 position = GetPopupSpawnPosition();
+            Vector3 position = GetDamagePopupSpawnPosition();
             NumberPopup popup = numberPopupManager.SpawnExperiencePopup(position);
             string expAmountText = $"+{amount} EXP";
 
             popup.numberText.text = expAmountText;
         }
 
-        private Vector3 GetPopupSpawnPosition()
+        private Vector3 GetDamagePopupSpawnPosition()
         {
             // showing it above their head looks best, and we don't have to use
             // a custom shader to draw world space UI in front of the entity
             Bounds bounds = entity.Collider.bounds;
             float randomOffsetX = Random.Range(0f, 0.5f);
             float randomOffsetY = Random.Range(0f, 0.3f);
+            Vector3 position = new Vector3(
+                bounds.center.x + randomOffsetX,
+                bounds.max.y + randomOffsetY,
+                bounds.center.z);
+
+            return position;
+        }
+        private Vector3 GetHealPopupSpawnPosition()
+        {
+            // showing it above their head looks best, and we don't have to use
+            // a custom shader to draw world space UI in front of the entity
+            Bounds bounds = entity.Collider.bounds;
+            float randomOffsetX = Random.Range(-1.0f, 0f);
+            float randomOffsetY = Random.Range(0f, 1f);
             Vector3 position = new Vector3(
                 bounds.center.x + randomOffsetX,
                 bounds.max.y + randomOffsetY,

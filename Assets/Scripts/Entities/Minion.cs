@@ -4,20 +4,6 @@ namespace GameJam
 {
     public class Minion : Mob
     {
-        [Header("Minion Settings")]
-        [Tooltip("In Seconds. Time before decaying.")]
-        [SerializeField] private float lifetime = 10f;
-
-        /*private float remainingLifetime;
-        public float RemainingLifetime
-        {
-            get => remainingLifetime;
-            set
-            {
-                remainingLifetime = Mathf.Clamp(value, 0f, GetLifetime());
-            }
-        }*/
-
         private Entity owner;
         public Entity Owner => owner;
 
@@ -30,7 +16,7 @@ namespace GameJam
             base.Start();
 
             // randomize follow position offset
-            OwnerDestinationOffset = new Vector3(Random.Range(0f, 5f), Random.Range(0f, 3f), Random.Range(0f, 3f));
+            OwnerDestinationOffset = new Vector3(Random.Range(0f, 5f), 0, Random.Range(0f, 3f));
         }
 
         //public float GetLifetime() => lifetime;

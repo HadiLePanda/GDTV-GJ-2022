@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionPrefab: {fileID: 0}
   resurrectEffect: {fileID: 0}
-  resurrectSound: {fileID: 0}
+  resurrectSound: {fileID: 8300000, guid: bc40fdcb4396429479c1147b34ce6b5d, type: 3}
   corpseEntity: {fileID: 5980059176362705222, guid: a58b7aa068e695448b82e53bf495fa90, type: 3}
   entityNameTextMesh: {fileID: 2366489546440922763}
   useCustomLevel: 0

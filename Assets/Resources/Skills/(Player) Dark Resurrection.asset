@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74b3d725a64e4649a840e11737ce6a5, type: 3}
+  m_Name: (Player) Dark Resurrection
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 60e89bfe6f320ed4cae12f422e532a27, type: 3}
+  learnDefault: 1
+  showCastBar: 0
+  cancelCastIfTargetDied: 0
+  canCancelCast: 0
+  allowMovement: 0
+  requiredLevel:
+    baseValue: 0
+    bonusPerLevel: 0
+  maxLevel: 1
+  manaCosts:
+    baseValue: 0
+    bonusPerLevel: 0
+  castTime:
+    baseValue: 1
+    bonusPerLevel: 0
+  cooldown:
+    baseValue: 1
+    bonusPerLevel: 0
+  castRange:
+    baseValue: 2
+    bonusPerLevel: 0
+  castStartSound: {fileID: 8300000, guid: ee78ddb62647a1241bdc8dafe6750218, type: 3}
+  castEndSound: {fileID: 8300000, guid: ddc32068df0de354f95914206291f8a0, type: 3}
+  loopCastStartSound: 1
+  effect: {fileID: 3592473391087468864, guid: 2a2295315db02a6478fd2f5d87ea5cbc, type: 3}
