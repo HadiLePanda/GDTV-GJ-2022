@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7025644303562820470}
   - component: {fileID: 4529226580205391701}
   - component: {fileID: 960729818880743433}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139732025231546834}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 5921972842035389212}
   - component: {fileID: 3997927255276919634}
   - component: {fileID: 734321865980479681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 9085047819288170358}
   - component: {fileID: 5353852203845978868}
   - component: {fileID: 9004479751345952311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 2242946943383667266}
   - component: {fileID: 2957286285947965942}
   - component: {fileID: 8523399177013809789}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,8 +436,16 @@ PrefabInstance:
       value: RoomFloor
       objectReference: {fileID: 0}
     - target: {fileID: 1362522232934265360, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362522232934265360, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033017717145166504, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2033017717145166504, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -488,12 +496,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5242147806308594166, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242147806308594166, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6964526894348817291, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964526894348817291, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337472798275801338, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7337472798275801338, guid: c27422e09e956044b9ef2ad4859a5c9a, type: 3}
       propertyPath: m_StaticEditorFlags

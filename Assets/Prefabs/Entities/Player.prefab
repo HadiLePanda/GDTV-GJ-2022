@@ -346,7 +346,7 @@ MonoBehaviour:
   lookTargetOffsetY: 1
   viewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 2769
+    m_Bits: 2705
   raycastLayers:
     serializedVersion: 2
     m_Bits: 4294967035

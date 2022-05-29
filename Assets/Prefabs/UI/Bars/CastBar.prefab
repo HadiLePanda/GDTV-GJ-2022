@@ -40,8 +40,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2494189382432792218, guid: 90d3eea06b0b1ed43ad7412709c17a98, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9b627ca5071e6448b60e4445eea192c, type: 3}
+    - target: {fileID: 2494189382432792218, guid: 90d3eea06b0b1ed43ad7412709c17a98, type: 3}
       propertyPath: m_Color.a
-      value: 0.92941177
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2494189382432792218, guid: 90d3eea06b0b1ed43ad7412709c17a98, type: 3}
       propertyPath: m_Color.b
@@ -133,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3167213597201691545, guid: 90d3eea06b0b1ed43ad7412709c17a98, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 157.4
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3167213597201691545, guid: 90d3eea06b0b1ed43ad7412709c17a98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
