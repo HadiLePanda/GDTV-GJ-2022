@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000d26f3a2cf91c4db8788276dcd7a9c, type: 3}
   m_Name: Minion Brain
   m_EditorClassIdentifier: 
-  minAmbientSoundDelay: 1
+  minAmbientSoundDelay: 2
   moveProbability: 0.1
   moveWanderDistance: 0.5
   followDistance: 30
-  returnDistance: 3
-  teleportDistance: 30
+  returnDistance: 5
+  teleportDistance: 40
   attackToMoveRangeRatio: 0.8

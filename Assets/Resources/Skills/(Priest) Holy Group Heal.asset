@@ -29,7 +29,7 @@ MonoBehaviour:
     baseValue: 3
     bonusPerLevel: 0
   cooldown:
-    baseValue: 7
+    baseValue: 2
     bonusPerLevel: 0
   castRange:
     baseValue: 20
@@ -45,5 +45,5 @@ MonoBehaviour:
     bonusPerLevel: 0
   effect: {fileID: 3964592373973071733, guid: 8b44d7d23d47a55449cbe66b83a9d5cf, type: 3}
   canHealSelf: 0
-  canHealOthers: 1
+  canHealAllies: 1
   canHealOnlySameType: 0

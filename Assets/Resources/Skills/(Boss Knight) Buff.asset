@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb540de23d3e45a45af67eecf7270049, type: 3}
+  m_Name: (Boss Knight) Buff
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  learnDefault: 1
+  showCastBar: 0
+  cancelCastIfTargetDied: 0
+  canCancelCast: 0
+  allowMovement: 0
+  requiredLevel:
+    baseValue: 0
+    bonusPerLevel: 0
+  maxLevel: 1
+  manaCosts:
+    baseValue: 0
+    bonusPerLevel: 0
+  castTime:
+    baseValue: 1
+    bonusPerLevel: 0
+  cooldown:
+    baseValue: 30
+    bonusPerLevel: 0
+  castRange:
+    baseValue: 20
+    bonusPerLevel: 0
+  castStartSound: {fileID: 8300000, guid: aa2fb21a989be4e0dbdcca4f63ca8806, type: 3}
+  castEndSound: {fileID: 8300000, guid: 3738702bd0b154d069ea0ee9d38d0a9c, type: 3}
+  loopCastStartSound: 0
+  healthMaxBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  manaMaxBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  damageBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  defenseBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  blockChanceBonus:
+    baseValue: 0.6
+    bonusPerLevel: 0
+  criticalChanceBonus:
+    baseValue: 0.3
+    bonusPerLevel: 0
+  healthPercentPerSecondBonus:
+    baseValue: 0.01
+    bonusPerLevel: 0
+  manaPercentPerSecondBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  speedBonus:
+    baseValue: 0
+    bonusPerLevel: 0
+  buffTime:
+    baseValue: 7
+    bonusPerLevel: 0
+  remainAfterDeath: 0
+  effect: {fileID: 0}
+  canBuffSelf: 0
+  canBuffAllies: 1
+  canBuffEnemies: 0
+  canBuffOnlySameType: 0

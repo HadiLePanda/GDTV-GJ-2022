@@ -6483,9 +6483,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 7082537376748921842, guid: 1c04f7f957cb1f942bf321a8db1b50ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7082537377234020840, guid: 1c04f7f957cb1f942bf321a8db1b50ff, type: 3}
       propertyPath: m_Name
       value: Window_Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082537377234020840, guid: 1c04f7f957cb1f942bf321a8db1b50ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7082537377234020841, guid: 1c04f7f957cb1f942bf321a8db1b50ff, type: 3}
       propertyPath: m_Pivot.x
@@ -6628,8 +6636,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 201.13867, y: 0}
-  m_SizeDelta: {x: -402.2773, y: 300}
+  m_AnchoredPosition: {x: 250, y: 0}
+  m_SizeDelta: {x: -500, y: 300}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2029912270
 MonoBehaviour:
@@ -7059,20 +7067,8 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -881843403, guid: dc19b74e701860b4cad5cf89dff4b829, type: 3}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.b
-      value: 0.41509432
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.g
-      value: 0.41509432
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.r
-      value: 0.41509432
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
@@ -7221,19 +7217,7 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -881843403, guid: dc19b74e701860b4cad5cf89dff4b829, type: 3}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.r
+      propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
@@ -7710,19 +7694,7 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -881843403, guid: dc19b74e701860b4cad5cf89dff4b829, type: 3}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.b
-      value: 0.2028302
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.g
-      value: 0.2028302
-      objectReference: {fileID: 0}
-    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
-      propertyPath: m_Color.r
+      propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}

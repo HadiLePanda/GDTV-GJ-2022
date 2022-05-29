@@ -63,5 +63,9 @@ PrefabInstance:
       propertyPath: minionPrefab
       value: 
       objectReference: {fileID: 34256462726306537, guid: fdce877cd2c789b4ab501eebdfe55162, type: 3}
+    - target: {fileID: 8950609288164797016, guid: ad4ad656524d1d8499e1309c9e2b7cf4, type: 3}
+      propertyPath: m_SpotAngle
+      value: 84.78792
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad4ad656524d1d8499e1309c9e2b7cf4, type: 3}

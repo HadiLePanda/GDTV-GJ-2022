@@ -11,6 +11,33 @@ namespace GameJam
 
         public Vector3 GetOwnerDestination() => owner.MinionDestination + OwnerDestinationOffset;
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            if (owner != null)
+            {
+                owner.Combat.OnDealtDamage += HandleOwnerDealtDamage;
+            }
+        }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (owner != null)
+            {
+                owner.Combat.OnDealtDamage -= HandleOwnerDealtDamage;
+            }
+        }
+
+        private void HandleOwnerDealtDamage(int damage, Entity target)
+        {
+            if (Target == null)
+            {
+                OnAggroBy(target);
+            }
+        }
+
         protected override void Start()
         {
             base.Start();

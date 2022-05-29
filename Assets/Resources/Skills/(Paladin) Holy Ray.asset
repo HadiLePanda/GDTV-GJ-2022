@@ -23,23 +23,23 @@ MonoBehaviour:
     bonusPerLevel: 0
   maxLevel: 1
   manaCosts:
-    baseValue: 50
+    baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 0.8
+    baseValue: 1
     bonusPerLevel: 0
   cooldown:
-    baseValue: 3
+    baseValue: 6
     bonusPerLevel: 0
   castRange:
-    baseValue: 10
+    baseValue: 5
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: dcf1b614c0324e74484e087fba6672a6, type: 3}
   castEndSound: {fileID: 8300000, guid: f48afb54d2c6b2740ab3ef0d507cb5ab, type: 3}
   loopCastStartSound: 0
   projectile: {fileID: 6836276262611344017, guid: 16f2e985513435542b1c251255de8b2e, type: 3}
   damage:
-    baseValue: 30
+    baseValue: 5
     bonusPerLevel: 0
   manaDrain:
     baseValue: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   speed:
-    baseValue: 4
+    baseValue: 1
     bonusPerLevel: 0
   lifetime:
     baseValue: 5

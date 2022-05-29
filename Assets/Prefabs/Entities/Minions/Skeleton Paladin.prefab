@@ -12,6 +12,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: baseDefense.baseValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: baseDamage.bonusPerLevel
       value: 0
       objectReference: {fileID: 0}
@@ -85,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558747404374744638, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: baseHealth.baseValue
-      value: 25
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7840778836366045036, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: entity
@@ -100,6 +104,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: ambientSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: hurtSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 755440382c3da7545bcc01b2640c30de, type: 3}
@@ -111,6 +119,10 @@ PrefabInstance:
       propertyPath: deathSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: f521bbf92a6089b4cafcc0c651385b9c, type: 3}
+    - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
+      propertyPath: ambientSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cd923912c5631d640939dfd7f5ab9bb9, type: 3}
     - target: {fileID: 8417513864922494315, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: skillTemplates.Array.size
       value: 2

@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027163130994478108, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseMana.baseValue
-      value: 200
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseDamage.baseValue
@@ -285,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 3509084859240160574, guid: 61be6cd3723c13c45b58913fc3a2f8ba, type: 3}
     - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseHealth.baseValue
-      value: 15
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8943736524071765373, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: entity

@@ -59,7 +59,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   manaPercentPerSecondBonus:
-    baseValue: 0.01
+    baseValue: 0.04
     bonusPerLevel: 0
   speedBonus:
     baseValue: 0

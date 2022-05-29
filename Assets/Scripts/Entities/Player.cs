@@ -18,7 +18,7 @@ namespace GameJam
         [SerializeField] private MinionStorage minionStorage;
 
         [Header("Player Game Settings")]
-        [SerializeField] private float visRange = 300f;
+        [SerializeField] private float visRange = 100f;
 
         // when moving into attack range of a target, we always want to move a
         // little bit closer than necessary to tolerate for latency and other

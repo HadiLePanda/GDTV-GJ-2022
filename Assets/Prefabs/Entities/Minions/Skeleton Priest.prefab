@@ -124,10 +124,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4236804095548483085, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
-      propertyPath: baseMana.baseValue
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -142,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558747404374744638, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: baseHealth.baseValue
-      value: 15
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7840778836366045036, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: entity

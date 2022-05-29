@@ -73,3 +73,4 @@ MonoBehaviour:
   canBuffAllies: 1
   canBuffEnemies: 0
   canBuffOnlySameType: 0
+  aoeCookie: {fileID: 8738928516764348381, guid: 022febb479dcc2442834bc1bd62391ac, type: 3}
