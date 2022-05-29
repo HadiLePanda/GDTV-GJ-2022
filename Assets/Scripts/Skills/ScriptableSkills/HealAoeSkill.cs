@@ -9,6 +9,9 @@ namespace GameJam
     [CreateAssetMenu(menuName = "Game/Skills/Heal AoE", order = 1)]
     public class HealAoeSkill : HealSkill
     {
+        [Header("Aoe References")]
+        [SerializeField] private AoeSkillEffect aoeCookie;
+
         // OverlapSphereNonAlloc array to avoid allocations.
         // -> static so we don't create one per skill
         // -> this is worth it because skills are casted a lot!
@@ -43,6 +46,15 @@ namespace GameJam
             // than one collider (which it often has).
             HashSet<Entity> candidates = new HashSet<Entity>();
 
+            // for the generic case, cast the skill from the entity location
+            // for the player, cast the skill around the look target
+            Vector3 castPosition = caster.transform.position;
+            if (caster is Player player)
+            {
+                castPosition = player.Movement.look.lookTarget.transform.position
+                                .ChangeY(player.transform.position.y);
+            }
+
             // find all entities of same type in castRange around the caster
             int hits = Physics.OverlapSphereNonAlloc(caster.transform.position, castRange.Get(skillLevel), hitsBuffer);
             for (int i = 0; i < hits; ++i)
@@ -75,6 +87,9 @@ namespace GameJam
                 }
             }
 
+            // spawn ground aoe range indicator
+            SpawnAoeCookie(caster, castPosition, skillLevel);
+
             // apply to all candidates
             foreach (Entity candidate in candidates)
             {
@@ -83,6 +98,16 @@ namespace GameJam
 
                 // show effect on candidate
                 SpawnEffect(caster, candidate);
+            }
+        }
+
+        private void SpawnAoeCookie(Entity caster, Vector3 spawnPosition, int skillLevel)
+        {
+            if (aoeCookie)
+            {
+                AoeSkillEffect aoeCookieInstance = Instantiate(aoeCookie, spawnPosition.ChangeY(spawnPosition.y + 0.01f), Quaternion.identity);
+                aoeCookieInstance.caster = caster;
+                aoeCookieInstance.Setup(castRange.Get(skillLevel));
             }
         }
     }

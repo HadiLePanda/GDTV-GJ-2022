@@ -72,7 +72,7 @@ namespace GameJam
             cam = Camera.main;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             if (!player.IsAlive) return;
 

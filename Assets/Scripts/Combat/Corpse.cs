@@ -42,7 +42,8 @@ namespace GameJam
         {
             Minion minionInstance = Instantiate(minionPrefab, transform.position, transform.rotation);
 
-            minionInstance.Setup(owner, level, GetEntityPrefab());
+            Entity corpseEntity = GetEntityInstance() != null ? GetEntityInstance() : GetEntityPrefab();
+            minionInstance.Setup(owner, level, corpseEntity);
 
             return minionInstance;
         }

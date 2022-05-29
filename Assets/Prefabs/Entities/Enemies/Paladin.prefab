@@ -376,13 +376,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paladin
       objectReference: {fileID: 0}
-    - target: {fileID: 3027163130994478108, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
-      propertyPath: baseMana.baseValue
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseDamage.baseValue
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: baseDefense.baseValue
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6659227801298000577, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Avatar
@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 7355504461531319797, guid: 80350254d290b6e4e9994dc425f790e5, type: 3}
     - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseHealth.baseValue
-      value: 25
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8943736524071765373, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: entity

@@ -15,6 +15,9 @@ namespace GameJam
         [Header("Resurrection")]
         public ParticleAttractorSkillEffect effect;
 
+        [Header("Aoe References")]
+        [SerializeField] private AoeSkillEffect aoeCookie;
+
         public override bool CheckDistance(Entity caster, int skillLevel, out Vector3 destination)
         {
             // can cast anywhere
@@ -65,6 +68,9 @@ namespace GameJam
                 }
             }
 
+            // spawn ground aoe range indicator
+            SpawnAoeCookie(caster, castPosition, skillLevel);
+
             // apply to all candidates
             foreach (Corpse candidate in candidates)
             {
@@ -90,6 +96,16 @@ namespace GameJam
                 effectComponent.caster = caster;
                 effectComponent.target = target;
                 effectComponent.Setup(caster, spawnTransform);
+            }
+        }
+
+        private void SpawnAoeCookie(Entity caster, Vector3 spawnPosition, int skillLevel)
+        {
+            if (aoeCookie)
+            {
+                AoeSkillEffect aoeCookieInstance = Instantiate(aoeCookie, spawnPosition, Quaternion.identity);
+                aoeCookieInstance.caster = caster;
+                aoeCookieInstance.Setup(castRange.Get(skillLevel));
             }
         }
     }

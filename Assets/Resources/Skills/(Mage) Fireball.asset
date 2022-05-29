@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   learnDefault: 1
-  showCastBar: 1
+  showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
   allowMovement: 0
@@ -26,13 +26,13 @@ MonoBehaviour:
     baseValue: 10
     bonusPerLevel: 0
   castTime:
-    baseValue: 2
+    baseValue: 3
     bonusPerLevel: 0
   cooldown:
-    baseValue: 0.5
+    baseValue: 1
     bonusPerLevel: 0
   castRange:
-    baseValue: 10
+    baseValue: 30
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: ff1981e26069c0e4981b024dfead1fc7, type: 3}
   castEndSound: {fileID: 8300000, guid: 9d56e21bf226f0647a71cf9ba9316377, type: 3}
@@ -48,7 +48,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   speed:
-    baseValue: 3
+    baseValue: 1
     bonusPerLevel: 0
   lifetime:
     baseValue: 5

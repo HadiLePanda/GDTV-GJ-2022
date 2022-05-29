@@ -116,6 +116,9 @@ namespace GameJam
         {
             if (IsWorthUpdating())
             {
+                // show if was hidden
+                if (IsHidden()) Show();
+
                 if (brain != null)
                 {
                     state = brain.UpdateBrain(this);
@@ -125,6 +128,11 @@ namespace GameJam
                 {
                     target = null;
                 }
+            }
+            else
+            {
+                // hide if not updating
+                if (!IsHidden()) Hide();
             }
         }
 

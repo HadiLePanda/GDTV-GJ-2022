@@ -44,7 +44,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5706866510995442751
 MonoBehaviour:
@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2745409364881819270, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: baseMana.baseValue
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2745409364881819270, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: baseMana.bonusPerLevel
@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: outlineMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3805589280802996005, guid: 68cd74a682180b24987f762c087d95dc, type: 3}
       propertyPath: outlineWidth

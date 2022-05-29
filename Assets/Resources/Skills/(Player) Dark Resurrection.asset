@@ -38,3 +38,4 @@ MonoBehaviour:
   castEndSound: {fileID: 8300000, guid: ddc32068df0de354f95914206291f8a0, type: 3}
   loopCastStartSound: 1
   effect: {fileID: 3592473391087468864, guid: 2a2295315db02a6478fd2f5d87ea5cbc, type: 3}
+  aoeCookie: {fileID: 8738928516764348381, guid: 022febb479dcc2442834bc1bd62391ac, type: 3}

@@ -99,13 +99,37 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1278932376505871083, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278932376505871083, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1278932376505871083, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278932376505871083, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.03137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278932376505871083, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278932376505871083, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2380258481730939971, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5755135696494330089, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7649977087537662568, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_Sprite
@@ -141,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7649977088043921791, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 155
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7649977088070673948, guid: b62f0eeb5849c1f438ce2e2feb5e4c4c, type: 3}
       propertyPath: m_Name

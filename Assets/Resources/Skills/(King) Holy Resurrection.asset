@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74b3d725a64e4649a840e11737ce6a5, type: 3}
+  m_Name: (King) Holy Resurrection
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  learnDefault: 0
+  showCastBar: 0
+  cancelCastIfTargetDied: 0
+  canCancelCast: 0
+  allowMovement: 1
+  requiredLevel:
+    baseValue: 0
+    bonusPerLevel: 0
+  maxLevel: 1
+  manaCosts:
+    baseValue: 0
+    bonusPerLevel: 0
+  castTime:
+    baseValue: 3
+    bonusPerLevel: 0
+  cooldown:
+    baseValue: 40
+    bonusPerLevel: 0
+  castRange:
+    baseValue: 30
+    bonusPerLevel: 0
+  castStartSound: {fileID: 8300000, guid: 3ce012577734b39499f0e1d5dba2de2f, type: 3}
+  castEndSound: {fileID: 8300000, guid: 5e744aa7d9edb4846b941c6d49629c68, type: 3}
+  loopCastStartSound: 1
+  effect: {fileID: 0}
+  aoeCookie: {fileID: 8738928516764348381, guid: 9f71ba722fcadac40a660a5fb072aae6, type: 3}
