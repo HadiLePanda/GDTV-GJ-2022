@@ -439,7 +439,7 @@ MonoBehaviour:
   hurtSounds: []
   deathSounds: []
   decaySounds:
-  - {fileID: 8300000, guid: 2a97e9e2c450ff24c961f12a75ca18a4, type: 3}
+  - {fileID: 8300000, guid: 23ae88a296dcb15478d93122265a260b, type: 3}
   deathEffect: {fileID: 0}
   decayEffect: {fileID: 0}
   ambientSounds: []

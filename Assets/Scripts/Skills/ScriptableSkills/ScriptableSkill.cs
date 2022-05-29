@@ -141,9 +141,9 @@ namespace GameJam
             // stop the casting loop sound if any
             if (loopCastStartSound)
             {
-                caster.Skills.SkillAudio.Stop();
-                caster.Skills.SkillAudio.loop = false;
                 caster.Skills.SkillAudio.clip = null;
+                caster.Skills.SkillAudio.loop = false;
+                //caster.Skills.SkillAudio.Stop();
             }
         }
         private void PlayCastEndSound(Entity caster)

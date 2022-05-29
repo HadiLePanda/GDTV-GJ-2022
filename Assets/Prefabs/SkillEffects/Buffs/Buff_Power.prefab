@@ -103,6 +103,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aura_Necromancy
       objectReference: {fileID: 0}
+    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
+      propertyPath: InitialModule.startColor.maxGradient.key0.b
+      value: 0.6116469
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
+      propertyPath: InitialModule.startColor.maxGradient.key0.g
+      value: 0.0039215684
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
+      propertyPath: InitialModule.startColor.maxGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
+      propertyPath: InitialModule.startColor.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
+      propertyPath: InitialModule.startColor.maxGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739981335821177561, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
+      propertyPath: InitialModule.startColor.maxGradient.key1.r
+      value: 0.32531357
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740688226211426993, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b75482009b9f8ee4cab53300343a1998, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30ec98c0d21c954d86d4ecba849b2ff, type: 3}
 --- !u!4 &9022680053061322644 stripped

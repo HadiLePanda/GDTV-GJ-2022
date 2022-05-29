@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace GameJam
 {
     [RequireComponent(typeof(Corpse))]
     public class Enemy : Mob
     {
+        static Collider[] hitsBuffer = new Collider[40];
+
         [Header("Enemy Settings")]
         [SerializeField] private int experienceReward = 1;
 
@@ -57,6 +60,9 @@ namespace GameJam
                 if (Target == null)
                 {
                     SetTarget(entity);
+
+                    // propagate aggro to nearby enemies
+                    PropagateAggro(entity);
                 }
                 else if (entity != Target) // no need to check dist for same target
                 {
@@ -66,6 +72,25 @@ namespace GameJam
                     {
                         SetTarget(entity);
                     }
+                }
+            }
+        }
+
+        private void PropagateAggro(Entity attacker)
+        {
+            HashSet<Entity> candidates = new HashSet<Entity>();
+
+            // find all other nearby enemies in castRange
+            int hits = Physics.OverlapSphereNonAlloc(transform.position, 10f, hitsBuffer);
+            for (int i = 0; i < hits; ++i)
+            {
+                Collider co = hitsBuffer[i];
+                Enemy enemy = co.GetComponentInParent<Enemy>();
+                if (enemy != null &&
+                    enemy.IsAlive && // can't aggro dead people
+                    enemy.Target == null) // don't aggro people who already have a target
+                {
+                    enemy.OnAggroBy(attacker);
                 }
             }
         }

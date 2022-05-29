@@ -16,7 +16,8 @@ namespace GameJam
 
         private void Start()
         {
-            FadeIn(true);
+            FadeOut(true);
+            FadeIn();
         }
 
         public void FadeIn(bool instant = false)
