@@ -15,6 +15,7 @@ namespace GameJam
 
         private ParticleSystem particle;
         private Transform targetTransform;
+        private Vector3 startSpawnPosition;
         private float spawnTime;
 
         private void Start()
@@ -26,6 +27,7 @@ namespace GameJam
         {
             this.caster = caster;
             this.targetTransform = targetTransform;
+            startSpawnPosition = targetTransform.position;
             particleAttractor.speed = speed;
 
             spawnTime = Time.time;
@@ -36,16 +38,26 @@ namespace GameJam
             ProcessLifetime();
 
             // destroy self if caster or target disappeared
-            if (caster == null || targetTransform == null)
+            if (caster == null)
             {
                 Destroy(gameObject);
 
                 return;
             }
 
+            Vector3 targetPosition = Vector3.zero;
+            if (targetTransform == null && startSpawnPosition != Vector3.zero)
+            {
+                targetPosition = startSpawnPosition;
+            }
+            else
+            {
+                targetPosition = targetTransform.position;
+            }
+
             // follow source and set target object to the destination
-            transform.position = attractTowardsTarget ? caster.Collider.bounds.center : targetTransform.position;
-            particleAttractor.target.position = attractTowardsTarget ? targetTransform.position : caster.Collider.bounds.center;
+            transform.position = attractTowardsTarget ? caster.Collider.bounds.center : targetPosition;
+            particleAttractor.target.position = attractTowardsTarget ? targetPosition : caster.Collider.bounds.center;
         }
 
         private void ProcessLifetime()

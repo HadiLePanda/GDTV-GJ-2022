@@ -26,6 +26,17 @@ namespace GameJam
 
         public static Action OnGameplayStart, OnGameOver;
 
+        private void OnEnable()
+        {
+            if (Player.localPlayer == null) { return; }
+            Player.localPlayer.OnDied += GameOver;
+        }
+        private void OnDisable()
+        {
+            if (Player.localPlayer == null) { return; }
+            Player.localPlayer.OnDied -= GameOver;
+        }
+
         private void Start()
         {
             player = Player.localPlayer;

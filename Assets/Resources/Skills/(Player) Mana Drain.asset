@@ -34,9 +34,9 @@ MonoBehaviour:
   castRange:
     baseValue: 0
     bonusPerLevel: 0
-  castStartSound: {fileID: 8300000, guid: 1e8fd0286a2440043b7fd840260bc39d, type: 3}
-  castEndSound: {fileID: 0}
-  loopCastStartSound: 0
+  castStartSound: {fileID: 8300000, guid: ee78ddb62647a1241bdc8dafe6750218, type: 3}
+  castEndSound: {fileID: 8300000, guid: b68524fe48842fa49aedc425f6fc64cc, type: 3}
+  loopCastStartSound: 1
   effect: {fileID: 520178882510280183, guid: 0b0b5eff047a6e247bc6967983ad6ab0, type: 3}
   manaDrain:
     baseValue: 10

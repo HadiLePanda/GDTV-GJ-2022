@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_Color.b
-      value: 0.21960784
+      value: 0.18115878
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_Color.g
-      value: 0.24313726
+      value: 0.19403118
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_Color.r
-      value: 0.90588236
+      value: 0.5566038
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462375, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462375, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_AnchoredPosition.y

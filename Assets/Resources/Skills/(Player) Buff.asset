@@ -35,7 +35,7 @@ MonoBehaviour:
     baseValue: 30
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: 5309a4081c2da7841970149f8a084f7b, type: 3}
-  castEndSound: {fileID: 0}
+  castEndSound: {fileID: 8300000, guid: 00479b649056e420d873147aa56a8993, type: 3}
   loopCastStartSound: 0
   healthMaxBonus:
     baseValue: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   buffTime:
-    baseValue: 5
+    baseValue: 7
     bonusPerLevel: 0
   remainAfterDeath: 0
   effect: {fileID: 1787432916672924097, guid: 6cea6c40ba232bc4f9a10f1692683aa9, type: 3}

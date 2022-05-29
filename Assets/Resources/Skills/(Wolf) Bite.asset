@@ -17,7 +17,7 @@ MonoBehaviour:
   showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
-  allowMovement: 1
+  allowMovement: 0
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0
@@ -34,8 +34,8 @@ MonoBehaviour:
   castRange:
     baseValue: 1
     bonusPerLevel: 0
-  castStartSound: {fileID: 8300000, guid: d71255188fdf54f44a6e1acd66f64041, type: 3}
-  castEndSound: {fileID: 0}
+  castStartSound: {fileID: 0}
+  castEndSound: {fileID: 8300000, guid: 5eb5853bc02279544bf0f8cda8cf95d4, type: 3}
   loopCastStartSound: 0
   damage:
     baseValue: 1
