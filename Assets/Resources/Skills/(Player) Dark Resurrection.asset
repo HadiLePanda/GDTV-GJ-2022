@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74b3d725a64e4649a840e11737ce6a5, type: 3}
   m_Name: (Player) Dark Resurrection
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 60e89bfe6f320ed4cae12f422e532a27, type: 3}
+  icon: {fileID: 21300000, guid: 1cf82733ea69a6f4c8dae3d89cdd435e, type: 3}
   learnDefault: 1
   showCastBar: 1
   cancelCastIfTargetDied: 0

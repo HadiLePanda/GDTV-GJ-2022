@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1aa47c1bd1440409de4bdceaad15af, type: 3}
   m_Name: (Player) Corrupted Fireball
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: b1771f21a9d36ab4c9e437b0fde7c4bb, type: 3}
+  icon: {fileID: 21300000, guid: 41542980803b8654983dd7c8ede5d5ff, type: 3}
   learnDefault: 1
   showCastBar: 0
   cancelCastIfTargetDied: 0
