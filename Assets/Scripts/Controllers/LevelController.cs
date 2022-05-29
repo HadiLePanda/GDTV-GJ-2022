@@ -29,12 +29,12 @@ namespace GameJam
         private void OnEnable()
         {
             if (Player.localPlayer == null) { return; }
-            Player.localPlayer.OnDied += GameOver;
+            Player.localPlayer.Health.OnEmpty += GameOver;
         }
         private void OnDisable()
         {
             if (Player.localPlayer == null) { return; }
-            Player.localPlayer.OnDied -= GameOver;
+            Player.localPlayer.Health.OnEmpty -= GameOver;
         }
 
         private void Start()
