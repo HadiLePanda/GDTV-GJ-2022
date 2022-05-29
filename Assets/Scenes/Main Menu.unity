@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.014352276, g: 0.0147521505, b: 0.014751535, a: 1}
+  m_IndirectSpecularColor: {r: 0.014352277, g: 0.014752151, b: 0.014751532, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6791,6 +6791,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1206535080, guid: dc19b74e701860b4cad5cf89dff4b829, type: 3}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462374, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_Name
       value: Button_Settings
@@ -6932,6 +6952,26 @@ PrefabInstance:
     - target: {fileID: 5968081389216462360, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1961991622, guid: dc19b74e701860b4cad5cf89dff4b829, type: 3}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462374, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_Name
@@ -7413,6 +7453,26 @@ PrefabInstance:
     - target: {fileID: 5968081389216462360, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -884983048, guid: dc19b74e701860b4cad5cf89dff4b829, type: 3}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6037736
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6037736
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968081389216462361, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6037736
       objectReference: {fileID: 0}
     - target: {fileID: 5968081389216462374, guid: 1fad469da1fa9eb47b4e2fa85f22d203, type: 3}
       propertyPath: m_Name
