@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb540de23d3e45a45af67eecf7270049, type: 3}
   m_Name: (Player) Buff
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0452471d1b4ecce40819b8cdf6bd295f, type: 3}
   learnDefault: 1
   showCastBar: 0
   cancelCastIfTargetDied: 0
