@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: hurtSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 77016a43265cbf8428ec2b61ffdc41bd, type: 3}
+      objectReference: {fileID: 8300000, guid: 0c27d5d4781ec9f41bb53222fe3c2b91, type: 3}
     - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: hurtSounds.Array.data[1]
       value: 
@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: deathSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: b7664f5bc04e8994eaec9f4434b41d06, type: 3}
+      objectReference: {fileID: 8300000, guid: 3635896eabe6c824abcbd84cf380eeb3, type: 3}
     - target: {fileID: 2447962232508661704, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 4481291529834983719, guid: 13b2d62c26ff9f34cbc69a62b05b79b7, type: 3}
     - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseHealth.baseValue
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}

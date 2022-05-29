@@ -82,7 +82,7 @@ MonoBehaviour:
   target: {fileID: 0}
   caster: {fileID: 0}
   particleAttractor: {fileID: 5373183699567402244}
-  speed: 3
+  speed: 10
   lifetime: 3
   attractTowardsTarget: 0
 --- !u!114 &5373183699567402244
@@ -120,7 +120,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 2100000, guid: fb9fb8d8594ab1d44a9cb474bc7e2413, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -423,7 +423,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1435,7 +1435,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1

@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: deathSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 3635896eabe6c824abcbd84cf380eeb3, type: 3}
+      objectReference: {fileID: 8300000, guid: e0d991018af9e2948b958a4bac945c9f, type: 3}
     - target: {fileID: 2378291863127274425, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: ambientSounds.Array.data[0]
       value: 

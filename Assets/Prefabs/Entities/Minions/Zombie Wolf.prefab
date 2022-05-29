@@ -90,11 +90,11 @@ PrefabInstance:
     - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: hurtSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 9b14af0f19d79954db22f934f08e7af9, type: 3}
+      objectReference: {fileID: 8300000, guid: 7fc517f57796ffb4fad822020d9a816c, type: 3}
     - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: deathSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: bae5aab19a68fb7479eb9a08606a3726, type: 3}
+      objectReference: {fileID: 8300000, guid: 1a217e0899adcce4cb458a744fa0281f, type: 3}
     - target: {fileID: 7994175787738324274, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: ambientSounds.Array.data[0]
       value: 

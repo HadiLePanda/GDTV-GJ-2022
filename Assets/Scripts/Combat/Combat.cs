@@ -346,6 +346,8 @@ namespace GameJam
 
             OnDrainedEntity?.Invoke(healthAmount, manaAmount, target);
 
+            target.OnAggroBy(entity);
+
             // reset last combat time for both
             entity.lastCombatTime = Time.time;
             target.lastCombatTime = Time.time;
