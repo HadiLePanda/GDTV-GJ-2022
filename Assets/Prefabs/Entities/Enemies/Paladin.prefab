@@ -382,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseDefense.baseValue
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6659227801298000577, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Avatar

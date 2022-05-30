@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1aa47c1bd1440409de4bdceaad15af, type: 3}
   m_Name: (Player) Fireball
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: c13b5b3c0a2109f458b792a5a5c766ad, type: 3}
+  icon: {fileID: 21300000, guid: b77516b988b86de46bac7fc433f4312d, type: 3}
   learnDefault: 1
   showCastBar: 1
   cancelCastIfTargetDied: 0

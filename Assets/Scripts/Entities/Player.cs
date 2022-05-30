@@ -31,6 +31,8 @@ namespace GameJam
         [HideInInspector] public KeyCode cancelActionKey;
         [HideInInspector] public bool cancelActionRequested;
 
+        private LevelController levelController;
+
         public void CmdCancelAction() { cancelActionRequested = true; }
 
         public static Player localPlayer;
@@ -38,6 +40,8 @@ namespace GameJam
         private void Awake()
         {
             localPlayer = this;
+
+            levelController = FindObjectOfType<LevelController>();
         }
 
         protected override void OnEnable()
@@ -102,6 +106,8 @@ namespace GameJam
 
             Movement.Reset();
             Mana.Deplete();
+
+            levelController.GameOver();
 
             KillAllSummonedMinions();
         }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c254471021feb42831624abc34747d, type: 3}
   m_Name: (Player) Mana Drain
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 9a68f094b83699343a90cdb86fbaa5bc, type: 3}
+  icon: {fileID: 21300000, guid: a487d3b76cbca9a4d8183b4d2c18ba45, type: 3}
   learnDefault: 1
   showCastBar: 1
   cancelCastIfTargetDied: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
     baseValue: 1
     bonusPerLevel: 0
   castRange:
-    baseValue: 0
+    baseValue: 3
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: ee78ddb62647a1241bdc8dafe6750218, type: 3}
   castEndSound: {fileID: 8300000, guid: b68524fe48842fa49aedc425f6fc64cc, type: 3}
@@ -45,7 +45,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   stunChance:
-    baseValue: 0.1
+    baseValue: 0.15
     bonusPerLevel: 0
   stunTime:
     baseValue: 2

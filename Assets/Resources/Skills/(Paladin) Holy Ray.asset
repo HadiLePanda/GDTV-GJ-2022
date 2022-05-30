@@ -32,14 +32,14 @@ MonoBehaviour:
     baseValue: 6
     bonusPerLevel: 0
   castRange:
-    baseValue: 5
+    baseValue: 6
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: dcf1b614c0324e74484e087fba6672a6, type: 3}
-  castEndSound: {fileID: 8300000, guid: f48afb54d2c6b2740ab3ef0d507cb5ab, type: 3}
+  castEndSound: {fileID: 8300000, guid: 5eb5853bc02279544bf0f8cda8cf95d4, type: 3}
   loopCastStartSound: 0
   projectile: {fileID: 6836276262611344017, guid: 16f2e985513435542b1c251255de8b2e, type: 3}
   damage:
-    baseValue: 5
+    baseValue: 7
     bonusPerLevel: 0
   manaDrain:
     baseValue: 0

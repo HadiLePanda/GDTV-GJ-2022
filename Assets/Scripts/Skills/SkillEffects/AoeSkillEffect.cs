@@ -7,6 +7,13 @@ namespace GameJam
         public ParticleSystem cookieParticle;
         public bool followTarget = true;
 
+        private ParticleSystem[] particles;
+
+        private void Awake()
+        {
+            particles = GetComponentsInChildren<ParticleSystem>();
+        }
+
         private void OnEnable()
         {
             if (target != null)
@@ -19,8 +26,16 @@ namespace GameJam
 
         public void Setup(float radius)
         {
-            var particle = cookieParticle.main;
-            particle.startSize = radius;
+            var size = radius * 2;
+            var mainParticle = cookieParticle.main;
+            mainParticle.startSize = size;
+
+            foreach (ParticleSystem particle in particles)
+            {
+                var particleMain = particle.main;
+                particleMain.startSize = size;
+            }
+
             cookieParticle.gameObject.SetActive(true);
         }
 

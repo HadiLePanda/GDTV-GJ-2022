@@ -436,7 +436,7 @@ namespace GameJam
             if (criticalDamageEffect == null) { return; }
 
             // show the effect at the hit point position
-            Game.Vfx.SpawnParticle(criticalDamageEffect, hitPoint, Quaternion.LookRotation(-hitNormal));
+            Game.Vfx.SpawnParticle(criticalDamageEffect, hitPoint, Quaternion.identity);
         }
 
         // popups ======================================================================

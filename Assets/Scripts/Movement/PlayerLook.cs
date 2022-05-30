@@ -74,7 +74,13 @@ namespace GameJam
 
         void FixedUpdate()
         {
-            if (!player.IsAlive) return;
+            if (!player.IsAlive)
+            {
+                // hide the look target if not alive
+                lookTarget.SetActive(false);
+
+                return;
+            }
 
             // rotate to look towards cursor position
             Vector3 mousePoint = Input.mousePosition;

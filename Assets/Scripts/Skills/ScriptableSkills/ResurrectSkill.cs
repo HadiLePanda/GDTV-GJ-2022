@@ -103,7 +103,7 @@ namespace GameJam
         {
             if (aoeCookie)
             {
-                AoeSkillEffect aoeCookieInstance = Instantiate(aoeCookie, spawnPosition, Quaternion.identity);
+                AoeSkillEffect aoeCookieInstance = Instantiate(aoeCookie, spawnPosition.ChangeY(spawnPosition.y + 0.01f), Quaternion.identity);
                 aoeCookieInstance.caster = caster;
                 aoeCookieInstance.Setup(castRange.Get(skillLevel));
             }

@@ -34,16 +34,17 @@ MonoBehaviour:
   castRange:
     baseValue: 20
     bonusPerLevel: 0
-  castStartSound: {fileID: 8300000, guid: 3ce012577734b39499f0e1d5dba2de2f, type: 3}
+  castStartSound: {fileID: 0}
   castEndSound: {fileID: 8300000, guid: 60c301e4fee26a541baf8ca2669d3d99, type: 3}
-  loopCastStartSound: 1
+  loopCastStartSound: 0
   healsHealth:
-    baseValue: 5
+    baseValue: 2
     bonusPerLevel: 0
   healsMana:
-    baseValue: 10
+    baseValue: 0
     bonusPerLevel: 0
-  effect: {fileID: 3964592373973071733, guid: 8b44d7d23d47a55449cbe66b83a9d5cf, type: 3}
+  effect: {fileID: 0}
   canHealSelf: 0
   canHealAllies: 1
   canHealOnlySameType: 0
+  aoeCookie: {fileID: 0}

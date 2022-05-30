@@ -84,6 +84,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1860472141332608519}
     m_Modifications:
+    - target: {fileID: 5044671665139376477, guid: f92d4c56a2e0de04591f2724f6d5cf84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5498082837685387070, guid: f92d4c56a2e0de04591f2724f6d5cf84, type: 3}
       propertyPath: m_Name
       value: Skillbar

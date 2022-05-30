@@ -1,6 +1,7 @@
 ﻿// based on Unity's FirstPersonController & ThirdPersonController scripts
 using Controller2k;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace GameJam
 {
@@ -86,10 +87,21 @@ namespace GameJam
         public bool isGroundedWithinTolerance =>
             controller.isGrounded || controller.velocity.y > -fallMinimumMagnitude;
 
+        private bool movementEnabled = true;
+        public bool MovementEnabled => movementEnabled;
+        public bool EnableMovement => movementEnabled = true;
+        public bool DisableMovement => movementEnabled = false;
+
         void Awake()
         {
             cam = Camera.main;
         }
+
+        //TODO migrate to new Input system
+        //public void OnMove(CallbackContext context)
+        //{
+        //
+        //}
 
         // input directions ////////////////////////////////////////////////////////
         Vector2 GetInputDirection()
@@ -538,7 +550,7 @@ namespace GameJam
             if (player.IsMovementAllowed())
             {
                 if (!jumpKeyPressed) jumpKeyPressed = Input.GetButtonDown("Jump");
-                if (!crouchKeyPressed) crouchKeyPressed = Input.GetKeyDown(crouchKey);
+                //if (!crouchKeyPressed) crouchKeyPressed = Input.GetKeyDown(crouchKey);
             }
         }
 
@@ -556,7 +568,6 @@ namespace GameJam
             // update state machine
             if (State == MoveState.IDLE) state = UpdateIDLE(inputDir, desiredDir);
             else if (State == MoveState.WALKING) state = UpdateWALKINGandRUNNING(inputDir, desiredDir);
-            else if (State == MoveState.CROUCHING) state = UpdateCROUCHING(inputDir, desiredDir);
             else if (State == MoveState.AIRBORNE) state = UpdateAIRBORNE(inputDir, desiredDir);
             else if (State == MoveState.CLIMBING) state = UpdateCLIMBING(inputDir, desiredDir);
             else if (State == MoveState.SWIMMING) state = UpdateSWIMMING(inputDir, desiredDir);

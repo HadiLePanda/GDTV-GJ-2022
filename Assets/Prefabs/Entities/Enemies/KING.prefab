@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6526144087178824163, guid: f1dfdcc3339e60d4d811cd4a84e06166, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6526144087178824163, guid: f1dfdcc3339e60d4d811cd4a84e06166, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6526144087178824163, guid: f1dfdcc3339e60d4d811cd4a84e06166, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6526144087178824163, guid: f1dfdcc3339e60d4d811cd4a84e06166, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,7 +67,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 896684360784319385, guid: f1dfdcc3339e60d4d811cd4a84e06166, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f1dfdcc3339e60d4d811cd4a84e06166, type: 3}
 --- !u!1001 &5481253213619412538
 PrefabInstance:
@@ -78,7 +79,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 210207457133942215, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Radius
-      value: 60
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 437805953946748878, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.496
       objectReference: {fileID: 0}
     - target: {fileID: 2052906438463419703, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: skillTemplates.Array.size
@@ -176,13 +181,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: KING
       objectReference: {fileID: 0}
+    - target: {fileID: 3526768986715224089, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.36
+      objectReference: {fileID: 0}
     - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseDamage.baseValue
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseDefense.baseValue
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3796601455426106846, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: bonusDamageHealthPercentage
@@ -190,11 +199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485843478642298784, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Height
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6485843478642298784, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6659227801298000577, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Avatar
@@ -206,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 03378f667f9a43140a825ce0680ec883, type: 2}
     - target: {fileID: 6826361176893363174, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.2
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 7829797563796742505, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: minionPrefab
@@ -218,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseHealth.baseValue
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseHealth.bonusPerLevel
@@ -230,15 +239,15 @@ PrefabInstance:
       objectReference: {fileID: 7858835331194809731}
     - target: {fileID: 9205668442031598100, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Height
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9205668442031598100, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9205668442031598100, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: m_Center.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}

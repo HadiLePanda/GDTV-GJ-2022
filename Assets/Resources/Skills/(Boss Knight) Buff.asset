@@ -32,7 +32,7 @@ MonoBehaviour:
     baseValue: 30
     bonusPerLevel: 0
   castRange:
-    baseValue: 20
+    baseValue: 10
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: aa2fb21a989be4e0dbdcca4f63ca8806, type: 3}
   castEndSound: {fileID: 8300000, guid: 3738702bd0b154d069ea0ee9d38d0a9c, type: 3}
@@ -56,7 +56,7 @@ MonoBehaviour:
     baseValue: 0.3
     bonusPerLevel: 0
   healthPercentPerSecondBonus:
-    baseValue: 0.01
+    baseValue: 0
     bonusPerLevel: 0
   manaPercentPerSecondBonus:
     baseValue: 0
@@ -68,8 +68,9 @@ MonoBehaviour:
     baseValue: 7
     bonusPerLevel: 0
   remainAfterDeath: 0
-  effect: {fileID: 0}
+  effect: {fileID: 1787432916672924097, guid: 6cea6c40ba232bc4f9a10f1692683aa9, type: 3}
   canBuffSelf: 0
   canBuffAllies: 1
   canBuffEnemies: 0
   canBuffOnlySameType: 0
+  aoeCookie: {fileID: 8738928516764348381, guid: 022febb479dcc2442834bc1bd62391ac, type: 3}

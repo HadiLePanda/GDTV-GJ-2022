@@ -6,6 +6,7 @@ namespace GameJam
     {
         [Header("Windows")]
         public UIGameOver gameOverWindow;
+        public UIGameWin gameWinWindow;
         public UIPauseWindow pauseWindow;
         public UISettings settingsWindow;
     }

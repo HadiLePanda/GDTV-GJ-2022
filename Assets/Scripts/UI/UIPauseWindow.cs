@@ -18,12 +18,18 @@ namespace GameJam
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            Player player = Player.localPlayer;
+            if (player != null)
             {
-                if (!IsOpen)
-                    Show();
-                else
-                    Hide();
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    if (!IsOpen) Show();
+                    else Hide();
+                }
+            }
+            else
+            {
+                if (IsOpen) Hide();
             }
         }
 
