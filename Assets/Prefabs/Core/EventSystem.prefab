@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7979544724603473227}
   - component: {fileID: 3748378913494136099}
-  - component: {fileID: 1159464081771153004}
+  - component: {fileID: 5850687456507788659}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &1159464081771153004
+--- !u!114 &5850687456507788659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

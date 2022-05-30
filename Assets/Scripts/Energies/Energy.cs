@@ -15,9 +15,8 @@ namespace GameJam
         [SerializeField] protected int recoveryPerTick = 0;
         [Tooltip("The amount of seconds between each recovery interval tick")]
         [SerializeField] protected float recoveryTickRate = 1f;
-
-        [Header("Debug")]
-        [SerializeField] [ReadOnlyInspector] private int current = 0;
+        
+        private int current = 0;
 
         // (may depend on buffs, items, etc.)
         public abstract int Max { get; }

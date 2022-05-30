@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace GameJam
 {
+    [SelectionBase]
     public class DrawColliderGizmo : MonoBehaviour
     {
         [Header("References")]

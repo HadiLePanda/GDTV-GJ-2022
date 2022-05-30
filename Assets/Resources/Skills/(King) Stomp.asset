@@ -38,7 +38,7 @@ MonoBehaviour:
   castEndSound: {fileID: 8300000, guid: c3ce65b3163a32144ba81313ad5a63ec, type: 3}
   loopCastStartSound: 0
   damage:
-    baseValue: 15
+    baseValue: 10
     bonusPerLevel: 0
   stunChance:
     baseValue: 0.2

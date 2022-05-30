@@ -19,7 +19,7 @@ namespace GameJam
     {
         public Entity owner; // set in the inspector
 
-        [ReadOnlyInspector] public SphereCollider Collider;
+        [HideInInspector] public SphereCollider Collider;
 
         private void Awake()
         {

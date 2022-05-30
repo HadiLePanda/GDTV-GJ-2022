@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 8470799864490515967}
   - component: {fileID: 8470799864490515966}
   - component: {fileID: 8642699323084262257}
+  - component: {fileID: 4549296583707609479}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -303,6 +304,18 @@ MonoBehaviour:
   fadingGroup: {fileID: 4681296386591215189}
   fadeInDuration: 3
   fadeOutDuration: 2
+--- !u!114 &4549296583707609479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470799864490515965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b758c78d561f59744a0467682074260d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8470799864940137801
 GameObject:
   m_ObjectHideFlags: 0

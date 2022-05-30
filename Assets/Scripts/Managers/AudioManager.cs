@@ -75,10 +75,8 @@ namespace GameJam
         // music & ambient =============================================
         public void PlayBackgroundAudio(AudioClip musicClip, AudioClip ambientClip)
         {
-            if (musicClip != null)
-                PlayMusic(musicClip);
-            if (ambientClip != null)
-                PlayAmbient(ambientClip);
+            PlayMusic(musicClip);
+            PlayAmbient(ambientClip);
 
             // fade in background volume
             float targetVolume = 1f;
@@ -98,24 +96,23 @@ namespace GameJam
         public void PlayMusic(AudioClip musicClip)
         {
             musicSource.Stop();
+
+            if (musicClip == null) { return; }
+
             musicSource.clip = musicClip;
             musicSource.loop = true;
-
-            if (musicClip != null)
-            {
-                musicSource.Play();
-            }
+            musicSource.Play();
+            
         }
         public void PlayAmbient(AudioClip ambientClip)
         {
             ambientSource.Stop();
+
+            if (ambientClip == null) { return; }
+
             ambientSource.clip = ambientClip;
             ambientSource.loop = true;
-
-            if (ambientClip != null)
-            {
-                ambientSource.Play();
-            }
+            ambientSource.Play();
         }
         public void StopMusic()
         {

@@ -14,6 +14,7 @@ namespace GameJam
 
         [Header("Resurrection")]
         public ParticleAttractorSkillEffect effect;
+        public OneTimeTargetSkillEffect spawnEffect;
 
         [Header("Aoe References")]
         [SerializeField] private AoeSkillEffect aoeCookie;
@@ -96,6 +97,14 @@ namespace GameJam
                 effectComponent.caster = caster;
                 effectComponent.target = target;
                 effectComponent.Setup(caster, spawnTransform);
+            }
+
+            if (spawnEffect != null)
+            {
+                GameObject go = Instantiate(spawnEffect.gameObject, target.transform.position, Quaternion.identity);
+                OneTimeTargetSkillEffect effectComponent = go.GetComponent<OneTimeTargetSkillEffect>();
+                effectComponent.caster = caster;
+                effectComponent.target = target;
             }
         }
 
