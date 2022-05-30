@@ -8,6 +8,7 @@ namespace GameJam
         public static AudioManager Audio;
         public static ParticleManager Vfx;
         public static FadingManager Fader;
+        public static InputManager Input;
 
         static Game()
         {
@@ -17,6 +18,7 @@ namespace GameJam
             Audio = go.GetComponent<AudioManager>();
             Vfx = go.GetComponent<ParticleManager>();
             Fader = go.GetComponent<FadingManager>();
+            Input = go.GetComponent<InputManager>();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace GameJam
     public class BuffSkillEffect : SkillEffect
     {
         private float lastRemainingTime = Mathf.Infinity;
-        [ReadOnlyInspector] public string buffName;
+        [HideInInspector] public string buffName;
 
         private void Update()
         {

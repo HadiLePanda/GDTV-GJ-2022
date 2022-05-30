@@ -26,7 +26,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 1
+    baseValue: 1.2
     bonusPerLevel: 0
   cooldown:
     baseValue: 0.6
@@ -41,10 +41,10 @@ MonoBehaviour:
     baseValue: 20
     bonusPerLevel: 0
   stunChance:
-    baseValue: 0.5
+    baseValue: 0.2
     bonusPerLevel: 0
   stunTime:
-    baseValue: 2
+    baseValue: 1
     bonusPerLevel: 0
   manaDrain:
     baseValue: 0

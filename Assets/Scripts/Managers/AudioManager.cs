@@ -87,20 +87,40 @@ namespace GameJam
             MixerHelper.SetVolume(backgroundMixer, MIXER_BACKGROUND_VOLUME, 0f);
             backgroundRoutine = StartCoroutine(MixerHelper.StartFade(backgroundMixer, MIXER_BACKGROUND_VOLUME, targetVolume, musicFadeTime));
         }
+        public void StopBackgroundAudio()
+        {
+            StopMusic();
+            StopAmbient();
+        }
 
         public void PlayMusic(AudioClip musicClip)
         {
             musicSource.Stop();
+
+            if (musicClip == null) { return; }
+
             musicSource.clip = musicClip;
             musicSource.loop = true;
             musicSource.Play();
+            
         }
         public void PlayAmbient(AudioClip ambientClip)
         {
             ambientSource.Stop();
+
+            if (ambientClip == null) { return; }
+
             ambientSource.clip = ambientClip;
             ambientSource.loop = true;
             ambientSource.Play();
+        }
+        public void StopMusic()
+        {
+            musicSource.Stop();
+        }
+        public void StopAmbient()
+        {
+            ambientSource.Stop();
         }
 
         // settings - Volume ===========================================

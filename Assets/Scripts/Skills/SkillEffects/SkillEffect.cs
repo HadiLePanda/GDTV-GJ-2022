@@ -5,7 +5,7 @@ namespace GameJam
 {
     public abstract class SkillEffect : MonoBehaviour
     {
-        [ReadOnlyInspector] public Entity target;
-        [ReadOnlyInspector] public Entity caster;
+        [HideInInspector] public Entity target;
+        [HideInInspector] public Entity caster;
     }
 }

@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 7355504461531319797, guid: 80350254d290b6e4e9994dc425f790e5, type: 3}
     - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseHealth.baseValue
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8943736524071765373, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: entity

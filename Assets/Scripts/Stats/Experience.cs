@@ -15,7 +15,7 @@ namespace GameJam
         [SerializeField] protected int maxLevelDifference;
 
         [Header("Stats")]
-        [SerializeField] [ReadOnlyInspector] protected long _current = 0;
+        [SerializeField] [HideInInspector] protected long _current = 0;
         public long Current { get => _current; set => SetValue(value); }
 
         // required experience grows by 10% each level (like Runescape)

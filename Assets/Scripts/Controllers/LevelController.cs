@@ -19,6 +19,9 @@ namespace GameJam
         [Header("Gameplay Sounds")]
         public AudioClip gameOverSound;
         public AudioClip gameWinSound;
+        public AudioClip gameWinAmbient;
+        public AudioClip gameOverAmbient;
+        public AudioClip bossAmbient;
 
         private bool gameOver = false;
         private bool gameWon = false;
@@ -27,6 +30,9 @@ namespace GameJam
         public bool IsGameWon => gameWon;
 
         private Player player;
+
+        [HideInInspector] public float gameplayStartTime;
+        [HideInInspector] public float gameplayEndTime;
 
         public static Action OnGameplayStart, OnGameOver;
 
@@ -51,6 +57,8 @@ namespace GameJam
             // make sure to unpause game in case we're loading and we were paused
             UnpauseGame();
 
+            gameplayStartTime = Time.time;
+
             // fade in
             Game.Fader.FadeOut(true);
             Game.Fader.FadeIn();
@@ -65,11 +73,24 @@ namespace GameJam
         {
             // it's important to stop coroutines to make sure processes like spawners get aborted
             StopAllCoroutines();
+
+            gameplayEndTime = Time.time;
         }
 
         private void StartLevelBackgroundAudio()
         {
             Game.Audio.PlayBackgroundAudio(levelMusic, levelAmbient);
+        }
+
+        public void PlayBossBackgroundAudio()
+        {
+            if (bossAmbient != null)
+            {
+                // change background audio to boss theme
+                Game.Audio.StopBackgroundAudio();
+
+                Game.Audio.PlayBackgroundAudio(null, bossAmbient);
+            }
         }
 
         // game over/win ======================================
@@ -79,6 +100,13 @@ namespace GameJam
             OnGameOver?.Invoke();
 
             StopGameplay();
+
+            // change background audio to crows loop ambient
+            Game.Audio.StopBackgroundAudio();
+            if (gameOverAmbient != null)
+            {
+                Game.Audio.PlayBackgroundAudio(null, gameOverAmbient);
+            }
 
             // show game over ui
             uiController.gameOverWindow.Show();
@@ -94,8 +122,16 @@ namespace GameJam
             StopGameplay();
             KillAllEntities();
 
+            // change background audio to winning
+            Game.Audio.StopBackgroundAudio();
+            if (gameWinAmbient != null)
+            {
+                Game.Audio.PlayAmbient(gameWinAmbient);
+            }
+
             // show game win ui
             uiController.gameWinWindow.Show();
+            uiController.gameWinWindow.UpdateGameTimerText(gameplayEndTime - gameplayStartTime);
 
             // effects
             if (gameWinSound != null)

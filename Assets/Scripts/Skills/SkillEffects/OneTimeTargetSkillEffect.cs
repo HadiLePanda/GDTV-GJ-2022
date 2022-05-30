@@ -29,7 +29,7 @@ namespace GameJam
             }
 
             // destroy self if target disappeared or particle ended
-            if (target == null || !particle.IsAlive())
+            if (!particle.IsAlive())
             {
                 Destroy(gameObject);
             }

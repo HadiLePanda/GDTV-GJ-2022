@@ -63,6 +63,8 @@ namespace GameJam
         // note: for OnGUI: hotControl is only set while clicking, not while zooming
         public static bool IsCursorOverUserInterface()
         {
+            if (EventSystem.current == null) { return false; }
+
             // IsPointerOverGameObject check for left mouse (default)
             if (EventSystem.current.IsPointerOverGameObject())
             {

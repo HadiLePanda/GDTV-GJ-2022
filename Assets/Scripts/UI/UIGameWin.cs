@@ -30,10 +30,10 @@ namespace GameJam
             }
         }
 
-        //private void UpdateDeathsDisplay()
-        //{
-        //    deathScoreText.text = displayCoins.ToString("N0");
-        //}
+        public void UpdateGameTimerText(float timer)
+        {
+            gameTimerText.text = Utils.PrettySeconds(timer);
+        }
 
         //TODO Resurrect
         // gives xp to increase our level, but max health reduced?

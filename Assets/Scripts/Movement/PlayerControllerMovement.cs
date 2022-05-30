@@ -1,7 +1,6 @@
 ﻿// based on Unity's FirstPersonController & ThirdPersonController scripts
 using Controller2k;
 using UnityEngine;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace GameJam
 {
@@ -97,20 +96,29 @@ namespace GameJam
             cam = Camera.main;
         }
 
-        //TODO migrate to new Input system
-        //public void OnMove(CallbackContext context)
-        //{
-        //
-        //}
-
         // input directions ////////////////////////////////////////////////////////
         Vector2 GetInputDirection()
         {
-            // get input direction while alive and while not typing in chat
+            // get input direction while alive
             // (otherwise 0 so we keep falling even if we die while jumping etc.)
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            return new Vector2(horizontal, vertical).normalized;
+            float horizontal = 0;
+            float vertical = 0;
+
+            var moveInput = Game.Input.PlayerActions.Player.Move.ReadValue<Vector2>();
+
+            horizontal = moveInput.x;
+            vertical = moveInput.y;
+
+            // normalize ONLY IF needs to be normalized (if length>1).
+            // we use GetAxis instead of GetAxisRaw, so we may get vectors like
+            // (0.1, 0). if we normalized this in all cases, then it would always be
+            // (1, 0) even if we slowly push the controller forward.
+            Vector2 input = new Vector2(horizontal, vertical);
+            if (input.magnitude > 1)
+            {
+                input = input.normalized;
+            }
+            return input;
         }
 
         Vector3 GetDesiredDirection(Vector2 inputDir)

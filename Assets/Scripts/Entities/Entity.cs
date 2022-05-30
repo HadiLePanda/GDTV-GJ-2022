@@ -43,14 +43,14 @@ namespace GameJam
 
         [Header("Brain")]
         public ScriptableBrain brain;
-        [ReadOnlyInspector] [SerializeField] protected Entity target = null;
-        [ReadOnlyInspector][SerializeField] protected string state = "IDLE";
+        protected Entity target = null;
+        protected string state = "IDLE";
         [HideInInspector] public double stunTimeEnd;
         [HideInInspector] public double lastCombatTime;
         [HideInInspector] public float lastAmbientSoundTime;
 
         [Header("Skills")]
-        [ReadOnlyInspector] public int pendingSkill;
+        [HideInInspector] public int pendingSkill;
 
         [Header("Faction")]
         public Faction Faction;

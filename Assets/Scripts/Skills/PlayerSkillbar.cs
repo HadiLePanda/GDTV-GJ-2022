@@ -33,15 +33,11 @@ namespace GameJam
             new SkillbarEntry{reference="", hotKey=KeyCode.Alpha9},
             new SkillbarEntry{reference="", hotKey=KeyCode.Alpha0},
         };
-        //public ScriptableSkill resurrectionSkillTemplate;
-        //public Skill resurrectionSkill;
 
-        [ReadOnlyInspector] public int selectedSlotIndex;
+        [HideInInspector] public int selectedSlotIndex;
 
         private void Start()
         {
-            //resurrectionSkill = new Skill(resurrectionSkillTemplate);
-
             // put the player skills templates on the skillbar (specificied in the inspector)
             // => we can choose to change which skills we have by changing the player prefab instance on each map
             Load();
@@ -50,18 +46,21 @@ namespace GameJam
         //TODO Move input to new input system
         private void Update()
         {
-            // change selected bar index with mouse scrollwheel
-            ProcessSkillbarInput();
+            if (player.IsAlive)
+            {
+                // change selected bar index with mouse scrollwheel
+                ProcessSkillbarInput();
 
-            //TODO move out of here
-            ProcessCombatInput();
+                ProcessCombatInput();
+            }
         }
 
         private void ProcessCombatInput()
         {
             // left click to use the selected skill
-            if (Input.GetMouseButtonDown(0))
+            if (Game.Input.PlayerActions.Player.Fire.WasPressedThisFrame())
             {
+                // try using the selected skill in the skillbar
                 SkillbarEntry entry = slots[selectedSlotIndex];
                 int skillIndex = player.Skills.GetSkillIndexByName(entry.reference);
                 
@@ -70,16 +69,11 @@ namespace GameJam
                     ((PlayerSkills)player.Skills).TryUse(skillIndex);
                 }
             }
-
-            //TODO right click to cast the resurrect skill
-            //if (Input.GetMouseButtonDown(1))
-            //{
-            //    ((PlayerSkills)player.Skills).TryUse(resurrectionSkill);
-            //}
         }
 
         private void ProcessSkillbarInput()
         {
+            // key selection
             for (int i = 0; i < slots.Length; ++i)
             {
                 SkillbarEntry entry = slots[i];
@@ -88,6 +82,12 @@ namespace GameJam
                 {
                     selectedSlotIndex = i;
                 }
+            }
+
+            // mousewheel selection
+            if (Utils.GetAxisRawScrollUniversal() != 0)
+            {
+                selectedSlotIndex = Mathf.Clamp(selectedSlotIndex + (int)Utils.GetAxisRawScrollUniversal(), 0, slots.Length - 1);
             }
         }
 

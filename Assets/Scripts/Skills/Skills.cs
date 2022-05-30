@@ -48,7 +48,7 @@ namespace GameJam
         public event Action<Skill> onSkillCastCanceled;
 
         // current skill (synced because we need it as an animation parameter)
-        [ReadOnlyInspector] public int currentSkill = -1;
+        [HideInInspector] public int currentSkill = -1;
 
         protected virtual void OnEnable()
         {

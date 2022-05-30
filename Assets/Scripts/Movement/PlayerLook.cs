@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GameJam
 {
@@ -83,7 +84,7 @@ namespace GameJam
             }
 
             // rotate to look towards cursor position
-            Vector3 mousePoint = Input.mousePosition;
+            Vector3 mousePoint = Mouse.current.position.ReadValue();
 
             var mouseRay = cam.ScreenPointToRay(mousePoint);
 
