@@ -26,13 +26,13 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 1
+    baseValue: 3
     bonusPerLevel: 0
   cooldown:
-    baseValue: 6
+    baseValue: 1
     bonusPerLevel: 0
   castRange:
-    baseValue: 6
+    baseValue: 7
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: dcf1b614c0324e74484e087fba6672a6, type: 3}
   castEndSound: {fileID: 8300000, guid: 9d56e21bf226f0647a71cf9ba9316377, type: 3}
@@ -45,7 +45,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   healthDrain:
-    baseValue: 0
+    baseValue: 1
     bonusPerLevel: 0
   speed:
     baseValue: 1

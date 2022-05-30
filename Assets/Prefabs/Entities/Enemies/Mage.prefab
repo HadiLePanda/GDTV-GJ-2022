@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 7829797563796742505, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: minionPrefab
       value: 
-      objectReference: {fileID: 7355504461531319797, guid: 80350254d290b6e4e9994dc425f790e5, type: 3}
+      objectReference: {fileID: 7060242789277987051, guid: ca9c76b6060c2524ebd4ed39af7931e0, type: 3}
     - target: {fileID: 8658331378291192879, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: baseHealth.baseValue
       value: 100
