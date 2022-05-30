@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 7829797563796742505, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: minionPrefab
       value: 
-      objectReference: {fileID: 34256462726306537, guid: fdce877cd2c789b4ab501eebdfe55162, type: 3}
+      objectReference: {fileID: 5480311915570727456, guid: 199131595379f9f4b8ad22aba3fd07e9, type: 3}
     - target: {fileID: 7829797563796742505, guid: d0b0dfde5a7c1af4fbcac5a9990d1f33, type: 3}
       propertyPath: resurrectSound
       value: 

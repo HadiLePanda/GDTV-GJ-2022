@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace GameJam
@@ -17,25 +18,17 @@ namespace GameJam
 
         [Header("Gameplay Sounds")]
         public AudioClip gameOverSound;
+        public AudioClip gameWinSound;
 
         private bool gameOver = false;
+        private bool gameWon = false;
 
         public bool IsGameOver => !player.IsAlive; //gameOver;
+        public bool IsGameWon => gameWon;
 
         private Player player;
 
         public static Action OnGameplayStart, OnGameOver;
-
-        private void OnEnable()
-        {
-            if (Player.localPlayer == null) { return; }
-            Player.localPlayer.Health.OnEmpty += GameOver;
-        }
-        private void OnDisable()
-        {
-            if (Player.localPlayer == null) { return; }
-            Player.localPlayer.Health.OnEmpty -= GameOver;
-        }
 
         private void Start()
         {
@@ -79,11 +72,9 @@ namespace GameJam
             Game.Audio.PlayBackgroundAudio(levelMusic, levelAmbient);
         }
 
-        // game over ======================================
+        // game over/win ======================================
         public void GameOver()
         {
-            Player player = Player.localPlayer;
-
             gameOver = true;
             OnGameOver?.Invoke();
 
@@ -94,7 +85,35 @@ namespace GameJam
 
             // effects
             if (gameOverSound != null)
-                AudioManager.Instance.PlaySfx(gameOverSound);
+                Game.Audio.PlaySfx(gameOverSound);
+        }
+        public void GameWin()
+        {
+            gameWon = true;
+
+            StopGameplay();
+            KillAllEntities();
+
+            // show game win ui
+            uiController.gameWinWindow.Show();
+
+            // effects
+            if (gameWinSound != null)
+                Game.Audio.PlaySfx(gameWinSound);
+        }
+
+        private void KillAllEntities()
+        {
+            Entity[] entities = FindObjectsOfType<Entity>()
+                .Where(x => x.IsFactionAlly(player) == false)
+                .Where(x => x.IsAlive)
+                .ToArray();
+
+            for (int i = entities.Length - 1; i >= 0; i--)
+            {
+                Destroy(entities[i].gameObject);
+                //entities[i].Health.Deplete();
+            }
         }
 
         // pausing ==========================================

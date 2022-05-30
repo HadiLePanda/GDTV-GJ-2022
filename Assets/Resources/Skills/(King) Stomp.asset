@@ -54,4 +54,4 @@ MonoBehaviour:
     bonusPerLevel: 0
   drainToOwner: 0
   effect: {fileID: 0}
-  aoeCookie: {fileID: 8738928516764348381, guid: 9f71ba722fcadac40a660a5fb072aae6, type: 3}
+  aoeCookie: {fileID: 8738928516764348381, guid: 80b04ae82711a1f41a112d48d2d45017, type: 3}

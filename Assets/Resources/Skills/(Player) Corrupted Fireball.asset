@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1aa47c1bd1440409de4bdceaad15af, type: 3}
   m_Name: (Player) Corrupted Fireball
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 41542980803b8654983dd7c8ede5d5ff, type: 3}
+  icon: {fileID: 21300000, guid: 064b6f2300b074a47a96ec06ad1b083d, type: 3}
   learnDefault: 1
   showCastBar: 0
   cancelCastIfTargetDied: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     baseValue: 0.2
     bonusPerLevel: 0
   cooldown:
-    baseValue: 0.3
+    baseValue: 0.5
     bonusPerLevel: 0
   castRange:
     baseValue: 0

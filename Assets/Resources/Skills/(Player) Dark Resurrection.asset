@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74b3d725a64e4649a840e11737ce6a5, type: 3}
   m_Name: (Player) Dark Resurrection
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 1cf82733ea69a6f4c8dae3d89cdd435e, type: 3}
+  icon: {fileID: 21300000, guid: 2a22f07767ea15f41a195cddd63174c1, type: 3}
   learnDefault: 1
   showCastBar: 1
   cancelCastIfTargetDied: 0
@@ -26,13 +26,13 @@ MonoBehaviour:
     baseValue: 50
     bonusPerLevel: 0
   castTime:
-    baseValue: 1
+    baseValue: 1.5
     bonusPerLevel: 0
   cooldown:
-    baseValue: 1
+    baseValue: 10
     bonusPerLevel: 0
   castRange:
-    baseValue: 2
+    baseValue: 4
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: ee78ddb62647a1241bdc8dafe6750218, type: 3}
   castEndSound: {fileID: 8300000, guid: ddc32068df0de354f95914206291f8a0, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb540de23d3e45a45af67eecf7270049, type: 3}
   m_Name: (Player) Buff
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 0452471d1b4ecce40819b8cdf6bd295f, type: 3}
+  icon: {fileID: 21300000, guid: 0f2c83cfb76c0274f93aa4d96b04ec0b, type: 3}
   learnDefault: 1
   showCastBar: 0
   cancelCastIfTargetDied: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
     baseValue: 30
     bonusPerLevel: 0
   castRange:
-    baseValue: 30
+    baseValue: 6
     bonusPerLevel: 0
   castStartSound: {fileID: 8300000, guid: 5309a4081c2da7841970149f8a084f7b, type: 3}
   castEndSound: {fileID: 8300000, guid: 00479b649056e420d873147aa56a8993, type: 3}

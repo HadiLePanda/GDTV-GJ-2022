@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: baseDefense.baseValue
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2629749085445611471, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: baseDamage.bonusPerLevel
@@ -70,10 +70,6 @@ PrefabInstance:
     - target: {fileID: 3546138968846472666, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4236804095548483085, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
-      propertyPath: baseMana.baseValue
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5522774697462624464, guid: 8a0cc945e3ee8f44b8ecd2911cd7a901, type: 3}
       propertyPath: m_Avatar

@@ -39,7 +39,7 @@ MonoBehaviour:
   loopCastStartSound: 1
   projectile: {fileID: 1332423956408868471, guid: f970390397c9d4c4e8ee86de88524690, type: 3}
   damage:
-    baseValue: 40
+    baseValue: 20
     bonusPerLevel: 0
   manaDrain:
     baseValue: 0
