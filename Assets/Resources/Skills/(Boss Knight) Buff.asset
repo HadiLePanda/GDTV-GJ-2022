@@ -50,7 +50,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   blockChanceBonus:
-    baseValue: 0.6
+    baseValue: 0.3
     bonusPerLevel: 0
   criticalChanceBonus:
     baseValue: 0.3
@@ -65,7 +65,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   buffTime:
-    baseValue: 7
+    baseValue: 5
     bonusPerLevel: 0
   remainAfterDeath: 0
   effect: {fileID: 1787432916672924097, guid: 6cea6c40ba232bc4f9a10f1692683aa9, type: 3}

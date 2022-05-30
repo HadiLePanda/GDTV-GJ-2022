@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd5413a7ef67b114ab6c4c3ba84be308, type: 3}
-  m_Name: (Boss Knight) Sword Attack
+  m_Script: {fileID: 11500000, guid: 318a20973567d1f419e80ea2294f790e, type: 3}
+  m_Name: (Boss Knight) Sword Sweep
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   learnDefault: 1
@@ -26,25 +26,25 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 1.2
+    baseValue: 1
     bonusPerLevel: 0
   cooldown:
-    baseValue: 0.6
-    bonusPerLevel: 0
-  castRange:
     baseValue: 3
     bonusPerLevel: 0
-  castStartSound: {fileID: 8300000, guid: ef175a26a162e4842a967dcccdb8f6e0, type: 3}
+  castRange:
+    baseValue: 5
+    bonusPerLevel: 0
+  castStartSound: {fileID: 0}
   castEndSound: {fileID: 0}
   loopCastStartSound: 0
   damage:
     baseValue: 20
     bonusPerLevel: 0
   stunChance:
-    baseValue: 0.2
+    baseValue: 0
     bonusPerLevel: 0
   stunTime:
-    baseValue: 1
+    baseValue: 0
     bonusPerLevel: 0
   manaDrain:
     baseValue: 0
@@ -54,3 +54,4 @@ MonoBehaviour:
     bonusPerLevel: 0
   drainToOwner: 0
   effect: {fileID: 0}
+  aoeCookie: {fileID: 0}

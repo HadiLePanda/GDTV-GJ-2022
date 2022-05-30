@@ -53,7 +53,7 @@ MonoBehaviour:
   panel: {fileID: 2002544050539719003}
   windowPanel: {fileID: 2002544050539719003}
   canvasGroup: {fileID: 6670812350436146176}
-  animateWindow: 1
+  animateWindow: 0
   fadeTime: 0.5
   blockRaycast: 1
   gameTimerText: {fileID: 6433875456840622534}
