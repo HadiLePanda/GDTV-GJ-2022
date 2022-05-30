@@ -75,8 +75,10 @@ namespace GameJam
         // music & ambient =============================================
         public void PlayBackgroundAudio(AudioClip musicClip, AudioClip ambientClip)
         {
-            PlayMusic(musicClip);
-            PlayAmbient(ambientClip);
+            if (musicClip != null)
+                PlayMusic(musicClip);
+            if (ambientClip != null)
+                PlayAmbient(ambientClip);
 
             // fade in background volume
             float targetVolume = 1f;

@@ -50,3 +50,8 @@ MonoBehaviour:
   levelAmbient: {fileID: 0}
   gameOverSound: {fileID: 8300000, guid: b4ca459c38f1a44b4bd8b479beee0bb0, type: 3}
   gameWinSound: {fileID: 8300000, guid: 74cc3295c52750c4284532f51da83bed, type: 3}
+  gameWinAmbient: {fileID: 8300000, guid: 3738702bd0b154d069ea0ee9d38d0a9c, type: 3}
+  gameOverAmbient: {fileID: 8300000, guid: 092a5004c50db4e0f8bc4d9b334003b4, type: 3}
+  bossAmbient: {fileID: 8300000, guid: 31df01cadd3c1ab46bb5cddd97e4fa33, type: 3}
+  gameplayStartTime: 0
+  gameplayEndTime: 0

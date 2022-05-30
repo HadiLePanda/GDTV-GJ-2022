@@ -366,7 +366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5967417306637596360, guid: 7b5fd5fba17f4524f863587e566c08f0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48.19
+      value: 46.92
       objectReference: {fileID: 0}
     - target: {fileID: 5967417306637596360, guid: 7b5fd5fba17f4524f863587e566c08f0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1055,10 +1055,8 @@ PrefabInstance:
 
         to make minions
 
-        <b><color=red>immortal</color></b>
-        for a time
-
-        (use wisely)'
+        <b><color=red>stronger</color></b>
+        for a time'
       objectReference: {fileID: 0}
     - target: {fileID: 4063094672715019959, guid: 02b0d05cf9189e2419da61c33c98704c, type: 3}
       propertyPath: m_fontSize
@@ -5433,7 +5431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4063094672715019959, guid: 02b0d05cf9189e2419da61c33c98704c, type: 3}
       propertyPath: m_text
-      value: 'Destroy <color=yellow>Tower</color>
+      value: 'Destroy the <color=yellow>Tower</color>
 
         to open the path'
       objectReference: {fileID: 0}
@@ -7099,18 +7097,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1547039162}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1315054643}
+    - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
@@ -7118,15 +7128,31 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayBossBackgroundAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameJam.LevelController, GameJam
       objectReference: {fileID: 0}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623105946765075672, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9011758454636580737, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
@@ -11213,7 +11239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9011758454636580737, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.9
+      value: 37.12
       objectReference: {fileID: 0}
     - target: {fileID: 9011758454636580737, guid: f7a9db89292fd204f84f4f6178156dfb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17534,14 +17560,6 @@ PrefabInstance:
       propertyPath: uiController
       value: 
       objectReference: {fileID: 4743548093066376659}
-    - target: {fileID: 6676698838097960874, guid: e2f3a7157fd4e6f4a9aeb406c54a8921, type: 3}
-      propertyPath: gameWinAmbient
-      value: 
-      objectReference: {fileID: 8300000, guid: 3ce012577734b39499f0e1d5dba2de2f, type: 3}
-    - target: {fileID: 6676698838097960874, guid: e2f3a7157fd4e6f4a9aeb406c54a8921, type: 3}
-      propertyPath: gameOverAmbient
-      value: 
-      objectReference: {fileID: 8300000, guid: 3738702bd0b154d069ea0ee9d38d0a9c, type: 3}
     - target: {fileID: 6676698838097960875, guid: e2f3a7157fd4e6f4a9aeb406c54a8921, type: 3}
       propertyPath: m_RootOrder
       value: 8

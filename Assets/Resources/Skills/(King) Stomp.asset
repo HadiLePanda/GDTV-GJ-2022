@@ -17,7 +17,7 @@ MonoBehaviour:
   showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
-  allowMovement: 1
+  allowMovement: 0
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   castTime:
-    baseValue: 1
+    baseValue: 1.3
     bonusPerLevel: 0
   cooldown:
     baseValue: 5
@@ -38,7 +38,7 @@ MonoBehaviour:
   castEndSound: {fileID: 8300000, guid: c3ce65b3163a32144ba81313ad5a63ec, type: 3}
   loopCastStartSound: 0
   damage:
-    baseValue: 10
+    baseValue: 15
     bonusPerLevel: 0
   stunChance:
     baseValue: 0.2

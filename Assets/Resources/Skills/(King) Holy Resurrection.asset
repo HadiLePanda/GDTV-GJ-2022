@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: (King) Holy Resurrection
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  learnDefault: 0
+  learnDefault: 1
   showCastBar: 0
   cancelCastIfTargetDied: 0
   canCancelCast: 0
-  allowMovement: 1
+  allowMovement: 0
   requiredLevel:
     baseValue: 0
     bonusPerLevel: 0

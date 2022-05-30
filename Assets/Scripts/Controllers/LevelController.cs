@@ -21,6 +21,7 @@ namespace GameJam
         public AudioClip gameWinSound;
         public AudioClip gameWinAmbient;
         public AudioClip gameOverAmbient;
+        public AudioClip bossAmbient;
 
         private bool gameOver = false;
         private bool gameWon = false;
@@ -30,8 +31,8 @@ namespace GameJam
 
         private Player player;
 
-        public float gameplayStartTime;
-        public float gameplayEndTime;
+        [HideInInspector] public float gameplayStartTime;
+        [HideInInspector] public float gameplayEndTime;
 
         public static Action OnGameplayStart, OnGameOver;
 
@@ -83,7 +84,13 @@ namespace GameJam
 
         public void PlayBossBackgroundAudio()
         {
-            
+            if (bossAmbient != null)
+            {
+                // change background audio to boss theme
+                Game.Audio.StopBackgroundAudio();
+
+                Game.Audio.PlayBackgroundAudio(null, bossAmbient);
+            }
         }
 
         // game over/win ======================================
