@@ -1,0 +1,42 @@
+Art Assets by Josh Poland (jjoshpoland.itch.io). Some assets are a derivative of QuaterniusDev models.
+
+.fbx:
+- Hood
+- Caster Body
+- Caster Legs
+- Knight Plate Armor
+- Knight Legs Plated
+- Knight Helmet
+- Knight Body Skeleton
+- Knight Legs Skeleton
+- Pitchfork
+- Staff
+- Zombie Wolf
+- Zombie Legs
+- Zombie Head
+- Zombie Body
+- Farmer Head
+
+Textures and Sprites:
+- Terrain Grass
+- Pentagram Sigil
+- Terrain Grass Stylized
+- Terrain Grass Stylized Dark
+
+Materials:
+- AOECookie
+- AOEGlow
+- AOESpellCircle
+
+Unity Particle System:
+- Fireball Corrupted
+- Fireball
+- AOESpell
+- MagicGlow
+- EyeFire
+
+Audio:
+- RockMenuTheme
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+
